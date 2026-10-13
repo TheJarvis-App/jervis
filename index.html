@@ -9,7 +9,7 @@
   <meta name="google-site-verification" content="6aKkwq83vbJKzHDl6cs3eDOjJfXJ3KBH9H88roffeGo" />
   <link rel="canonical" href="https://arielzaha.github.io/jervis/" />
   <meta property="og:url" content="https://arielzaha.github.io/jervis/" />
-  <meta name="theme-color" content="#03060d" />
+  <meta name="theme-color" content="#222222" />
   <meta name="color-scheme" content="dark" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Jervis" />
@@ -23,7 +23,9 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
   <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="assets/css/site.css" />
+  <link rel="preload" href="assets/fonts/yellowtail-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/alfa-slab-one-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/site.css?v=20261013m" />
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
   {
@@ -57,18 +59,14 @@
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 0C12.8 7.2 16.8 11.2 24 12 16.8 12.8 12.8 16.8 12 24 11.2 16.8 7.2 12.8 0 12 7.2 11.2 11.2 7.2 12 0Z"/></symbol>
+<symbol id="i-burst" viewBox="0 0 100 100"><polygon points="50.0,0.0 57.8,10.8 69.1,3.8 72.2,16.7 85.4,14.6 83.3,27.8 96.2,30.9 89.2,42.2 100.0,50.0 89.2,57.8 96.2,69.1 83.3,72.2 85.4,85.4 72.2,83.3 69.1,96.2 57.8,89.2 50.0,100.0 42.2,89.2 30.9,96.2 27.8,83.3 14.6,85.4 16.7,72.2 3.8,69.1 10.8,57.8 0.0,50.0 10.8,42.2 3.8,30.9 16.7,27.8 14.6,14.6 27.8,16.7 30.9,3.8 42.2,10.8"/></symbol>
 <symbol id="i-download-simple" viewBox="0 0 256 256"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></symbol>
 <symbol id="i-microphone" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"/></symbol>
-<symbol id="i-timer" viewBox="0 0 256 256"><path d="M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm0,176a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,216ZM173.66,90.34a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32l40-40A8,8,0,0,1,173.66,90.34ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z"/></symbol>
-<symbol id="i-calendar-blank" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></symbol>
-<symbol id="i-chalkboard-teacher" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H53.39a8,8,0,0,0,7.23-4.57,48,48,0,0,1,86.76,0,8,8,0,0,0,7.23,4.57H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM80,144a24,24,0,1,1,24,24A24,24,0,0,1,80,144Zm136,56H159.43a64.39,64.39,0,0,0-28.83-26.16,40,40,0,1,0-53.2,0A64.39,64.39,0,0,0,48.57,200H40V56H216ZM56,96V80a8,8,0,0,1,8-8H192a8,8,0,0,1,8,8v96a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h8V88H72v8a8,8,0,0,1-16,0Z"/></symbol>
-<symbol id="i-whatsapp-logo" viewBox="0 0 256 256"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></symbol>
-<symbol id="i-keyboard" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,144H32V64H224V192Zm-16-64a8,8,0,0,1-8,8H56a8,8,0,0,1,0-16H200A8,8,0,0,1,208,128Zm0-32a8,8,0,0,1-8,8H56a8,8,0,0,1,0-16H200A8,8,0,0,1,208,96ZM72,160a8,8,0,0,1-8,8H56a8,8,0,0,1,0-16h8A8,8,0,0,1,72,160Zm96,0a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,160Zm40,0a8,8,0,0,1-8,8h-8a8,8,0,0,1,0-16h8A8,8,0,0,1,208,160Z"/></symbol>
-<symbol id="i-user-switch" viewBox="0 0 256 256"><path d="M253.66,133.66l-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L216,132.69V128A88,88,0,0,0,56.49,76.67a8,8,0,0,1-13-9.34A104,104,0,0,1,232,128v4.69l10.34-10.35a8,8,0,0,1,11.32,11.32Zm-41.18,55A104,104,0,0,1,24,128v-4.69L13.66,133.66A8,8,0,0,1,2.34,122.34l24-24a8,8,0,0,1,11.32,0l24,24a8,8,0,0,1-11.32,11.32L40,123.31V128a87.62,87.62,0,0,0,22.24,58.41A79.66,79.66,0,0,1,98.3,157.66a48,48,0,1,1,59.4,0,79.59,79.59,0,0,1,36.08,28.78,89.68,89.68,0,0,0,5.71-7.11,8,8,0,0,1,13,9.34ZM128,152a32,32,0,1,0-32-32A32,32,0,0,0,128,152Zm0,64a88.2,88.2,0,0,0,53.92-18.49,64,64,0,0,0-107.84,0A87.57,87.57,0,0,0,128,216Z"/></symbol>
 <symbol id="i-lock-simple" viewBox="0 0 256 256"><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></symbol>
 <symbol id="i-cloud" viewBox="0 0 256 256"><path d="M160,40A88.09,88.09,0,0,0,81.29,88.67,64,64,0,1,0,72,216h88a88,88,0,0,0,0-176Zm0,160H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.11A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,72,72Z"/></symbol>
-<symbol id="i-apple-logo" viewBox="0 0 256 256"><path d="M223.3,169.59a8.07,8.07,0,0,0-2.8-3.4C203.53,154.53,200,134.64,200,120c0-17.67,13.47-33.06,21.5-40.67a8,8,0,0,0,0-11.62C208.82,55.74,187.82,48,168,48a72.2,72.2,0,0,0-40,12.13,71.56,71.56,0,0,0-90.71,9.09A74.63,74.63,0,0,0,16,123.4a127.06,127.06,0,0,0,40.14,89.73A39.8,39.8,0,0,0,83.59,224h87.68a39.84,39.84,0,0,0,29.12-12.57,125,125,0,0,0,17.82-24.6C225.23,174,224.33,172,223.3,169.59Zm-34.63,30.94a23.76,23.76,0,0,1-17.4,7.47H83.59a23.82,23.82,0,0,1-16.44-6.51A111.14,111.14,0,0,1,32,123,58.5,58.5,0,0,1,48.65,80.47,54.81,54.81,0,0,1,88,64h.78A55.45,55.45,0,0,1,123,76.28a8,8,0,0,0,10,0A55.44,55.44,0,0,1,168,64a70.64,70.64,0,0,1,36,10.35c-13,14.52-20,30.47-20,45.65,0,23.77,7.64,42.73,22.18,55.3A105.82,105.82,0,0,1,188.67,200.53ZM128.23,30A40,40,0,0,1,167,0h1a8,8,0,0,1,0,16h-1a24,24,0,0,0-23.24,18,8,8,0,1,1-15.5-4Z"/></symbol>
-<symbol id="i-windows-logo" viewBox="0 0 256 256"><path d="M208,136H128a8,8,0,0,0-8,8v57.45a8,8,0,0,0,6.57,7.88l80,14.54A7.61,7.61,0,0,0,208,224a8,8,0,0,0,8-8V144A8,8,0,0,0,208,136Zm-8,70.41-64-11.63V152h64ZM96,136H32a8,8,0,0,0-8,8v40a8,8,0,0,0,6.57,7.87l64,11.64a8.54,8.54,0,0,0,1.43.13,8,8,0,0,0,8-8V144A8,8,0,0,0,96,136Zm-8,50.05-48-8.73V152H88ZM213.13,33.86a8,8,0,0,0-6.56-1.73l-80,14.55A8,8,0,0,0,120,54.55V112a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V40A8,8,0,0,0,213.13,33.86ZM200,104H136V61.22l64-11.63ZM101.13,54.22a8,8,0,0,0-6.56-1.73l-64,11.64A8,8,0,0,0,24,72v40a8,8,0,0,0,8,8H96a8,8,0,0,0,8-8V60.36A8,8,0,0,0,101.13,54.22ZM88,104H40V78.68L88,70Z"/></symbol>
+<symbol id="i-apple-logo" viewBox="0 0 256 256"><path d="M223.3,169.59a8.07,8.07,0,0,0-2.8-3.4C203.530,154.53,200,134.64,200,120c0-17.670,13.470-33.06,21.5-40.67a8,8,0,0,0,0-11.62C208.82,55.74,187.82,48,168,48a72.2,72.2,0,0,0-40,12.13,71.56,71.56,0,0,0-90.71,9.09A74.63,74.63,0,0,0,16,123.4a127.06,127.06,0,0,0,40.14,89.73A39.8,39.8,0,0,0,83.59,224h87.68a39.84,39.84,0,0,0,29.12-12.57,125,125,0,0,0,17.82-24.6C225.23,174,224.33,172,223.3,169.59Zm-34.63,30.94a23.76,23.76,0,0,1-17.4,7.47H83.59a23.82,23.82,0,0,1-16.44-6.51A111.14,111.14,0,0,1,32,123,58.5,58.5,0,0,1,48.65,80.47,54.81,54.81,0,0,1,88,64h.78A55.45,55.45,0,0,1,123,76.28a8,8,0,0,0,10,0A55.44,55.44,0,0,1,168,64a70.64,70.64,0,0,1,36,10.35c-13,14.52-20,30.47-20,45.65,0,23.77,7.640,42.73,22.18,55.3A105.82,105.82,0,0,1,188.67,200.53ZM128.23,30A40,40,0,0,1,167,0h1a8,8,0,0,1,0,16h-1a24,24,0,0,0-23.24,18,8,8,0,1,1-15.5-4Z"/></symbol>
+<symbol id="i-windows-logo" viewBox="0 0 256 256"><path d="M208,136H128a8,8,0,0,0-8,8v57.45a8,8,0,0,0,6.57,7.88l80,14.54A7.610,7.610,0,0,0,208,224a8,8,0,0,0,8-8V144A8,8,0,0,0,208,136Zm-8,70.41-64-11.63V152h64ZM96,136H32a8,8,0,0,0-8,8v40a8,8,0,0,0,6.57,7.87l64,11.64a8.540,8.540,0,0,0,1.43.13,8,8,0,0,0,8-8V144A8,8,0,0,0,96,136Zm-8,50.05-48-8.73V152H88ZM213.13,33.86a8,8,0,0,0-6.56-1.73l-80,14.55A8,8,0,0,0,120,54.55V112a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V40A8,8,0,0,0,213.13,33.86ZM200,104H136V61.22l64-11.63ZM101.13,54.22a8,8,0,0,0-6.56-1.73l-64,11.64A8,8,0,0,0,24,72v40a8,8,0,0,0,8,8H96a8,8,0,0,0,8-8V60.36A8,8,0,0,0,101.13,54.22ZM88,104H40V78.68L88,70Z"/></symbol>
 <symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
 <symbol id="i-copy" viewBox="0 0 256 256"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></symbol>
 <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
@@ -78,34 +76,32 @@
 <symbol id="i-ear" viewBox="0 0 256 256"><path d="M216,104a8,8,0,0,1-16,0,72,72,0,0,0-144,0c0,26.7,8.53,34.92,17.57,43.64C82.21,156,92,165.41,92,188a36,36,0,0,0,36,36c10.24,0,18.45-4.16,25.83-13.09a8,8,0,1,1,12.34,10.18C155.81,233.64,143,240,128,240a52.06,52.06,0,0,1-52-52c0-15.79-5.68-21.27-13.54-28.84C52.46,149.5,40,137.5,40,104a88,88,0,0,1,176,0Zm-38.13,57.08A8,8,0,0,0,166.93,164,8,8,0,0,1,152,160c0-9.33,4.82-15.76,10.4-23.2,6.37-8.5,13.6-18.13,13.6-32.8a48,48,0,0,0-96,0,8,8,0,0,0,16,0,32,32,0,0,1,64,0c0,9.33-4.82,15.76-10.4,23.2-6.37,8.5-13.6,18.13-13.6,32.8a24,24,0,0,0,44.78,12A8,8,0,0,0,177.87,161.08Z"/></symbol>
 <symbol id="i-brain" viewBox="0 0 256 256"><path d="M248,124a56.11,56.11,0,0,0-32-50.61V72a48,48,0,0,0-88-26.49A48,48,0,0,0,40,72v1.39a56,56,0,0,0,0,101.2V176a48,48,0,0,0,88,26.49A48,48,0,0,0,216,176v-1.41A56.09,56.09,0,0,0,248,124ZM88,208a32,32,0,0,1-31.81-28.56A55.87,55.87,0,0,0,64,180h8a8,8,0,0,0,0-16H64A40,40,0,0,1,50.67,86.27,8,8,0,0,0,56,78.73V72a32,32,0,0,1,64,0v68.26A47.8,47.8,0,0,0,88,128a8,8,0,0,0,0,16,32,32,0,0,1,0,64Zm104-44h-8a8,8,0,0,0,0,16h8a55.87,55.87,0,0,0,7.81-.56A32,32,0,1,1,168,144a8,8,0,0,0,0-16,47.8,47.8,0,0,0-32,12.26V72a32,32,0,0,1,64,0v6.73a8,8,0,0,0,5.33,7.54A40,40,0,0,1,192,164Zm16-52a8,8,0,0,1-8,8h-4a36,36,0,0,1-36-36V80a8,8,0,0,1,16,0v4a20,20,0,0,0,20,20h4A8,8,0,0,1,208,112ZM60,120H56a8,8,0,0,1,0-16h4A20,20,0,0,0,80,84V80a8,8,0,0,1,16,0v4A36,36,0,0,1,60,120Z"/></symbol>
 <symbol id="i-hand-pointing" viewBox="0 0 256 256"><path d="M196,88a27.86,27.86,0,0,0-13.35,3.39A28,28,0,0,0,144,74.7V44a28,28,0,0,0-56,0v80l-3.82-6.13A28,28,0,0,0,35.73,146l4.67,8.23C74.81,214.89,89.05,240,136,240a88.1,88.1,0,0,0,88-88V116A28,28,0,0,0,196,88Zm12,64a72.08,72.08,0,0,1-72,72c-37.63,0-47.84-18-81.68-77.68l-4.69-8.27,0-.05A12,12,0,0,1,54,121.61a11.88,11.88,0,0,1,6-1.6,12,12,0,0,1,10.41,6,1.76,1.76,0,0,0,.14.23l18.67,30A8,8,0,0,0,104,152V44a12,12,0,0,1,24,0v68a8,8,0,0,0,16,0V100a12,12,0,0,1,24,0v20a8,8,0,0,0,16,0v-4a12,12,0,0,1,24,0Z"/></symbol>
-<symbol id="i-chat-circle-text" viewBox="0 0 256 256"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-8A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"/></symbol>
+<symbol id="i-chat-circle-text" viewBox="0 0 256 256"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-8A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.050A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"/></symbol>
 <symbol id="i-paper-plane-tilt" viewBox="0 0 256 256"><path d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-82.3,48-48a8,8,0,0,0-11.31-11.31l-48,48L24.08,98.25l-.07,0,.14,0L216,40Z"/></symbol>
 <symbol id="i-arrows-out" viewBox="0 0 256 256"><path d="M216,48V96a8,8,0,0,1-16,0V67.31l-42.34,42.35a8,8,0,0,1-11.32-11.32L188.69,56H160a8,8,0,0,1,0-16h48A8,8,0,0,1,216,48ZM98.34,146.34,56,188.69V160a8,8,0,0,0-16,0v48a8,8,0,0,0,8,8H96a8,8,0,0,0,0-16H67.31l42.35-42.34a8,8,0,0,0-11.32-11.32ZM208,152a8,8,0,0,0-8,8v28.69l-42.34-42.35a8,8,0,0,0-11.32,11.32L188.69,200H160a8,8,0,0,0,0,16h48a8,8,0,0,0,8-8V160A8,8,0,0,0,208,152ZM67.31,56H96a8,8,0,0,0,0-16H48a8,8,0,0,0-8,8V96a8,8,0,0,0,16,0V67.31l42.34,42.35a8,8,0,0,0,11.32-11.32Z"/></symbol>
+<symbol id="i-magnifying-glass" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></symbol>
+<symbol id="i-play" viewBox="0 0 256 256"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.940,15.940,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"/></symbol>
 </svg>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header" id="top">
   <div class="container header-inner">
     <a class="brand" href="#top" aria-label="Jervis, back to top">
-      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-        <defs><linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fd8ff"/><stop offset="1" stop-color="#a58bff"/></linearGradient></defs>
-        <circle cx="16" cy="16" r="6" fill="url(#brandGrad)"/>
-        <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(-25 16 16)" opacity=".85"/>
-        <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(35 16 16)" opacity=".45"/>
-      </svg>
+      <span class="brand-plate" aria-hidden="true"><svg class="brand-spark"><use href="#i-sparkle"/></svg></span>
       <span class="wordmark">Jervis</span>
     </a>
     <nav class="site-nav" id="siteNav" aria-label="Main">
       <ul>
-        <li><a href="#features">Features</a></li>
+        <li><a href="#showcase">Demo</a></li>
+        <li><a href="#features">The menu</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#privacy">Privacy</a></li>
         <li><a href="#install">Install</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary btn-sm header-cta" href="#download" data-download data-os-link aria-label="Download Jervis">
-      <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jervis</span>
+    <a class="btn btn-coral btn-sm header-cta" href="#download" data-to-download data-os-link aria-label="Download Jervis">
+      <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download</span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
       <svg class="icon icon-open" aria-hidden="true"><use href="#i-list"/></svg>
@@ -116,213 +112,977 @@
 </header>
 
 <main id="main">
-  <!-- ============ Hero ============ -->
+  <!-- ============ Hero: the sign out front ============ -->
   <section class="hero" id="intro" aria-labelledby="heroTitle">
-    <div class="hero-backdrop" aria-hidden="true"></div>
+    <canvas class="sky" id="sky" aria-hidden="true"></canvas>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1 id="heroTitle">Run your computer by&nbsp;voice.</h1>
-        <p class="lede">Say “Hey Jervis” and ask for music, shows, timers, documents or graphs. He opens the right app and does it.</p>
+        <h1 id="heroTitle"><span class="script hero-script">Just say it.</span><span class="slab hero-slab">He does it on your computer.</span></h1>
+        <p class="lede">Jervis is a free voice assistant for Windows and Mac. Say “Hey Jervis” and he plays the exact song or episode, opens apps, writes documents, solves math with the steps, and can even use the mouse for you.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#download" data-download data-os-link>
+          <a class="btn btn-teal btn-lg" href="#download" data-to-download data-os-link>
             <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jervis</span>
           </a>
-          <a class="btn btn-ghost" href="#showcase"><span>See what he can do</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a class="btn btn-outline btn-lg" href="#showcase" data-play-demo><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span>Try the demo</span></a>
         </div>
-        <p class="hero-meta" id="heroMeta">Free for Windows 10 and 11, and Macs with Apple silicon. No account and no API key: his AI runs on your computer.</p>
+        <p class="hero-meta" id="heroMeta"><span>Free</span><span>Windows 10 &amp; 11</span><span>Macs with Apple silicon</span><span>No account, no API key</span></p>
       </div>
-      <figure class="hero-core">
-        <div class="core-stage">
-          <canvas id="heroOrb" role="img" aria-label="The Jervis voice core, the animated sphere from the Jervis window."></canvas>
-          <i class="reticle tl" aria-hidden="true"></i><i class="reticle tr" aria-hidden="true"></i><i class="reticle bl" aria-hidden="true"></i><i class="reticle br" aria-hidden="true"></i>
+
+      <figure class="sign" aria-labelledby="signCaption">
+        <div class="sign-pylon" aria-hidden="true"></div>
+        <div class="sign-head">
+          <svg class="sign-burst" viewBox="0 0 400 400" aria-hidden="true">
+            <defs>
+              <linearGradient id="chromeSpike" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#cfd6dc"/><stop offset=".55" stop-color="#8d969e"/><stop offset="1" stop-color="#eef2f4"/></linearGradient>
+            </defs>
+            <path fill="url(#chromeSpike)" d="M200,200L193.6,178.9L200.0,17.6L206.4,178.9ZM200,200L200.2,178.0L242.2,98.2L215.4,184.3ZM200,200L210.4,180.6L307.5,92.5L219.4,189.6ZM200,200L215.7,184.6L291.3,162.2L222.0,199.8ZM200,200L221.1,193.6L374.8,200.0L221.1,206.4ZM200,200L222.0,200.2L305.3,243.6L215.7,215.4ZM200,200L219.4,210.4L302.1,302.1L210.4,219.4ZM200,200L215.4,215.7L236.4,287.8L200.2,222.0ZM200,200L206.4,221.1L200.0,386.2L193.6,221.1ZM200,200L199.8,222.0L159.3,298.3L184.6,215.7ZM200,200L189.6,219.4L87.1,312.9L180.6,210.4ZM200,200L184.3,215.4L105.2,239.3L178.0,200.2ZM200,200L178.9,206.4L29.0,200.0L178.9,193.6ZM200,200L178.0,199.8L91.2,154.9L184.3,184.6ZM200,200L180.6,189.6L100.6,100.6L189.6,180.6ZM200,200L184.6,184.3L165.1,115.7L199.8,178.0Z"/>
+          </svg>
+          <svg class="sign-orbits" viewBox="0 0 400 400" aria-hidden="true">
+            <ellipse class="orbit orbit-a" cx="200" cy="200" rx="188" ry="64" transform="rotate(-24 200 200)"/>
+            <ellipse class="orbit orbit-b" cx="200" cy="200" rx="188" ry="64" transform="rotate(28 200 200)"/>
+            <g transform="rotate(-24 200 200)"><circle class="orbit-dot" r="7"><animateMotion dur="9s" repeatCount="indefinite" path="M388,200 A188,64 0 1,1 12,200 A188,64 0 1,1 388,200"/></circle></g>
+          </svg>
+          <button class="core-stage" type="button" id="coreButton" aria-describedby="signCaption">
+            <canvas id="heroOrb" aria-hidden="true"></canvas>
+            <span class="sr-only">The Jervis voice core from the app. Play the next example request.</span>
+          </button>
+          <p class="sign-badge" aria-hidden="true"><span class="script">Open</span><span class="slab">all night</span></p>
         </div>
-        <figcaption class="core-caption">
-          <span class="core-state" id="coreState">Ready</span>
-          <span class="core-sub" id="coreSub">Say “Hey Jervis”.</span>
+        <figcaption class="ticket" id="signCaption">
+          <span class="ticket-head"><span class="slab">Order up</span><span class="ticket-state" id="coreState">Ready</span></span>
+          <span class="ticket-line" id="coreSub">Say “Hey Jervis”.</span>
+          <span class="ticket-foot">The real core from the Jervis window, replaying real answers. Tap the core for the next one.</span>
         </figcaption>
       </figure>
     </div>
+    <a class="scroll-cue" href="#showcase" aria-label="Scroll to the demo"><span>Scroll</span><svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></a>
+    <svg class="swoop" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path class="swoop-fill" d="M0,120 L0,86 C380,30 820,6 1440,58 L1440,120 Z"/>
+      <path class="swoop-tube swoop-coral" d="M0,80 C380,24 820,0 1440,52"/>
+      <path class="swoop-tube swoop-teal" d="M0,92 C380,36 820,12 1440,64"/>
+    </svg>
   </section>
 
-  <!-- ============ Product showcase ============ -->
-  <section class="section showcase" id="showcase" aria-labelledby="showcaseTitle">
+  <!-- ============ Showcase: order up ============ -->
+  <section class="section showcase ground-teal" id="showcase" aria-labelledby="showcaseTitle">
     <div class="container">
       <div class="section-head">
-        <h2 id="showcaseTitle">He answers out loud, and shows his work.</h2>
-        <p>Replies appear in the Jervis window as he speaks: the conversation, worked math, graphs and a 3D globe.</p>
+        <h2 id="showcaseTitle"><span class="script">Order up!</span><span class="slab">Pick something to ask. Watch him make it.</span></h2>
+        <p>Each order runs the way Jervis really handles it: he hears you, decides who in the kitchen does it, does it, and answers out loud.</p>
       </div>
 
-      <div class="tabs showcase-tabs" role="tablist" aria-label="Jervis window screens" data-tabs>
-        <button class="tab" role="tab" type="button" id="tab-chat" aria-selected="true" aria-controls="panel-chat">Conversation</button>
-        <button class="tab" role="tab" type="button" id="tab-graph" aria-selected="false" aria-controls="panel-graph" tabindex="-1">Graphs</button>
-        <button class="tab" role="tab" type="button" id="tab-globe" aria-selected="false" aria-controls="panel-globe" tabindex="-1">Globe</button>
-      </div>
+      <div class="counter" data-counter>
+        <div class="orders" role="tablist" aria-label="Things to ask Jervis" aria-orientation="vertical">
+          <button class="order" role="tab" type="button" id="order-saturn" aria-controls="plate-saturn" aria-selected="true" data-order="saturn"><span class="order-no">No. 1</span><span class="order-kind">Planets</span><q>Tell me about Saturn</q></button>
+          <button class="order" role="tab" type="button" id="order-solve" aria-controls="plate-solve" aria-selected="false" tabindex="-1" data-order="solve"><span class="order-no">No. 2</span><span class="order-kind">Math</span><q>Solve x² − 5x + 6 = 0</q></button>
+          <button class="order" role="tab" type="button" id="order-graph" aria-controls="plate-graph" aria-selected="false" tabindex="-1" data-order="graph"><span class="order-no">No. 3</span><span class="order-kind">Graphs</span><q>Graph sine of x over x</q></button>
+          <button class="order" role="tab" type="button" id="order-globe" aria-controls="plate-globe" aria-selected="false" tabindex="-1" data-order="globe"><span class="order-no">No. 4</span><span class="order-kind">The globe</span><q>How far is New York from Tel Aviv?</q></button>
+          <button class="order" role="tab" type="button" id="order-spotify" aria-controls="plate-spotify" aria-selected="false" tabindex="-1" data-order="spotify"><span class="order-no">No. 5</span><span class="order-kind">Music</span><q>Play my Workout playlist on Spotify</q></button>
+          <button class="order" role="tab" type="button" id="order-netflix" aria-controls="plate-netflix" aria-selected="false" tabindex="-1" data-order="netflix"><span class="order-no">No. 6</span><span class="order-kind">Shows</span><q>Play Breaking Bad season 3 episode 2 on Netflix</q></button>
+          <button class="order" role="tab" type="button" id="order-docs" aria-controls="plate-docs" aria-selected="false" tabindex="-1" data-order="docs"><span class="order-no">No. 7</span><span class="order-kind">Writing</span><q>Write a poem about the sea in Word</q></button>
+          <button class="order" role="tab" type="button" id="order-computer" aria-controls="plate-computer" aria-selected="false" tabindex="-1" data-order="computer"><span class="order-no">No. 8</span><span class="order-kind">Your computer</span><q>Use my computer to turn on dark mode in Chrome</q></button>
+        </div>
 
-      <div class="shot-frame">
-        <figure class="shot" role="tabpanel" id="panel-chat" aria-labelledby="tab-chat">
-          <img src="assets/img/jervis-chat-1600.webp"
-               srcset="assets/img/jervis-chat-960.webp 960w, assets/img/jervis-chat-1600.webp 1600w, assets/img/jervis-chat-2400.webp 2400w"
-               sizes="(min-width: 1280px) 1200px, 94vw" width="1600" height="1000" fetchpriority="high"
-               alt="The Jervis window. System, weather and suggested commands on the left; the voice core in the middle, set to Listening; on the right, a quadratic equation solved step by step and facts about Saturn." />
-          <figcaption>
-            <q>Tell me about Saturn</q>
-            <span>Replies land in the conversation as he speaks, with facts and worked math laid out to read.</span>
-            <a class="shot-full" href="assets/img/jervis-chat-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
-          </figcaption>
-        </figure>
-        <figure class="shot" role="tabpanel" id="panel-graph" aria-labelledby="tab-graph" hidden>
-          <img src="assets/img/jervis-graph-1600.webp"
-               srcset="assets/img/jervis-graph-960.webp 960w, assets/img/jervis-graph-1600.webp 1600w, assets/img/jervis-graph-2400.webp 2400w"
-               sizes="(min-width: 1280px) 1200px, 94vw" width="1600" height="1000" loading="lazy"
-               alt="A graph of y equals sine of x over x in the Jervis window, with its x-intercepts, local maxima and minima and the horizontal asymptote y equals 0 labelled." />
-          <figcaption>
-            <q>Graph sine of x over x</q>
-            <span>Any function of x, with its intercepts, highs and lows and asymptotes marked. In the app, point at the curve to read any value.</span>
-            <a class="shot-full" href="assets/img/jervis-graph-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
-          </figcaption>
-        </figure>
-        <figure class="shot" role="tabpanel" id="panel-globe" aria-labelledby="tab-globe" hidden>
-          <img src="assets/img/jervis-globe-1600.webp"
-               srcset="assets/img/jervis-globe-960.webp 960w, assets/img/jervis-globe-1600.webp 1600w, assets/img/jervis-globe-2400.webp 2400w"
-               sizes="(min-width: 1280px) 1200px, 94vw" width="1600" height="1000" loading="lazy"
-               alt="A 3D Earth in the Jervis window with a glowing arc from New York to Tel Aviv, labelled 9,115 km, 5,664 miles, heading 54.1 degrees." />
-          <figcaption>
-            <q>What is the distance between New York and Tel Aviv</q>
-            <span>The straight-line route on a 3D Earth with clouds and a day and night line. In the app you can turn it and zoom in.</span>
-            <a class="shot-full" href="assets/img/jervis-globe-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
-          </figcaption>
-        </figure>
+        <div class="plates">
+          <div class="pass">
+            <div class="pass-orb" aria-hidden="true"><div class="pass-orb-inner"><canvas id="counterOrb"></canvas></div></div>
+            <div class="pass-info">
+              <p class="pass-state"><span class="pass-label">Now serving</span> <span class="pass-now" id="passState">Ready</span></p>
+              <p class="sim-tag"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"/></svg>Simulation on this page. Nothing runs on your computer.</p>
+            </div>
+            <div class="pass-controls" hidden data-js-only>
+              <button class="ctl ctl-play" type="button" id="demoPlay"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span>Play</span></button>
+              <button class="ctl" type="button" id="demoNext"><span>Next order</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+            </div>
+          </div>
+          <ol class="stepper" aria-label="Order progress" hidden data-js-only>
+            <li><button type="button" class="step" data-goto="hear"><span class="step-dot"></span>Heard</button></li>
+            <li><button type="button" class="step" data-goto="decide"><span class="step-dot"></span>Decided</button></li>
+            <li><button type="button" class="step" data-goto="act"><span class="step-dot"></span>Did</button></li>
+            <li><button type="button" class="step" data-goto="serve"><span class="step-dot"></span>Served</button></li>
+          </ol>
+          <p class="sr-only" id="demoLive" aria-live="polite"></p>
+          <article class="plate" role="tabpanel" id="plate-saturn" aria-labelledby="order-saturn" data-plate="saturn">
+            <h3 class="sr-only">Planets: Tell me about Saturn</h3>
+            <div class="stage-view">
+            <p class="slip-head" aria-hidden="true"><span class="slab">No. 1</span><span>Planets</span></p>
+            <section class="stage stage-hear" data-stage="hear" aria-labelledby="st-saturn-hear">
+              <h4 class="stage-label" id="st-saturn-hear">Heard</h4>
+              <p class="bubble"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q class="bubble-text" data-type>Tell me about Saturn</q></p>
+              <p class="stage-note">Said out loud after “Hey Jervis”, or typed into the box under his core.</p>
+            </section>
+            <section class="stage stage-decide" data-stage="decide" aria-labelledby="st-saturn-decide">
+              <h4 class="stage-label" id="st-saturn-decide">Decided</h4>
+              <ul class="route"><li><span class="route-key">Kind</span><span class="route-val">A planet</span></li><li><span class="route-key">Handled by</span><span class="route-val">His own planets code</span></li><li><span class="route-key">AI</span><span class="route-val">Not needed</span></li></ul>
+              <p class="stage-note">Commands he knows run in his own code first; only the rest goes to his AI.</p>
+            </section>
+            <section class="stage stage-act" data-stage="act" aria-labelledby="st-saturn-act">
+              <h4 class="stage-label" id="st-saturn-act">Did</h4>
+              <ol class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Looked up Saturn’s size, day and year, distance from the Sun, moons and temperature</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Opened a lit, spinning 3D model with real rings (textures ship with Jervis, so it works offline)</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Kept it in the conversation, so ‹ › brings it back later</span></li></ol>
+            </section>
+            <section class="stage stage-serve" data-stage="serve" aria-labelledby="st-saturn-serve">
+              <h4 class="stage-label" id="st-saturn-serve">Served</h4>
+              <figure class="screen">
+                <img src="assets/img/jervis-planet-detail-800.webp" srcset="assets/img/jervis-planet-detail-800.webp 800w, assets/img/jervis-planet-detail-1280.webp 1280w" sizes="(min-width: 1000px) 620px, 92vw" width="800" height="533" loading="lazy" alt="Jervis’s lit 3D model of Saturn and its rings." />
+                <figcaption>Real screenshot of the Jervis window.</figcaption>
+              </figure>
+              <p class="reply"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg><span>“Saturn is a planet, about 1,434 million kilometers from the Sun.”</span></p>
+            </section>
+            </div>
+          </article>
+          <article class="plate" role="tabpanel" id="plate-solve" aria-labelledby="order-solve" data-plate="solve">
+            <h3 class="sr-only">Math: Solve x² − 5x + 6 = 0</h3>
+            <div class="stage-view">
+            <p class="slip-head" aria-hidden="true"><span class="slab">No. 2</span><span>Math</span></p>
+            <section class="stage stage-hear" data-stage="hear" aria-labelledby="st-solve-hear">
+              <h4 class="stage-label" id="st-solve-hear">Heard</h4>
+              <p class="bubble"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q class="bubble-text" data-type>Solve x squared minus 5x plus 6 equals 0</q></p>
+              <p class="stage-note">Said out loud after “Hey Jervis”, or typed into the box under his core.</p>
+            </section>
+            <section class="stage stage-decide" data-stage="decide" aria-labelledby="st-solve-decide">
+              <h4 class="stage-label" id="st-solve-decide">Decided</h4>
+              <ul class="route"><li><span class="route-key">Kind</span><span class="route-val">A quadratic equation</span></li><li><span class="route-key">Handled by</span><span class="route-val">His own math solver</span></li><li><span class="route-key">AI</span><span class="route-val">Not used, so the arithmetic is exact</span></li></ul>
+              <p class="stage-note">Commands he knows run in his own code first; only the rest goes to his AI.</p>
+            </section>
+            <section class="stage stage-act" data-stage="act" aria-labelledby="st-solve-act">
+              <h4 class="stage-label" id="st-solve-act">Did</h4>
+              <ol class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Read it as x² − 5x + 6 = 0</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Worked out the discriminant: (−5)² − 4 · 1 · 6 = 1</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Wrote x = (5 ± 1) ÷ 2 as a worksheet, every step typeset</span></li></ol>
+            </section>
+            <section class="stage stage-serve" data-stage="serve" aria-labelledby="st-solve-serve">
+              <h4 class="stage-label" id="st-solve-serve">Served</h4>
+              <figure class="screen screen-tall">
+                <img src="assets/img/jervis-worksheet-560.webp" srcset="assets/img/jervis-worksheet-560.webp 560w, assets/img/jervis-worksheet-1000.webp 1000w" sizes="(min-width: 1000px) 520px, 92vw" width="560" height="498" loading="lazy" alt="Jervis’s worked answer: the discriminant, the quadratic formula, then the answer, x equals 2 or x equals 3." />
+                <figcaption>Real screenshot of the Jervis window.</figcaption>
+              </figure>
+              <p class="reply"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg><span>“The solutions are x equals 2 and x equals 3.”</span></p>
+            </section>
+            </div>
+          </article>
+          <article class="plate" role="tabpanel" id="plate-graph" aria-labelledby="order-graph" data-plate="graph">
+            <h3 class="sr-only">Graphs: Graph sine of x over x</h3>
+            <div class="stage-view">
+            <p class="slip-head" aria-hidden="true"><span class="slab">No. 3</span><span>Graphs</span></p>
+            <section class="stage stage-hear" data-stage="hear" aria-labelledby="st-graph-hear">
+              <h4 class="stage-label" id="st-graph-hear">Heard</h4>
+              <p class="bubble"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q class="bubble-text" data-type>Graph sine of x over x</q></p>
+              <p class="stage-note">Said out loud after “Hey Jervis”, or typed into the box under his core.</p>
+            </section>
+            <section class="stage stage-decide" data-stage="decide" aria-labelledby="st-graph-decide">
+              <h4 class="stage-label" id="st-graph-decide">Decided</h4>
+              <ul class="route"><li><span class="route-key">Kind</span><span class="route-val">A function of x</span></li><li><span class="route-key">Handled by</span><span class="route-val">His own graph code</span></li><li><span class="route-key">AI</span><span class="route-val">Not needed</span></li></ul>
+              <p class="stage-note">Commands he knows run in his own code first; only the rest goes to his AI.</p>
+            </section>
+            <section class="stage stage-act" data-stage="act" aria-labelledby="st-graph-act">
+              <h4 class="stage-label" id="st-graph-act">Did</h4>
+              <ol class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Read it as y = sin(x) ÷ x</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Picked a window that shows the interesting part of the curve</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Marked the x-intercepts, the highs and lows, and the asymptote y = 0</span></li></ol>
+            </section>
+            <section class="stage stage-serve" data-stage="serve" aria-labelledby="st-graph-serve">
+              <h4 class="stage-label" id="st-graph-serve">Served</h4>
+              <figure class="screen">
+                <img src="assets/img/jervis-graph-960.webp" srcset="assets/img/jervis-graph-960.webp 960w, assets/img/jervis-graph-1600.webp 1600w" sizes="(min-width: 1000px) 620px, 92vw" width="1600" height="1000" loading="lazy" alt="A graph of y equals sine of x over x in the Jervis window, with its x-intercepts, local maxima and minima and the horizontal asymptote y equals 0 labelled." />
+                <figcaption>Real screenshot of the Jervis window.</figcaption>
+              </figure>
+              <p class="reply"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg><span>A graph window: point at the curve to read any value, or save it as an image.</span></p>
+            </section>
+            </div>
+          </article>
+          <article class="plate" role="tabpanel" id="plate-globe" aria-labelledby="order-globe" data-plate="globe">
+            <h3 class="sr-only">The globe: How far is New York from Tel Aviv?</h3>
+            <div class="stage-view">
+            <p class="slip-head" aria-hidden="true"><span class="slab">No. 4</span><span>The globe</span></p>
+            <section class="stage stage-hear" data-stage="hear" aria-labelledby="st-globe-hear">
+              <h4 class="stage-label" id="st-globe-hear">Heard</h4>
+              <p class="bubble"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q class="bubble-text" data-type>How far is New York from Tel Aviv?</q></p>
+              <p class="stage-note">Said out loud after “Hey Jervis”, or typed into the box under his core.</p>
+            </section>
+            <section class="stage stage-decide" data-stage="decide" aria-labelledby="st-globe-decide">
+              <h4 class="stage-label" id="st-globe-decide">Decided</h4>
+              <ul class="route"><li><span class="route-key">Kind</span><span class="route-val">A distance between two places</span></li><li><span class="route-key">Handled by</span><span class="route-val">His own globe code</span></li><li><span class="route-key">Online</span><span class="route-val">A free place lookup (Open-Meteo)</span></li></ul>
+              <p class="stage-note">Commands he knows run in his own code first; only the rest goes to his AI.</p>
+            </section>
+            <section class="stage stage-act" data-stage="act" aria-labelledby="st-globe-act">
+              <h4 class="stage-label" id="st-globe-act">Did</h4>
+              <ol class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Found New York, United States</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Found Tel Aviv, Israel</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Worked out the great-circle distance and drew the route as a glowing arc on a 3D Earth</span></li></ol>
+            </section>
+            <section class="stage stage-serve" data-stage="serve" aria-labelledby="st-globe-serve">
+              <h4 class="stage-label" id="st-globe-serve">Served</h4>
+              <figure class="screen">
+                <img src="assets/img/jervis-globe-960.webp" srcset="assets/img/jervis-globe-960.webp 960w, assets/img/jervis-globe-1600.webp 1600w" sizes="(min-width: 1000px) 620px, 92vw" width="1600" height="1000" loading="lazy" alt="A 3D Earth in the Jervis window with a glowing arc from New York to Tel Aviv, labelled 9,115 km, 5,664 miles, heading 54.1 degrees." />
+                <figcaption>Real screenshot of the Jervis window.</figcaption>
+              </figure>
+              <p class="reply"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg><span>“… about 9,115 kilometers, or 5,664 miles, in a straight line.”</span></p>
+            </section>
+            </div>
+          </article>
+          <article class="plate" role="tabpanel" id="plate-spotify" aria-labelledby="order-spotify" data-plate="spotify">
+            <h3 class="sr-only">Music: Play my Workout playlist on Spotify</h3>
+            <div class="stage-view">
+            <p class="slip-head" aria-hidden="true"><span class="slab">No. 5</span><span>Music</span></p>
+            <section class="stage stage-hear" data-stage="hear" aria-labelledby="st-spotify-hear">
+              <h4 class="stage-label" id="st-spotify-hear">Heard</h4>
+              <p class="bubble"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q class="bubble-text" data-type>Play my Workout playlist on Spotify</q></p>
+              <p class="stage-note">Said out loud after “Hey Jervis”, or typed into the box under his core.</p>
+            </section>
+            <section class="stage stage-decide" data-stage="decide" aria-labelledby="st-spotify-decide">
+              <h4 class="stage-label" id="st-spotify-decide">Decided</h4>
+              <ul class="route"><li><span class="route-key">Kind</span><span class="route-val">Music</span></li><li><span class="route-key">Handled by</span><span class="route-val">His own Spotify code</span></li><li><span class="route-key">Needs</span><span class="route-val">The Spotify app, free or Premium; no keys</span></li></ul>
+              <p class="stage-note">Commands he knows run in his own code first; only the rest goes to his AI.</p>
+            </section>
+            <section class="stage stage-act" data-stage="act" aria-labelledby="st-spotify-act">
+              <h4 class="stage-label" id="st-spotify-act">Did</h4>
+              <ol class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Opened Spotify’s Quick Search</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Typed the request; your own playlists come before strangers’</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Played the top result, then checked that the music really changed</span></li></ol>
+            </section>
+            <section class="stage stage-serve" data-stage="serve" aria-labelledby="st-spotify-serve">
+              <h4 class="stage-label" id="st-spotify-serve">Served</h4>
+              <div class="receipt" role="img" aria-label="Now playing: Workout. Illustration, not a screenshot.">
+                <p class="slab">Now playing</p><p class="receipt-big script">Workout</p><p class="receipt-row"><span>Where</span><span>The Spotify app</span></p><p class="receipt-row"><span>Account</span><span>Free or Premium</span></p><p class="receipt-row"><span>On a Mac</span><span>Needs Accessibility to press play</span></p>
+                <p class="receipt-note">Illustration, not a screenshot</p>
+              </div>
+              <p class="reply"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg><span>Your playlist, playing in the Spotify app. “Pause” and “next song” work next.</span></p>
+            </section>
+            </div>
+          </article>
+          <article class="plate" role="tabpanel" id="plate-netflix" aria-labelledby="order-netflix" data-plate="netflix">
+            <h3 class="sr-only">Shows: Play Breaking Bad season 3 episode 2 on Netflix</h3>
+            <div class="stage-view">
+            <p class="slip-head" aria-hidden="true"><span class="slab">No. 6</span><span>Shows</span></p>
+            <section class="stage stage-hear" data-stage="hear" aria-labelledby="st-netflix-hear">
+              <h4 class="stage-label" id="st-netflix-hear">Heard</h4>
+              <p class="bubble"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q class="bubble-text" data-type>Play Breaking Bad season 3 episode 2 on Netflix</q></p>
+              <p class="stage-note">Said out loud after “Hey Jervis”, or typed into the box under his core.</p>
+            </section>
+            <section class="stage stage-decide" data-stage="decide" aria-labelledby="st-netflix-decide">
+              <h4 class="stage-label" id="st-netflix-decide">Decided</h4>
+              <ul class="route"><li><span class="route-key">Kind</span><span class="route-val">A show, down to the episode</span></li><li><span class="route-key">Handled by</span><span class="route-val">His own Netflix code</span></li><li><span class="route-key">Needs</span><span class="route-val">You signed in to Netflix in your browser</span></li></ul>
+              <p class="stage-note">Commands he knows run in his own code first; only the rest goes to his AI.</p>
+            </section>
+            <section class="stage stage-act" data-stage="act" aria-labelledby="st-netflix-act">
+              <h4 class="stage-label" id="st-netflix-act">Did</h4>
+              <ol class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Found Breaking Bad’s Netflix page</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Read season 3’s episode list</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Opened episode 2 in your browser</span></li></ol>
+            </section>
+            <section class="stage stage-serve" data-stage="serve" aria-labelledby="st-netflix-serve">
+              <h4 class="stage-label" id="st-netflix-serve">Served</h4>
+              <div class="receipt" role="img" aria-label="Tonight’s feature: S3 · E2. Illustration, not a screenshot.">
+                <p class="slab">Tonight’s feature</p><p class="receipt-big script">S3 · E2</p><p class="receipt-row"><span>Where</span><span>Netflix, in your browser</span></p><p class="receipt-row"><span>Also</span><span>YouTube, Stremio, trailers</span></p>
+                <p class="receipt-note">Illustration, not a screenshot</p>
+              </div>
+              <p class="reply"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg><span>The episode, playing. “Go to minute 12” jumps ahead.</span></p>
+            </section>
+            </div>
+          </article>
+          <article class="plate" role="tabpanel" id="plate-docs" aria-labelledby="order-docs" data-plate="docs">
+            <h3 class="sr-only">Writing: Write a poem about the sea in Word</h3>
+            <div class="stage-view">
+            <p class="slip-head" aria-hidden="true"><span class="slab">No. 7</span><span>Writing</span></p>
+            <section class="stage stage-hear" data-stage="hear" aria-labelledby="st-docs-hear">
+              <h4 class="stage-label" id="st-docs-hear">Heard</h4>
+              <p class="bubble"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q class="bubble-text" data-type>Write a poem about the sea in Word</q></p>
+              <p class="stage-note">Said out loud after “Hey Jervis”, or typed into the box under his core.</p>
+            </section>
+            <section class="stage stage-decide" data-stage="decide" aria-labelledby="st-docs-decide">
+              <h4 class="stage-label" id="st-docs-decide">Decided</h4>
+              <ul class="route"><li><span class="route-key">Kind</span><span class="route-val">Writing</span></li><li><span class="route-key">Handled by</span><span class="route-val">His AI writes it, on your computer</span></li><li><span class="route-key">Then</span><span class="route-val">His documents code puts it in Word</span></li></ul>
+              <p class="stage-note">Commands he knows run in his own code first; only the rest goes to his AI.</p>
+            </section>
+            <section class="stage stage-act" data-stage="act" aria-labelledby="st-docs-act">
+              <h4 class="stage-label" id="st-docs-act">Did</h4>
+              <ol class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Wrote a short poem about the sea</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Opened a new Word document</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Put in the title and the poem</span></li></ol>
+            </section>
+            <section class="stage stage-serve" data-stage="serve" aria-labelledby="st-docs-serve">
+              <h4 class="stage-label" id="st-docs-serve">Served</h4>
+              <div class="receipt" role="img" aria-label="Written in: Word. Illustration, not a screenshot.">
+                <p class="slab">Written in</p><p class="receipt-big script">Word</p><p class="receipt-row"><span>Mac</span><span>Word, Pages, TextEdit, Notes, Google Docs</span></p><p class="receipt-row"><span>Windows</span><span>Word, Notepad, Google Docs</span></p>
+                <p class="receipt-note">Illustration, not a screenshot</p>
+              </div>
+              <p class="reply"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg><span>A finished document. Say “make it shorter” or “read it to me” next.</span></p>
+            </section>
+            </div>
+          </article>
+          <article class="plate" role="tabpanel" id="plate-computer" aria-labelledby="order-computer" data-plate="computer">
+            <h3 class="sr-only">Your computer: Use my computer to turn on dark mode in Chrome</h3>
+            <div class="stage-view">
+            <p class="slip-head" aria-hidden="true"><span class="slab">No. 8</span><span>Your computer</span></p>
+            <section class="stage stage-hear" data-stage="hear" aria-labelledby="st-computer-hear">
+              <h4 class="stage-label" id="st-computer-hear">Heard</h4>
+              <p class="bubble"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q class="bubble-text" data-type>Use my computer to turn on dark mode in Chrome</q></p>
+              <p class="stage-note">Said out loud after “Hey Jervis”, or typed into the box under his core.</p>
+            </section>
+            <section class="stage stage-decide" data-stage="decide" aria-labelledby="st-computer-decide">
+              <h4 class="stage-label" id="st-computer-decide">Decided</h4>
+              <ul class="route"><li><span class="route-key">Kind</span><span class="route-val">A task on screen</span></li><li><span class="route-key">First</span><span class="route-val">He asks you (the default)</span></li><li><span class="route-key">Handled by</span><span class="route-val">His AI, one step at a time</span></li></ul>
+              <p class="stage-note">Commands he knows run in his own code first; only the rest goes to his AI.</p>
+            </section>
+            <section class="stage stage-act" data-stage="act" aria-labelledby="st-computer-act">
+              <h4 class="stage-label" id="st-computer-act">Did</h4>
+              <ol class="checks"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Read the window through your system’s accessibility features</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Did one thing, then checked what changed</span></li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Repeated until done, with Pause and Stop on screen the whole time</span></li></ol>
+            </section>
+            <section class="stage stage-serve" data-stage="serve" aria-labelledby="st-computer-serve">
+              <h4 class="stage-label" id="st-computer-serve">Served</h4>
+              <div class="control-demo" role="img" aria-label="Illustration of the bar Jervis shows while he uses the computer: AI control active, the current step, Pause and Stop.">
+                <div class="control-edge"></div>
+                <div class="control-bar"><span class="control-dot"></span><span class="control-title">AI control active</span><span class="control-step">Clicking “Appearance”</span><span class="control-btn">Pause</span><span class="control-btn control-stop">Stop</span></div>
+                <p class="control-note">Illustration of his on-screen bar, not a screenshot. A glowing edge and this bar stay on top while he works; Ctrl+Alt+Q stops him.</p>
+              </div>
+              <p class="reply"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg><span>Done, or he tells you where he got stuck. Moving the mouse stops him at once.</span></p>
+            </section>
+            </div>
+          </article>
+        </div>
       </div>
-      <p class="fineprint">Real screenshots of the Jervis window.</p>
+      <p class="fineprint">Screenshots are the real Jervis window; receipts and the control bar are illustrations. The steps describe what his code does when you ask for real.</p>
     </div>
   </section>
 
-  <!-- ============ Features ============ -->
-  <section class="section features" id="features" aria-labelledby="featuresTitle">
+  <!-- ============ Now showing: the video ============ -->
+  <section class="section drive-in ground-night" id="watch" aria-labelledby="watchTitle">
     <div class="container">
-      <div class="section-head">
-        <h2 id="featuresTitle">What you can ask for</h2>
-        <p>Everything below works by voice, or typed into the box under the core.</p>
+      <div class="marquee">
+        <svg class="marquee-burst" aria-hidden="true"><use href="#i-burst"/></svg>
+        <h2 id="watchTitle"><span class="script">Jervis at work</span><span class="slab">Now showing on this screen</span></h2>
+      </div>
+      <div class="screen-frame" data-video="" data-video-poster="assets/img/jervis-chat-1600.webp">
+        <div class="video-slot">
+          <img class="video-poster" src="assets/img/jervis-chat-960.webp" srcset="assets/img/jervis-chat-960.webp 960w, assets/img/jervis-chat-1600.webp 1600w, assets/img/jervis-chat-2400.webp 2400w" sizes="(min-width: 1200px) 1100px, 94vw" width="1600" height="1000" loading="lazy" alt="The Jervis window. System, weather and suggested commands on the left; the voice core in the middle, set to Listening; on the right, a quadratic equation solved step by step and facts about Saturn." />
+          <div class="video-soon"><p class="intermission"><span class="script">Intermission</span><span class="slab">The film is coming soon</span><span>A short film of Jervis at work will play on this screen.</span></p></div>
+        </div>
+      </div>
+      <p class="fineprint fineprint-dark">Behind the sign: a still of the real Jervis window, dimmed until the film arrives. <a href="assets/img/jervis-chat-2400.webp">See it full size</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ The menu: every feature ============ -->
+  <section class="section menu-section ground-coral" id="features" aria-labelledby="featuresTitle">
+    <div class="container">
+      <div class="section-head section-head-menu">
+        <h2 id="featuresTitle"><span class="script">The menu</span><span class="slab">Everything Jervis can do</span></h2>
+        <p>Every item works by voice, or typed into the box under his core. Each one is checked against Jervis’s source code, and tagged with where you get it.</p>
       </div>
 
-      <div class="bento">
-        <article class="cell cell-media">
-          <h3>Music, shows and videos</h3>
-          <p>Play a song or video on YouTube, start an exact Netflix episode, open a show in Stremio, or control Spotify. Pause, skip and jump to a minute.</p>
-          <ul class="says" aria-label="Things to say">
-            <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Play Breaking Bad season 3 episode 2 on Netflix</q></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Stop the song</q></li>
-          </ul>
-          <p class="note">Spotify works with the Spotify app installed and signed in, free or Premium. No keys needed.</p>
-        </article>
-
-        <article class="cell cell-math cell-has-media">
-          <div class="cell-body">
-            <h3>Math with the working shown</h3>
-            <p>Linear and quadratic equations are solved by Jervis’s own code, with exact answers and every step. Any function of x becomes a graph.</p>
-            <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Solve x squared minus 5x plus 6 equals 0</q></li></ul>
+      <div class="board">
+        <div class="board-tools" hidden data-js-only>
+          <label class="search">
+            <span class="sr-only">Search the menu</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-magnifying-glass"/></svg>
+            <input type="search" id="fxSearch" placeholder="Try “Spotify”" autocomplete="off" />
+          </label>
+          <div class="seg" role="group" aria-label="Show features from">
+            <button class="seg-btn" type="button" data-filter-status="all" aria-pressed="true">All</button>
+            <button class="seg-btn" type="button" data-filter-status="now" aria-pressed="false"><span class="seg-short">Now</span><span class="seg-full">In the download</span></button>
+            <button class="seg-btn" type="button" data-filter-status="next" aria-pressed="false"><span class="seg-short">Next</span><span class="seg-full">Next release</span></button>
+            <button class="seg-btn" type="button" data-filter-status="source" aria-pressed="false"><span class="seg-short">Source</span><span class="seg-full">From source</span></button>
           </div>
-          <img class="cell-media-img" src="assets/img/jervis-worksheet-560.webp" srcset="assets/img/jervis-worksheet-560.webp 560w, assets/img/jervis-worksheet-1000.webp 1000w" sizes="(min-width: 961px) 480px, 94vw" width="560" height="498" loading="lazy"
-               alt="Jervis’s worked answer: the discriminant, the quadratic formula, then the answer, x equals 2 or x equals 3." />
-        </article>
-
-        <article class="cell cell-space cell-has-media">
-          <div class="cell-body">
-            <h3>A globe and the planets</h3>
-            <p>Ask how far apart two places are and see the route on a 3D Earth. Ask about a planet for its facts and a 3D model.</p>
-            <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Tell me about Saturn</q></li></ul>
+          <div class="seg" role="group" aria-label="Show features for">
+            <button class="seg-btn" type="button" data-filter-os="all" aria-pressed="true"><span class="seg-short">Any</span><span class="seg-full">Any computer</span></button>
+            <button class="seg-btn" type="button" data-filter-os="win" aria-pressed="false">Windows</button>
+            <button class="seg-btn" type="button" data-filter-os="mac" aria-pressed="false">Mac</button>
           </div>
-          <img class="cell-media-img" src="assets/img/jervis-planet-detail-800.webp" srcset="assets/img/jervis-planet-detail-800.webp 800w, assets/img/jervis-planet-detail-1280.webp 1280w" sizes="(min-width: 961px) 480px, 94vw" width="800" height="533" loading="lazy"
-               alt="Jervis’s lit 3D model of Saturn and its rings." />
-        </article>
-
-        <article class="cell cell-docs">
-          <h3>Documents, written for you</h3>
-          <p>Describe what you want and Jervis writes it in Word, Pages, TextEdit, Notes or Google Docs on a Mac, or Word, Notepad or Google Docs on Windows. Then edit it by voice.</p>
-          <ul class="says" aria-label="Things to say">
-            <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Write a story in Word</q></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Make it shorter</q></li>
-          </ul>
-        </article>
-
-        <article class="cell cell-apps">
-          <h3>Apps, tabs and volume</h3>
-          <p>Open any app or site, close tabs by name, and set the volume. Opening an app asks what you want next: “Open Netflix” asks what to watch.</p>
-          <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Close the Gmail tab</q></li></ul>
-        </article>
-
-        <article class="cell cell-images">
-          <h3>Pictures in, pictures out</h3>
-          <p>Attach, drop or paste an image, then ask about it: describe it, read its text, explain an error, compare two. Ask him to draw something and he creates it.</p>
-          <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>What does this error mean?</q></li></ul>
-          <p class="note">Drawing is free through Pollinations.ai. Editing a picture needs an OpenAI key.</p>
-        </article>
-      </div>
-
-      <div class="also">
-        <div class="also-group">
-          <h3>Around the day</h3>
-          <ul>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-timer"/></svg><div><strong>Timers and reminders</strong><span>“Set a timer for 10 minutes.” A finished timer brings the window to the front.</span></div></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-calendar-blank"/></svg><div><strong>Google Calendar</strong><span>Hear your next five events, or create one by voice. Needs a free Google sign-in setup.</span></div></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-keyboard"/></svg><div><strong>Type instead of talking</strong><span>The box under the core works like speaking, even with the microphone muted. Press /.</span></div></li>
-          </ul>
         </div>
-        <div class="also-group">
-          <h3>School, accounts and messages</h3>
-          <ul>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-chalkboard-teacher"/></svg><div><strong>Google Classroom</strong><span>Tells you which assignments are missing. Reading works on macOS; Windows opens the page.</span></div></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-user-switch"/></svg><div><strong>School and personal accounts</strong><span>Opens school things in your learning Chrome profile and the rest in your personal one.</span></div></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg><div><strong>WhatsApp, read-only (macOS)</strong><span>Reads unread messages aloud. It can’t send or reply, and messages never go to the AI.</span></div></li>
-          </ul>
-        </div>
+<!-- features:start (generated by tools/build_features.py from features/features.json; edit those, not this) -->
+<p class="fx-total" data-total="76"><strong>76</strong> things Jervis can do: <span class="tally tally-now">52 in the download</span>, <span class="tally tally-next">22 in the next release</span>, <span class="tally tally-source">2 from the source code</span>.</p>
+<div class="fx-chips" role="group" aria-label="Show a kind of feature" hidden data-js-only>
+<button class="chip" type="button" data-filter-cat="all" aria-pressed="true">Everything <span>76</span></button>
+<button class="chip" type="button" data-filter-cat="talk" aria-pressed="false">Talking to him <span>9</span></button>
+<button class="chip" type="button" data-filter-cat="music" aria-pressed="false">Music <span>7</span></button>
+<button class="chip" type="button" data-filter-cat="video" aria-pressed="false">Video and shows <span>5</span></button>
+<button class="chip" type="button" data-filter-cat="apps" aria-pressed="false">Apps, web and tabs <span>5</span></button>
+<button class="chip" type="button" data-filter-cat="math" aria-pressed="false">Math and graphs <span>4</span></button>
+<button class="chip" type="button" data-filter-cat="space" aria-pressed="false">Earth and space <span>7</span></button>
+<button class="chip" type="button" data-filter-cat="day" aria-pressed="false">Weather, time and calendar <span>6</span></button>
+<button class="chip" type="button" data-filter-cat="write" aria-pressed="false">Writing <span>2</span></button>
+<button class="chip" type="button" data-filter-cat="pictures" aria-pressed="false">Pictures <span>5</span></button>
+<button class="chip" type="button" data-filter-cat="control" aria-pressed="false">Using your computer <span>6</span></button>
+<button class="chip" type="button" data-filter-cat="school" aria-pressed="false">School and messages <span>2</span></button>
+<button class="chip" type="button" data-filter-cat="phone" aria-pressed="false">On your phone <span>6</span></button>
+<button class="chip" type="button" data-filter-cat="window" aria-pressed="false">His window <span>6</span></button>
+<button class="chip" type="button" data-filter-cat="ai" aria-pressed="false">AI, privacy and setup <span>6</span></button>
+</div>
+<div class="tools-bar" hidden data-js-only><p class="fx-status" id="fxStatus" role="status" aria-live="polite">Showing all 76.</p><button class="text-btn reset-btn" type="button" id="fxClear" disabled>Clear search and filters</button></div>
+<div class="fx-groups" id="fxGroups">
+<section class="fx-group" data-cat="talk" aria-labelledby="fxg-talk">
+<h3 class="fx-group-title" id="fxg-talk">Talking to him <span class="fx-count">9</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-wake" data-cat="talk" data-status="now" data-os="both" data-words="wake him by voice say “hey jervis” (or “wake up jervis”, “hello jervis”). his window opens full screen and he listens. hands-free from across the room. hey jervis talking to him">
+  <details>
+    <summary><span class="fx-name">Wake him by voice</span><span class="fx-line">Hands-free from across the room.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Say “Hey Jervis” (or “Wake up Jervis”, “Hello Jervis”). His window opens full screen and he listens.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Hey Jervis</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Talking to him</span></p><p class="fx-actions"><a class="fx-link" href="#f-wake" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-stt" data-cat="talk" data-status="now" data-os="both" data-words="speech recognition on your computer your speech becomes text with whisper, running locally. only in the first minutes after installing, while it downloads, is google’s free recognizer used. fast, private, and works offline after the first start.  talking to him">
+  <details>
+    <summary><span class="fx-name">Speech recognition on your computer</span><span class="fx-line">Fast, private, and works offline after the first start.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Your speech becomes text with Whisper, running locally. Only in the first minutes after installing, while it downloads, is Google’s free recognizer used.</p><p class="fx-meta"><span>Windows and Mac</span><span>Talking to him</span></p><p class="fx-actions"><a class="fx-link" href="#f-stt" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-voice" data-cat="talk" data-status="now" data-os="both" data-words="answers out loud, hebrew too replies are spoken with your system’s built-in voices and written in the conversation. listen while you do something else.  talking to him">
+  <details>
+    <summary><span class="fx-name">Answers out loud, Hebrew too</span><span class="fx-line">Listen while you do something else.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Replies are spoken with your system’s built-in voices and written in the conversation.</p><p class="fx-needs"><strong>Needs</strong> On Windows, add the Hebrew voice in Settings, Time &amp; language, Speech to hear Hebrew.</p><p class="fx-meta"><span>Windows and Mac</span><span>Talking to him</span></p><p class="fx-actions"><a class="fx-link" href="#f-voice" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-type" data-cat="talk" data-status="now" data-os="both" data-words="type instead of talking the box under the core works exactly like speaking, even with the microphone muted. press / to jump there; ↑ and ↓ bring back what you typed. use him in a quiet room or a noisy one. / then type talking to him">
+  <details>
+    <summary><span class="fx-name">Type instead of talking</span><span class="fx-line">Use him in a quiet room or a noisy one.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>The box under the core works exactly like speaking, even with the microphone muted. Press / to jump there; ↑ and ↓ bring back what you typed.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>/ then type</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Talking to him</span></p><p class="fx-actions"><a class="fx-link" href="#f-type" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-sleep" data-cat="talk" data-status="now" data-os="both" data-words="sleep, mute and interrupt “goodbye” or “good night” sends him to sleep until you wake him. m mutes the microphone; space stops him mid-sentence. he listens only when you want him to. good night talking to him">
+  <details>
+    <summary><span class="fx-name">Sleep, mute and interrupt</span><span class="fx-line">He listens only when you want him to.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>“Goodbye” or “good night” sends him to sleep until you wake him. M mutes the microphone; Space stops him mid-sentence.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Good night</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Talking to him</span></p><p class="fx-actions"><a class="fx-link" href="#f-sleep" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-chat" data-cat="talk" data-status="now" data-os="both" data-words="questions, ideas and follow-ups anything that isn’t a command goes to his ai: explanations, ideas, summaries, translations, advice. he remembers the conversation, so follow-ups work. one assistant for doing and for asking. explain black holes simply talking to him">
+  <details>
+    <summary><span class="fx-name">Questions, ideas and follow-ups</span><span class="fx-line">One assistant for doing and for asking.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Anything that isn’t a command goes to his AI: explanations, ideas, summaries, translations, advice. He remembers the conversation, so follow-ups work.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Explain black holes simply</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Talking to him</span></p><p class="fx-actions"><a class="fx-link" href="#f-chat" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-compound" data-cat="talk" data-status="now" data-os="both" data-words="several things in one sentence he splits a request into parts, does each in order and answers them together. say it the way you think it. open spotify and play radiohead talking to him">
+  <details>
+    <summary><span class="fx-name">Several things in one sentence</span><span class="fx-line">Say it the way you think it.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>He splits a request into parts, does each in order and answers them together.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Open Spotify and play Radiohead</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Talking to him</span></p><p class="fx-actions"><a class="fx-link" href="#f-compound" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-typos" data-cat="talk" data-status="now" data-os="both" data-words="forgiving of typos common misspellings are fixed before he reads a command. the next release recognises many more (“distence”, “greph”, “tell my about saturn”). type fast; he still understands. take contorl talking to him">
+  <details>
+    <summary><span class="fx-name">Forgiving of typos</span><span class="fx-line">Type fast; he still understands.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Common misspellings are fixed before he reads a command. The next release recognises many more (“distence”, “greph”, “tell my about saturn”).</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>take contorl</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Talking to him</span></p><p class="fx-actions"><a class="fx-link" href="#f-typos" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-speakvol" data-cat="talk" data-status="next" data-os="both" data-words="his speaking volume set how loudly he speaks, or mute his voice and read the replies instead (settings, voice). quiet answers late at night.  talking to him">
+  <details>
+    <summary><span class="fx-name">His speaking volume</span><span class="fx-line">Quiet answers late at night.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Set how loudly he speaks, or mute his voice and read the replies instead (Settings, Voice).</p><p class="fx-meta"><span>Windows and Mac</span><span>Talking to him</span></p><p class="fx-actions"><a class="fx-link" href="#f-speakvol" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="music" aria-labelledby="fxg-music">
+<h3 class="fx-group-title" id="fxg-music">Music <span class="fx-count">7</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-spotify" data-cat="music" data-status="now" data-os="both" data-words="spotify, the exact song he plays the song, artist or your own playlist in the spotify app. free or premium, no developer keys. music by name, without touching the mouse. play my workout playlist on spotify music">
+  <details>
+    <summary><span class="fx-name">Spotify, the exact song</span><span class="fx-line">Music by name, without touching the mouse.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>He plays the song, artist or your own playlist in the Spotify app. Free or Premium, no developer keys.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Play my Workout playlist on Spotify</q></p><p class="fx-needs"><strong>Needs</strong> The Spotify app, signed in. On a Mac, the Accessibility permission lets him press play for you.</p><p class="fx-meta"><span>Windows and Mac</span><span>Music</span></p><p class="fx-actions"><a class="fx-demo" href="#showcase" data-scene-link="spotify">Play it in the demo</a><a class="fx-link" href="#f-spotify" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-musicmore" data-cat="music" data-status="next" data-os="both" data-words="albums, liked songs and your mixes “shuffle my liked songs”, “play the album ok computer”, spotify’s mixes by their everyday names (“the repeat playlist”, “discover weekly”, “daily mix 3”), or “a lofi playlist”. your own playlist always beats a stranger’s with the same name. your library, by voice. play my discover weekly music">
+  <details>
+    <summary><span class="fx-name">Albums, liked songs and your mixes</span><span class="fx-line">Your library, by voice.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>“Shuffle my liked songs”, “play the album OK Computer”, Spotify’s mixes by their everyday names (“the repeat playlist”, “discover weekly”, “daily mix 3”), or “a lofi playlist”. Your own playlist always beats a stranger’s with the same name.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Play my discover weekly</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Music</span></p><p class="fx-actions"><a class="fx-link" href="#f-musicmore" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-services" data-cat="music" data-status="next" data-os="both" data-words="other music services apple music, youtube music, soundcloud, deezer, tidal and amazon music, by naming the service. use the service you already pay for. play ok computer on apple music music">
+  <details>
+    <summary><span class="fx-name">Other music services</span><span class="fx-line">Use the service you already pay for.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Apple Music, YouTube Music, SoundCloud, Deezer, Tidal and Amazon Music, by naming the service.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Play OK Computer on Apple Music</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Music</span></p><p class="fx-actions"><a class="fx-link" href="#f-services" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-sameartist" data-cat="music" data-status="next" data-os="both" data-words="more by the same artist ask for another song by them and he finds one. keep the mood going. play something else by them music">
+  <details>
+    <summary><span class="fx-name">More by the same artist</span><span class="fx-line">Keep the mood going.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Ask for another song by them and he finds one.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Play something else by them</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Music</span></p><p class="fx-actions"><a class="fx-link" href="#f-sameartist" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-playback" data-cat="music" data-status="now" data-os="both" data-words="pause, skip and go back pause, resume, next, previous and skip for music and videos. control what’s playing from anywhere in the room. next song music">
+  <details>
+    <summary><span class="fx-name">Pause, skip and go back</span><span class="fx-line">Control what’s playing from anywhere in the room.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Pause, resume, next, previous and skip for music and videos.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Next song</q></p><p class="fx-needs"><strong>Needs</strong> On Windows, pause and resume toggle with the media key.</p><p class="fx-meta"><span>Windows and Mac</span><span>Music</span></p><p class="fx-actions"><a class="fx-link" href="#f-playback" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-seek" data-cat="music" data-status="now" data-os="both" data-words="jump to a minute “go to minute 3”, “skip to 2:30”, or start from the beginning. find the part you wanted. skip to 2:30 music">
+  <details>
+    <summary><span class="fx-name">Jump to a minute</span><span class="fx-line">Find the part you wanted.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>“Go to minute 3”, “skip to 2:30”, or start from the beginning.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Skip to 2:30</q></p><p class="fx-needs"><strong>Needs</strong> Mac: in Chrome. Windows: a YouTube or Netflix tab that is the active tab of its window.</p><p class="fx-meta"><span>Windows and Mac</span><span>Music</span></p><p class="fx-actions"><a class="fx-link" href="#f-seek" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-volume" data-cat="music" data-status="now" data-os="both" data-words="computer volume volume up, down, an exact level, or mute. too loud? just say so. set the volume to 40 music">
+  <details>
+    <summary><span class="fx-name">Computer volume</span><span class="fx-line">Too loud? Just say so.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Volume up, down, an exact level, or mute.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Set the volume to 40</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Music</span></p><p class="fx-actions"><a class="fx-link" href="#f-volume" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="video" aria-labelledby="fxg-video">
+<h3 class="fx-group-title" id="fxg-video">Video and shows <span class="fx-count">5</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-youtube" data-cat="video" data-status="now" data-os="both" data-words="youtube plays a video, a song or a topic on youtube, reusing one tab. from a sentence to a playing video. play a video about black holes video and shows">
+  <details>
+    <summary><span class="fx-name">YouTube</span><span class="fx-line">From a sentence to a playing video.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Plays a video, a song or a topic on YouTube, reusing one tab.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Play a video about black holes</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Video and shows</span></p><p class="fx-actions"><a class="fx-link" href="#f-youtube" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx fx-major" id="f-netflix" data-cat="video" data-status="now" data-os="both" data-words="netflix, down to the episode starts a show, or an exact season and episode. no more scrolling through seasons. play breaking bad season 3 episode 2 on netflix video and shows">
+  <details>
+    <summary><span class="fx-name">Netflix, down to the episode</span><span class="fx-line">No more scrolling through seasons.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Starts a show, or an exact season and episode.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Play Breaking Bad season 3 episode 2 on Netflix</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Video and shows</span></p><p class="fx-actions"><a class="fx-demo" href="#showcase" data-scene-link="netflix">Play it in the demo</a><a class="fx-link" href="#f-netflix" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-stremio" data-cat="video" data-status="now" data-os="both" data-words="stremio opens a show or movie in stremio, episodes included. your stremio library by voice. open stremio and play inception video and shows">
+  <details>
+    <summary><span class="fx-name">Stremio</span><span class="fx-line">Your Stremio library by voice.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Opens a show or movie in Stremio, episodes included.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Open Stremio and play Inception</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Video and shows</span></p><p class="fx-actions"><a class="fx-link" href="#f-stremio" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-trailers" data-cat="video" data-status="now" data-os="both" data-words="trailers plays a trailer on youtube, or netflix’s own one when you say “on netflix”. decide what to watch faster. show me the trailer of wednesday video and shows">
+  <details>
+    <summary><span class="fx-name">Trailers</span><span class="fx-line">Decide what to watch faster.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Plays a trailer on YouTube, or Netflix’s own one when you say “on Netflix”.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Show me the trailer of Wednesday</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Video and shows</span></p><p class="fx-actions"><a class="fx-link" href="#f-trailers" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-recommend" data-cat="video" data-status="now" data-os="both" data-words="what should i watch? ask for suggestions, then refer to them: “show me the trailer of the second one”. from “i’m bored” to watching. show me the trailer of the second one video and shows">
+  <details>
+    <summary><span class="fx-name">What should I watch?</span><span class="fx-line">From “I’m bored” to watching.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Ask for suggestions, then refer to them: “show me the trailer of the second one”.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Show me the trailer of the second one</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Video and shows</span></p><p class="fx-actions"><a class="fx-link" href="#f-recommend" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="apps" aria-labelledby="fxg-apps">
+<h3 class="fx-group-title" id="fxg-apps">Apps, web and tabs <span class="fx-count">5</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-openapp" data-cat="apps" data-status="now" data-os="both" data-words="open any app any installed app by name, even said imperfectly. on windows, everything in the start menu. skip the search box. open vs code apps, web and tabs">
+  <details>
+    <summary><span class="fx-name">Open any app</span><span class="fx-line">Skip the search box.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Any installed app by name, even said imperfectly. On Windows, everything in the Start menu.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Open VS Code</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Apps, web and tabs</span></p><p class="fx-actions"><a class="fx-link" href="#f-openapp" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-openask" data-cat="apps" data-status="now" data-os="both" data-words="open, then he asks “open netflix” asks what to watch; “open spotify” asks what to listen to; “open google” asks what to search. answer and he does it. a natural back-and-forth, not a command line. open netflix apps, web and tabs">
+  <details>
+    <summary><span class="fx-name">Open, then he asks</span><span class="fx-line">A natural back-and-forth, not a command line.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>“Open Netflix” asks what to watch; “open Spotify” asks what to listen to; “open Google” asks what to search. Answer and he does it.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Open Netflix</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Apps, web and tabs</span></p><p class="fx-actions"><a class="fx-link" href="#f-openask" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-sites" data-cat="apps" data-status="now" data-os="both" data-words="websites and search opens sites like gmail or drive, and searches google. the web, one sentence away. search google for cats apps, web and tabs">
+  <details>
+    <summary><span class="fx-name">Websites and search</span><span class="fx-line">The web, one sentence away.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Opens sites like Gmail or Drive, and searches Google.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Search Google for cats</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Apps, web and tabs</span></p><p class="fx-actions"><a class="fx-link" href="#f-sites" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-tabs" data-cat="apps" data-status="now" data-os="both" data-words="close apps and tabs by name close an app, a tab by any word in its title, or all of one site’s tabs. “close all tabs” asks first. tidy up without hunting. close the gmail tab apps, web and tabs">
+  <details>
+    <summary><span class="fx-name">Close apps and tabs by name</span><span class="fx-line">Tidy up without hunting.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Close an app, a tab by any word in its title, or all of one site’s tabs. “Close all tabs” asks first.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Close the Gmail tab</q></p><p class="fx-needs"><strong>Needs</strong> Mac: any Chrome tab. Windows: the active tab of a window, in Chrome, Edge, Brave or Firefox.</p><p class="fx-meta"><span>Windows and Mac</span><span>Apps, web and tabs</span></p><p class="fx-actions"><a class="fx-link" href="#f-tabs" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-accounts" data-cat="apps" data-status="now" data-os="both" data-words="school and personal accounts with a chrome profile for each google account, school things open in the school one and the rest in the personal one. “wrong account” moves it. no more homework in the wrong account. open drive for school apps, web and tabs">
+  <details>
+    <summary><span class="fx-name">School and personal accounts</span><span class="fx-line">No more homework in the wrong account.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>With a Chrome profile for each Google account, school things open in the school one and the rest in the personal one. “Wrong account” moves it.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Open Drive for school</q></p><p class="fx-needs"><strong>Needs</strong> Google Chrome with one profile per account.</p><p class="fx-meta"><span>Windows and Mac</span><span>Apps, web and tabs</span></p><p class="fx-actions"><a class="fx-link" href="#f-accounts" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="math" aria-labelledby="fxg-math">
+<h3 class="fx-group-title" id="fxg-math">Math and graphs <span class="fx-count">4</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-solve" data-cat="math" data-status="now" data-os="both" data-words="equations, solved with the steps linear and quadratic equations are solved by his own code, exactly, as a worksheet: the problem, numbered steps and the answer in a box, typeset like a textbook. answers you can trust and learn from. solve x squared minus 5x plus 6 equals 0 math and graphs">
+  <details>
+    <summary><span class="fx-name">Equations, solved with the steps</span><span class="fx-line">Answers you can trust and learn from.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Linear and quadratic equations are solved by his own code, exactly, as a worksheet: the problem, numbered steps and the answer in a box, typeset like a textbook.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Solve x squared minus 5x plus 6 equals 0</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Math and graphs</span></p><p class="fx-actions"><a class="fx-demo" href="#showcase" data-scene-link="solve">Play it in the demo</a><a class="fx-link" href="#f-solve" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx fx-major" id="f-graph" data-cat="math" data-status="now" data-os="both" data-words="graph any function draws the curve with its roots, highs and lows, intercepts and asymptotes marked. point at it to read any value; save image keeps a png. see what the function does. graph sine of x over x math and graphs">
+  <details>
+    <summary><span class="fx-name">Graph any function</span><span class="fx-line">See what the function does.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Draws the curve with its roots, highs and lows, intercepts and asymptotes marked. Point at it to read any value; Save image keeps a PNG.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Graph sine of x over x</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Math and graphs</span></p><p class="fx-actions"><a class="fx-demo" href="#showcase" data-scene-link="graph">Play it in the demo</a><a class="fx-link" href="#f-graph" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-mathfollow" data-cat="math" data-status="now" data-os="both" data-words="math follow-ups “show the steps”, “what’s the vertex?”, “draw the function”, or both at once: “solve 2x + 6 = 0 and draw the graph”. keep asking like you would a tutor. what’s the vertex? math and graphs">
+  <details>
+    <summary><span class="fx-name">Math follow-ups</span><span class="fx-line">Keep asking like you would a tutor.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>“Show the steps”, “what’s the vertex?”, “draw the function”, or both at once: “solve 2x + 6 = 0 and draw the graph”.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>What’s the vertex?</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Math and graphs</span></p><p class="fx-actions"><a class="fx-link" href="#f-mathfollow" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-twofn" data-cat="math" data-status="next" data-os="both" data-words="two functions on one graph both curves in their own colours, the points where they meet, the area between them shaded, and how they relate: parallel, perpendicular, tangent, mirrored. compare functions at a glance. compare sine of x and cosine of x math and graphs">
+  <details>
+    <summary><span class="fx-name">Two functions on one graph</span><span class="fx-line">Compare functions at a glance.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Both curves in their own colours, the points where they meet, the area between them shaded, and how they relate: parallel, perpendicular, tangent, mirrored.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Compare sine of x and cosine of x</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Math and graphs</span></p><p class="fx-actions"><a class="fx-link" href="#f-twofn" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="space" aria-labelledby="fxg-space">
+<h3 class="fx-group-title" id="fxg-space">Earth and space <span class="fx-count">7</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-globe" data-cat="space" data-status="now" data-os="both" data-words="distances on a 3d globe he finds both places, works out the straight-line distance and draws the route on a turning 3d earth with clouds and a day–night line. drag and zoom it. geography you can see. how far is new york from tel aviv? earth and space">
+  <details>
+    <summary><span class="fx-name">Distances on a 3D globe</span><span class="fx-line">Geography you can see.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>He finds both places, works out the straight-line distance and draws the route on a turning 3D Earth with clouds and a day–night line. Drag and zoom it.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>How far is New York from Tel Aviv?</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Earth and space</span></p><p class="fx-actions"><a class="fx-demo" href="#showcase" data-scene-link="globe">Play it in the demo</a><a class="fx-link" href="#f-globe" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-flights" data-cat="space" data-status="next" data-os="both" data-words="fly the route the camera follows a small plane from departure to destination, with pause, replay and skip. flight times are labelled estimates. a trip you can watch. how long is the flight from tel aviv to new york? earth and space">
+  <details>
+    <summary><span class="fx-name">Fly the route</span><span class="fx-line">A trip you can watch.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>The camera follows a small plane from departure to destination, with Pause, Replay and Skip. Flight times are labelled estimates.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>How long is the flight from Tel Aviv to New York?</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Earth and space</span></p><p class="fx-actions"><a class="fx-link" href="#f-flights" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-countries" data-cat="space" data-status="next" data-os="both" data-words="countries on the way, and comparisons which countries a route crosses, from real border data, and which of two places is farther, both routes drawn. answers a map can’t give you. which is farther from tel aviv, london or new york? earth and space">
+  <details>
+    <summary><span class="fx-name">Countries on the way, and comparisons</span><span class="fx-line">Answers a map can’t give you.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Which countries a route crosses, from real border data, and which of two places is farther, both routes drawn.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Which is farther from Tel Aviv, London or New York?</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Earth and space</span></p><p class="fx-actions"><a class="fx-link" href="#f-countries" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-nearby" data-cat="space" data-status="next" data-os="both" data-words="nearby places cities within a distance of a place, from a list of about 7,300 places. plan a trip around a city. cities within 100 km of haifa earth and space">
+  <details>
+    <summary><span class="fx-name">Nearby places</span><span class="fx-line">Plan a trip around a city.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Cities within a distance of a place, from a list of about 7,300 places.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Cities within 100 km of Haifa</q></p><p class="fx-needs"><strong>Needs</strong> Small towns may be missing.</p><p class="fx-meta"><span>Windows and Mac</span><span>Earth and space</span></p><p class="fx-actions"><a class="fx-link" href="#f-nearby" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-daynight" data-cat="space" data-status="next" data-os="both" data-words="day, night and sunrise earth lit by the sun where it is right now, city lights on the night side, and sunrise and sunset worked out astronomically. know whether it’s night where your friend is. is it night in sydney? earth and space">
+  <details>
+    <summary><span class="fx-name">Day, night and sunrise</span><span class="fx-line">Know whether it’s night where your friend is.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Earth lit by the Sun where it is right now, city lights on the night side, and sunrise and sunset worked out astronomically.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Is it night in Sydney?</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Earth and space</span></p><p class="fx-actions"><a class="fx-link" href="#f-daynight" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx fx-major" id="f-planets" data-cat="space" data-status="now" data-os="both" data-words="planets in 3d key facts and a lit, spinning model of all eight planets, the sun, the moon and pluto, with real rings on saturn. homework that looks like a planetarium. tell me about saturn earth and space">
+  <details>
+    <summary><span class="fx-name">Planets in 3D</span><span class="fx-line">Homework that looks like a planetarium.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Key facts and a lit, spinning model of all eight planets, the Sun, the Moon and Pluto, with real rings on Saturn.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Tell me about Saturn</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Earth and space</span></p><p class="fx-actions"><a class="fx-demo" href="#showcase" data-scene-link="planets">Play it in the demo</a><a class="fx-link" href="#f-planets" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-gallery" data-cat="space" data-status="now" data-os="both" data-words="every graph, globe and planet stays each one is a small picture in the conversation. ‹ › or the arrow keys step between them; g, e and p show the last graph, globe or planet. go back to anything he showed you.  earth and space">
+  <details>
+    <summary><span class="fx-name">Every graph, globe and planet stays</span><span class="fx-line">Go back to anything he showed you.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Each one is a small picture in the conversation. ‹ › or the arrow keys step between them; G, E and P show the last graph, globe or planet.</p><p class="fx-meta"><span>Windows and Mac</span><span>Earth and space</span></p><p class="fx-actions"><a class="fx-link" href="#f-gallery" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="day" aria-labelledby="fxg-day">
+<h3 class="fx-group-title" id="fxg-day">Weather, time and calendar <span class="fx-count">6</span></h3>
+<ul class="fx-list">
+<li class="fx" id="f-weather" data-cat="day" data-status="now" data-os="both" data-words="weather ask for the weather anywhere; the current weather also sits in a card in his window. no account or key. know before you go out. how’s the weather in paris? weather, time and calendar">
+  <details>
+    <summary><span class="fx-name">Weather</span><span class="fx-line">Know before you go out.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Ask for the weather anywhere; the current weather also sits in a card in his window. No account or key.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>How’s the weather in Paris?</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Weather, time and calendar</span></p><p class="fx-actions"><a class="fx-link" href="#f-weather" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-forecast" data-cat="day" data-status="next" data-os="both" data-words="full forecast window now (feels-like, humidity, wind, uv), a map with rain radar, the next 24 hours and 7 days. the whole picture in one view. show me the forecast weather, time and calendar">
+  <details>
+    <summary><span class="fx-name">Full forecast window</span><span class="fx-line">The whole picture in one view.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Now (feels-like, humidity, wind, UV), a map with rain radar, the next 24 hours and 7 days.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Show me the forecast</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Weather, time and calendar</span></p><p class="fx-actions"><a class="fx-link" href="#f-forecast" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx fx-major" id="f-timers" data-cat="day" data-status="now" data-os="both" data-words="timers and reminders set, check and cancel timers and reminders. when one ends his window comes to the front, even if he was asleep, and timers survive a restart. never burn the eggs again. remind me in an hour to call mom weather, time and calendar">
+  <details>
+    <summary><span class="fx-name">Timers and reminders</span><span class="fx-line">Never burn the eggs again.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Set, check and cancel timers and reminders. When one ends his window comes to the front, even if he was asleep, and timers survive a restart.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Remind me in an hour to call Mom</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Weather, time and calendar</span></p><p class="fx-actions"><a class="fx-link" href="#f-timers" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-gcal" data-cat="day" data-status="now" data-os="both" data-words="google calendar hear your next five events, or create one: he asks for the title, date, time and length. your schedule without opening it. check my calendar weather, time and calendar">
+  <details>
+    <summary><span class="fx-name">Google Calendar</span><span class="fx-line">Your schedule without opening it.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Hear your next five events, or create one: he asks for the title, date, time and length.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Check my calendar</q></p><p class="fx-needs"><strong>Needs</strong> A one-time free Google sign-in setup in Settings.</p><p class="fx-meta"><span>Windows and Mac</span><span>Weather, time and calendar</span></p><p class="fx-actions"><a class="fx-link" href="#f-gcal" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-calsentence" data-cat="day" data-status="next" data-os="both" data-words="events in one sentence, with reminders he works out the title, date, time and length himself, asks only for what’s missing, and offers a reminder. one sentence, one event. add a dentist appointment tomorrow at 5pm weather, time and calendar">
+  <details>
+    <summary><span class="fx-name">Events in one sentence, with reminders</span><span class="fx-line">One sentence, one event.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>He works out the title, date, time and length himself, asks only for what’s missing, and offers a reminder.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Add a dentist appointment tomorrow at 5pm</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Weather, time and calendar</span></p><p class="fx-actions"><a class="fx-link" href="#f-calsentence" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-applecal" data-cat="day" data-status="next" data-os="mac" data-words="apple calendar events can go to the calendar app on a mac instead of google calendar. use the calendar you already have.  weather, time and calendar">
+  <details>
+    <summary><span class="fx-name">Apple Calendar</span><span class="fx-line">Use the calendar you already have.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Events can go to the Calendar app on a Mac instead of Google Calendar.</p><p class="fx-meta"><span>Mac only</span><span>Weather, time and calendar</span></p><p class="fx-actions"><a class="fx-link" href="#f-applecal" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="write" aria-labelledby="fxg-write">
+<h3 class="fx-group-title" id="fxg-write">Writing <span class="fx-count">2</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-docs" data-cat="write" data-status="now" data-os="both" data-words="documents, written for you he writes it and puts it in a new document. mac: word, pages, textedit, notes or google docs. windows: word, notepad or google docs. from idea to document in one sentence. write a poem about the sea in word writing">
+  <details>
+    <summary><span class="fx-name">Documents, written for you</span><span class="fx-line">From idea to document in one sentence.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>He writes it and puts it in a new document. Mac: Word, Pages, TextEdit, Notes or Google Docs. Windows: Word, Notepad or Google Docs.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Write a poem about the sea in Word</q></p><p class="fx-needs"><strong>Needs</strong> Microsoft Word for Word documents.</p><p class="fx-meta"><span>Windows and Mac</span><span>Writing</span></p><p class="fx-actions"><a class="fx-demo" href="#showcase" data-scene-link="docs">Play it in the demo</a><a class="fx-link" href="#f-docs" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-docedit" data-cat="write" data-status="now" data-os="both" data-words="edit it by voice “make it shorter”, “read it to me”. or open a blank document first and he asks what to write. revise without retyping. make it shorter writing">
+  <details>
+    <summary><span class="fx-name">Edit it by voice</span><span class="fx-line">Revise without retyping.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>“Make it shorter”, “read it to me”. Or open a blank document first and he asks what to write.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Make it shorter</q></p><p class="fx-meta"><span>Windows and Mac</span><span>Writing</span></p><p class="fx-actions"><a class="fx-link" href="#f-docedit" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="pictures" aria-labelledby="fxg-pictures">
+<h3 class="fx-group-title" id="fxg-pictures">Pictures <span class="fx-count">5</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-lookat" data-cat="pictures" data-status="now" data-os="both" data-words="ask about a picture attach, drop or paste an image: describe it, read its text, explain an error, compare two. a second pair of eyes for screenshots. what does this error mean? pictures">
+  <details>
+    <summary><span class="fx-name">Ask about a picture</span><span class="fx-line">A second pair of eyes for screenshots.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Attach, drop or paste an image: describe it, read its text, explain an error, compare two.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>What does this error mean?</q></p><p class="fx-needs"><strong>Needs</strong> A free Groq key, or 16 GB of memory for his local vision model.</p><p class="fx-meta"><span>Windows and Mac</span><span>Pictures</span></p><p class="fx-actions"><a class="fx-link" href="#f-lookat" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-draw" data-cat="pictures" data-status="now" data-os="both" data-words="make a picture describe it and he creates it, free through pollinations.ai with no key. an openai key gives better results. pictures for school, stories or fun. draw me a dragon pictures">
+  <details>
+    <summary><span class="fx-name">Make a picture</span><span class="fx-line">Pictures for school, stories or fun.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Describe it and he creates it, free through Pollinations.ai with no key. An OpenAI key gives better results.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Draw me a dragon</q></p><p class="fx-needs"><strong>Needs</strong> The free service adds a small watermark and limits how often you can use it.</p><p class="fx-meta"><span>Windows and Mac</span><span>Pictures</span></p><p class="fx-actions"><a class="fx-link" href="#f-draw" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-editpic" data-cat="pictures" data-status="now" data-os="both" data-words="edit a picture “remove the person in the background”, “make this black and white”. the original is never overwritten. quick fixes without an editor. make this black and white pictures">
+  <details>
+    <summary><span class="fx-name">Edit a picture</span><span class="fx-line">Quick fixes without an editor.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>“Remove the person in the background”, “make this black and white”. The original is never overwritten.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Make this black and white</q></p><p class="fx-needs"><strong>Needs</strong> An OpenAI key with billing credit.</p><p class="fx-meta"><span>Windows and Mac</span><span>Pictures</span></p><p class="fx-actions"><a class="fx-link" href="#f-editpic" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-picbetter" data-cat="pictures" data-status="next" data-os="both" data-words="better picture prompts he expands a short request into a detailed description first, and can use a free cloudflare account for sharper images. better pictures from fewer words.  pictures">
+  <details>
+    <summary><span class="fx-name">Better picture prompts</span><span class="fx-line">Better pictures from fewer words.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>He expands a short request into a detailed description first, and can use a free Cloudflare account for sharper images.</p><p class="fx-meta"><span>Windows and Mac</span><span>Pictures</span></p><p class="fx-actions"><a class="fx-link" href="#f-picbetter" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-localimg" data-cat="pictures" data-status="source" data-os="both" data-words="unlimited pictures on your computer a local image model, with no service and no limit. pictures that never leave your computer.  pictures">
+  <details>
+    <summary><span class="fx-name">Unlimited pictures on your computer</span><span class="fx-line">Pictures that never leave your computer.</span><span class="fx-tag fx-tag-source"><span aria-hidden="true">Source</span><span class="sr-only">From source</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>A local image model, with no service and no limit.</p><p class="fx-needs"><strong>Needs</strong> Running from source with the local-images option; several GB, about 16 GB of memory.</p><p class="fx-meta"><span>Windows and Mac</span><span>Pictures</span></p><p class="fx-actions"><a class="fx-link" href="#f-localimg" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="control" aria-labelledby="fxg-control">
+<h3 class="fx-group-title" id="fxg-control">Using your computer <span class="fx-count">6</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-computer" data-cat="control" data-status="now" data-os="both" data-words="he uses the mouse and keyboard ask for something on screen and he works like a person: reads the window, does one thing, checks what changed, continues. hand off the boring clicks. use my computer to turn on dark mode in chrome using your computer">
+  <details>
+    <summary><span class="fx-name">He uses the mouse and keyboard</span><span class="fx-line">Hand off the boring clicks.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Ask for something on screen and he works like a person: reads the window, does one thing, checks what changed, continues.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Use my computer to turn on dark mode in Chrome</q></p><p class="fx-needs"><strong>Needs</strong> Mac: the Accessibility permission. The local AI handles short tasks; a free Groq key handles longer ones.</p><p class="fx-meta"><span>Windows and Mac</span><span>Using your computer</span></p><p class="fx-actions"><a class="fx-demo" href="#showcase" data-scene-link="computer">Play it in the demo</a><a class="fx-link" href="#f-computer" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx fx-major" id="f-safety" data-cat="control" data-status="now" data-os="both" data-words="always visible, instantly stoppable a glowing edge and a bar with pause and stop stay on screen. move the mouse, press ctrl+alt+q, or say “stop”. he asks before sending, buying, deleting or installing, and never types into password fields. you stay in charge the whole time.  using your computer">
+  <details>
+    <summary><span class="fx-name">Always visible, instantly stoppable</span><span class="fx-line">You stay in charge the whole time.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>A glowing edge and a bar with Pause and Stop stay on screen. Move the mouse, press Ctrl+Alt+Q, or say “stop”. He asks before sending, buying, deleting or installing, and never types into password fields.</p><p class="fx-meta"><span>Windows and Mac</span><span>Using your computer</span></p><p class="fx-actions"><a class="fx-link" href="#f-safety" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-controlmode" data-cat="control" data-status="now" data-os="both" data-words="ask first, allowed, or off choose whether he asks before every task (the default), just does it, or never touches the mouse. as much control as you’re comfortable with.  using your computer">
+  <details>
+    <summary><span class="fx-name">Ask first, allowed, or off</span><span class="fx-line">As much control as you’re comfortable with.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Choose whether he asks before every task (the default), just does it, or never touches the mouse.</p><p class="fx-meta"><span>Windows and Mac</span><span>Using your computer</span></p><p class="fx-actions"><a class="fx-link" href="#f-controlmode" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-screen" data-cat="control" data-status="now" data-os="both" data-words="sees the screen privately he reads windows through your system’s accessibility features. screenshots are only looked at by his local vision model unless you turn the online option on. screen help without uploading your screen.  using your computer">
+  <details>
+    <summary><span class="fx-name">Sees the screen privately</span><span class="fx-line">Screen help without uploading your screen.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>He reads windows through your system’s accessibility features. Screenshots are only looked at by his local vision model unless you turn the online option on.</p><p class="fx-needs"><strong>Needs</strong> Local vision needs 16 GB of memory.</p><p class="fx-meta"><span>Windows and Mac</span><span>Using your computer</span></p><p class="fx-actions"><a class="fx-link" href="#f-screen" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-visiblespotify" data-cat="control" data-status="next" data-os="both" data-words="visible spotify control “take control and play x on spotify” is done on screen, step by step, so you can watch. see exactly what he does.  using your computer">
+  <details>
+    <summary><span class="fx-name">Visible Spotify control</span><span class="fx-line">See exactly what he does.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>“Take control and play X on Spotify” is done on screen, step by step, so you can watch.</p><p class="fx-meta"><span>Windows and Mac</span><span>Using your computer</span></p><p class="fx-actions"><a class="fx-link" href="#f-visiblespotify" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-blender" data-cat="control" data-status="next" data-os="both" data-words="blender, by voice everyday 3d commands run directly: create a cube, make it twice as big, colour it red, rotate it 45 degrees, delete it, undo. model without hunting through menus. create a cube and color it red using your computer">
+  <details>
+    <summary><span class="fx-name">Blender, by voice</span><span class="fx-line">Model without hunting through menus.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Everyday 3D commands run directly: create a cube, make it twice as big, colour it red, rotate it 45 degrees, delete it, undo.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Create a cube and color it red</q></p><p class="fx-needs"><strong>Needs</strong> Blender installed.</p><p class="fx-meta"><span>Windows and Mac</span><span>Using your computer</span></p><p class="fx-actions"><a class="fx-link" href="#f-blender" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="school" aria-labelledby="fxg-school">
+<h3 class="fx-group-title" id="fxg-school">School and messages <span class="fx-count">2</span></h3>
+<ul class="fx-list">
+<li class="fx" id="f-classroom" data-cat="school" data-status="now" data-os="both" data-words="google classroom opens classroom in your school account and tells you which assignments are missing and which are still due. know what’s left before the deadline. do i have missing homework? school and messages">
+  <details>
+    <summary><span class="fx-name">Google Classroom</span><span class="fx-line">Know what’s left before the deadline.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Opens Classroom in your school account and tells you which assignments are missing and which are still due.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Do I have missing homework?</q></p><p class="fx-needs"><strong>Needs</strong> Reading works on macOS (Chrome, Allow JavaScript from Apple Events); on Windows he opens the page.</p><p class="fx-meta"><span>Windows and Mac</span><span>School and messages</span></p><p class="fx-actions"><a class="fx-link" href="#f-classroom" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-whatsapp" data-cat="school" data-status="now" data-os="mac" data-words="whatsapp, read-only reads unread messages aloud, or what one person wrote. he can’t send, reply or mark as read, and messages never go to an ai or the logs. catch up without picking up your phone. what did dana write me? school and messages">
+  <details>
+    <summary><span class="fx-name">WhatsApp, read-only</span><span class="fx-line">Catch up without picking up your phone.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Reads unread messages aloud, or what one person wrote. He can’t send, reply or mark as read, and messages never go to an AI or the logs.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>What did Dana write me?</q></p><p class="fx-needs"><strong>Needs</strong> WhatsApp Desktop and Full Disk Access. Can be turned off in Settings.</p><p class="fx-meta"><span>Mac only</span><span>School and messages</span></p><p class="fx-actions"><a class="fx-link" href="#f-whatsapp" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="phone" aria-labelledby="fxg-phone">
+<h3 class="fx-group-title" id="fxg-phone">On your phone <span class="fx-count">6</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-phoneapp" data-cat="phone" data-status="next" data-os="both" data-words="jervis on your phone a chat app for iphone and android, added to your home screen, with the same orb. hold the mic button and talk, or type. your assistant in your pocket.  on your phone">
+  <details>
+    <summary><span class="fx-name">Jervis on your phone</span><span class="fx-line">Your assistant in your pocket.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>A chat app for iPhone and Android, added to your Home Screen, with the same orb. Hold the mic button and talk, or type.</p><p class="fx-meta"><span>Windows and Mac</span><span>On your phone</span></p><p class="fx-actions"><a class="fx-link" href="#f-phoneapp" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-pair" data-cat="phone" data-status="next" data-os="both" data-words="pair with one scan say “connect my phone” and scan the code on your computer. after that a notification with confirm connects it, from anywhere. no codes to type. connect my phone on your phone">
+  <details>
+    <summary><span class="fx-name">Pair with one scan</span><span class="fx-line">No codes to type.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Say “connect my phone” and scan the code on your computer. After that a notification with Confirm connects it, from anywhere.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Connect my phone</q></p><p class="fx-meta"><span>Windows and Mac</span><span>On your phone</span></p><p class="fx-actions"><a class="fx-link" href="#f-pair" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-remote" data-cat="phone" data-status="next" data-os="both" data-words="run your computer from your phone “on my computer” sends everything to the jervis at home: music, apps, documents, computer control. graphs, planets and the globe open on the phone too. start the music from the couch.  on your phone">
+  <details>
+    <summary><span class="fx-name">Run your computer from your phone</span><span class="fx-line">Start the music from the couch.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>“On my computer” sends everything to the Jervis at home: music, apps, documents, computer control. Graphs, planets and the globe open on the phone too.</p><p class="fx-meta"><span>Windows and Mac</span><span>On your phone</span></p><p class="fx-actions"><a class="fx-link" href="#f-remote" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-phonebrain" data-cat="phone" data-status="next" data-os="both" data-words="works with the computer off “on this phone” runs his own brain inside the app: math and graphs, the globe and planets, weather, timers, music and video apps, writing, pictures, calls, maps. useful even away from your desk.  on your phone">
+  <details>
+    <summary><span class="fx-name">Works with the computer off</span><span class="fx-line">Useful even away from your desk.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>“On this phone” runs his own brain inside the app: math and graphs, the globe and planets, weather, timers, music and video apps, writing, pictures, calls, maps.</p><p class="fx-needs"><strong>Needs</strong> A free Groq key pasted into the app. A phone can’t let him change its volume or press play inside other apps.</p><p class="fx-meta"><span>Windows and Mac</span><span>On your phone</span></p><p class="fx-actions"><a class="fx-link" href="#f-phonebrain" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-e2e" data-cat="phone" data-status="next" data-os="both" data-words="end-to-end encrypted phone and computer share a key only they have; the relay in between only passes bytes it can’t read. list or forget paired phones by voice. remote control without handing anyone the keys. forget my paired phones on your phone">
+  <details>
+    <summary><span class="fx-name">End-to-end encrypted</span><span class="fx-line">Remote control without handing anyone the keys.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Phone and computer share a key only they have; the relay in between only passes bytes it can’t read. List or forget paired phones by voice.</p><p class="fx-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Forget my paired phones</q></p><p class="fx-meta"><span>Windows and Mac</span><span>On your phone</span></p><p class="fx-actions"><a class="fx-link" href="#f-e2e" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-sms" data-cat="phone" data-status="next" data-os="both" data-words="text-message pairing optionally, jervis texts you the first pairing question instead. pair without opening a page first.  on your phone">
+  <details>
+    <summary><span class="fx-name">Text-message pairing</span><span class="fx-line">Pair without opening a page first.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Optionally, Jervis texts you the first pairing question instead.</p><p class="fx-needs"><strong>Needs</strong> A free Twilio account.</p><p class="fx-meta"><span>Windows and Mac</span><span>On your phone</span></p><p class="fx-actions"><a class="fx-link" href="#f-sms" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="window" aria-labelledby="fxg-window">
+<h3 class="fx-group-title" id="fxg-window">His window <span class="fx-count">6</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-core" data-cat="window" data-status="now" data-os="both" data-words="the voice core a 3d core that changes colour with what he’s doing (ready, listening, thinking, speaking) and pulses with how loudly you speak. it only measures loudness; nothing is recorded. you always know what he’s doing.  his window">
+  <details>
+    <summary><span class="fx-name">The voice core</span><span class="fx-line">You always know what he’s doing.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>A 3D core that changes colour with what he’s doing (ready, listening, thinking, speaking) and pulses with how loudly you speak. It only measures loudness; nothing is recorded.</p><p class="fx-meta"><span>Windows and Mac</span><span>His window</span></p><p class="fx-actions"><a class="fx-link" href="#f-core" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-panels" data-cat="window" data-status="now" data-os="both" data-words="conversation and panels the whole conversation on the right; your computer’s processor, memory and battery, the weather and running timers on the left; and ‘try saying’ ideas you can click. everything at a glance.  his window">
+  <details>
+    <summary><span class="fx-name">Conversation and panels</span><span class="fx-line">Everything at a glance.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>The whole conversation on the right; your computer’s processor, memory and battery, the weather and running timers on the left; and ‘Try saying’ ideas you can click.</p><p class="fx-meta"><span>Windows and Mac</span><span>His window</span></p><p class="fx-actions"><a class="fx-link" href="#f-panels" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-shortcuts" data-cat="window" data-status="now" data-os="both" data-words="keyboard shortcuts / to type, m to mute, space to stop him, f for full screen, esc to close a window, arrows to step between graphs. fast for people who like keys.  his window">
+  <details>
+    <summary><span class="fx-name">Keyboard shortcuts</span><span class="fx-line">Fast for people who like keys.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>/ to type, M to mute, Space to stop him, F for full screen, Esc to close a window, arrows to step between graphs.</p><p class="fx-meta"><span>Windows and Mac</span><span>His window</span></p><p class="fx-actions"><a class="fx-link" href="#f-shortcuts" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-tray" data-cat="window" data-status="now" data-os="both" data-words="stays ready in the background closing the window keeps him in the notification area or menu bar, and he can start when you sign in. always one phrase away.  his window">
+  <details>
+    <summary><span class="fx-name">Stays ready in the background</span><span class="fx-line">Always one phrase away.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Closing the window keeps him in the notification area or menu bar, and he can start when you sign in.</p><p class="fx-meta"><span>Windows and Mac</span><span>His window</span></p><p class="fx-actions"><a class="fx-link" href="#f-tray" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-sky" data-cat="window" data-status="next" data-os="both" data-words="a night sky behind everything his window gets a starfield with shooting stars crossing the whole sky. a window you’ll like leaving open.  his window">
+  <details>
+    <summary><span class="fx-name">A night sky behind everything</span><span class="fx-line">A window you’ll like leaving open.</span><span class="fx-tag fx-tag-next"><span aria-hidden="true">Next</span><span class="sr-only">Next release</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>His window gets a starfield with shooting stars crossing the whole sky.</p><p class="fx-meta"><span>Windows and Mac</span><span>His window</span></p><p class="fx-actions"><a class="fx-link" href="#f-sky" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-wakehelper" data-cat="window" data-status="source" data-os="both" data-words="jervis wake a tiny background listener that opens jervis when it hears the wake phrase, even when he is closed. wake him even after quitting.  his window">
+  <details>
+    <summary><span class="fx-name">Jervis Wake</span><span class="fx-line">Wake him even after quitting.</span><span class="fx-tag fx-tag-source"><span aria-hidden="true">Source</span><span class="sr-only">From source</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>A tiny background listener that opens Jervis when it hears the wake phrase, even when he is closed.</p><p class="fx-needs"><strong>Needs</strong> Installed separately with the script in the source code.</p><p class="fx-meta"><span>Windows and Mac</span><span>His window</span></p><p class="fx-actions"><a class="fx-link" href="#f-wakehelper" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+<section class="fx-group" data-cat="ai" aria-labelledby="fxg-ai">
+<h3 class="fx-group-title" id="fxg-ai">AI, privacy and setup <span class="fx-count">6</span></h3>
+<ul class="fx-list">
+<li class="fx fx-major" id="f-localai" data-cat="ai" data-status="now" data-os="both" data-words="ai on your own computer answers come from llama3.2 running locally through ollama, set up for you on the first start. no account, no key, offline afterwards. if you already use ollama, he uses yours. free and private by default.  ai, privacy and setup">
+  <details>
+    <summary><span class="fx-name">AI on your own computer</span><span class="fx-line">Free and private by default.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Answers come from llama3.2 running locally through Ollama, set up for you on the first start. No account, no key, offline afterwards. If you already use Ollama, he uses yours.</p><p class="fx-meta"><span>Windows and Mac</span><span>AI, privacy and setup</span></p><p class="fx-actions"><a class="fx-link" href="#f-localai" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-groq" data-cat="ai" data-status="now" data-os="both" data-words="faster with a free key paste a free groq key and he answers with a larger online model, falling back to the local ai by himself. speed when you want it.  ai, privacy and setup">
+  <details>
+    <summary><span class="fx-name">Faster with a free key</span><span class="fx-line">Speed when you want it.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Paste a free Groq key and he answers with a larger online model, falling back to the local AI by himself.</p><p class="fx-meta"><span>Windows and Mac</span><span>AI, privacy and setup</span></p><p class="fx-actions"><a class="fx-link" href="#f-groq" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-model" data-cat="ai" data-status="now" data-os="both" data-words="choose the local model use a bigger local model, such as qwen2.5:7b on a 16 gb computer, for better answers. trade speed for quality.  ai, privacy and setup">
+  <details>
+    <summary><span class="fx-name">Choose the local model</span><span class="fx-line">Trade speed for quality.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Use a bigger local model, such as qwen2.5:7b on a 16 GB computer, for better answers.</p><p class="fx-meta"><span>Windows and Mac</span><span>AI, privacy and setup</span></p><p class="fx-actions"><a class="fx-link" href="#f-model" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-logs" data-cat="ai" data-status="now" data-os="both" data-words="your data stays local settings, transcripts and pictures live in his data folder. conversation logs can be turned off, and the technical logs never contain what you said. nothing to sign up for, nothing to leak.  ai, privacy and setup">
+  <details>
+    <summary><span class="fx-name">Your data stays local</span><span class="fx-line">Nothing to sign up for, nothing to leak.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Settings, transcripts and pictures live in his data folder. Conversation logs can be turned off, and the technical logs never contain what you said.</p><p class="fx-meta"><span>Windows and Mac</span><span>AI, privacy and setup</span></p><p class="fx-actions"><a class="fx-link" href="#f-logs" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-setup" data-cat="ai" data-status="now" data-os="both" data-words="sets himself up the first start downloads his ai and speech models with the progress on screen, picks up where it stopped, and has a try again button. music, timers and apps work meanwhile. no terminal, no python, no fuss.  ai, privacy and setup">
+  <details>
+    <summary><span class="fx-name">Sets himself up</span><span class="fx-line">No terminal, no Python, no fuss.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>The first start downloads his AI and speech models with the progress on screen, picks up where it stopped, and has a Try again button. Music, timers and apps work meanwhile.</p><p class="fx-meta"><span>Windows and Mac</span><span>AI, privacy and setup</span></p><p class="fx-actions"><a class="fx-link" href="#f-setup" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+<li class="fx" id="f-settings" data-cat="ai" data-status="now" data-os="both" data-words="settings for everything microphone and voice, the wake phrase, which ai answers, computer control, the weather city, privacy, optional services, and starting at sign-in. make him yours.  ai, privacy and setup">
+  <details>
+    <summary><span class="fx-name">Settings for everything</span><span class="fx-line">Make him yours.</span><span class="fx-tag fx-tag-now"><span aria-hidden="true">Now</span><span class="sr-only">In the download</span></span><svg class="icon fx-caret" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+    <div class="fx-body"><p>Microphone and voice, the wake phrase, which AI answers, computer control, the weather city, privacy, optional services, and starting at sign-in.</p><p class="fx-meta"><span>Windows and Mac</span><span>AI, privacy and setup</span></p><p class="fx-actions"><a class="fx-link" href="#f-settings" data-copy-link>Copy link to this</a></p></div>
+  </details>
+</li>
+</ul>
+</section>
+</div>
+<!-- features:end -->
+        <dl class="legend">
+          <div><dt><span class="fx-tag fx-tag-now" aria-hidden="true">Now</span><span class="legend-name">In the download</span></dt><dd>In Jervis <span data-release="version">1.0.5</span>, the version you can download now.</dd></div>
+          <div><dt><span class="fx-tag fx-tag-next" aria-hidden="true">Next</span><span class="legend-name">Next release</span></dt><dd>Built and in the source code; arrives with the next installer.</dd></div>
+          <div><dt><span class="fx-tag fx-tag-source" aria-hidden="true">Source</span><span class="legend-name">From source</span></dt><dd>Only when you run Jervis from the source code.</dd></div>
+        </dl>
+        <p class="fx-empty" id="fxEmpty" hidden>Nothing on the menu matches that. Try another word, or <button class="text-btn" type="button" id="fxReset">show everything</button>.</p>
       </div>
     </div>
   </section>
 
   <!-- ============ How it works ============ -->
-  <section class="section how" id="how" aria-labelledby="howTitle">
+  <section class="section how ground-cream" id="how" aria-labelledby="howTitle">
     <div class="container">
       <div class="section-head">
-        <h2 id="howTitle">How Jervis works</h2>
+        <h2 id="howTitle"><span class="script">From order to plate</span><span class="slab">How Jervis works</span></h2>
         <p>Everything runs on your computer: an engine that listens, thinks and acts, and a window that shows what he is doing.</p>
       </div>
-      <ol class="flow" data-flow>
-        <li class="flow-step">
-          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-ear"/></svg></span>
-          <h3>Hear</h3>
+      <ol class="rail" data-flow>
+        <li class="rail-ticket">
+          <span class="rail-clip" aria-hidden="true"></span>
+          <h3><span class="rail-no">No. 1</span><span class="script">Hear</span></h3>
+          <svg class="icon rail-icon" aria-hidden="true"><use href="#i-ear"/></svg>
           <p>The wake phrase gets his attention. Your speech becomes text on your computer with Whisper, a speech model he downloads the first time he starts.</p>
         </li>
-        <li class="flow-step">
-          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-brain"/></svg></span>
-          <h3>Decide</h3>
-          <p>Commands he knows, like media, apps, timers and math, run in his own code. Anything else goes to his AI: llama3.2, running on your computer. A Groq key makes it faster.</p>
+        <li class="rail-ticket">
+          <span class="rail-clip" aria-hidden="true"></span>
+          <h3><span class="rail-no">No. 2</span><span class="script">Decide</span></h3>
+          <svg class="icon rail-icon" aria-hidden="true"><use href="#i-brain"/></svg>
+          <p>Commands he knows, like media, apps, timers and math, run in his own code: fast and predictable. Anything else goes to his AI, llama3.2, running on your computer. A free Groq key makes it faster.</p>
         </li>
-        <li class="flow-step">
-          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-hand-pointing"/></svg></span>
-          <h3>Act</h3>
-          <p>He drives apps through Apple Events and their shortcuts. When you ask, he uses the mouse and keyboard himself, one checked step at a time, with a Stop button on screen.</p>
+        <li class="rail-ticket">
+          <span class="rail-clip" aria-hidden="true"></span>
+          <h3><span class="rail-no">No. 3</span><span class="script">Act</span></h3>
+          <svg class="icon rail-icon" aria-hidden="true"><use href="#i-hand-pointing"/></svg>
+          <p>He drives apps through their own scripting and shortcuts. When you ask, he uses the mouse and keyboard himself, one checked step at a time, with a Stop button on screen.</p>
         </li>
-        <li class="flow-step">
-          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg></span>
-          <h3>Answer</h3>
+        <li class="rail-ticket">
+          <span class="rail-clip" aria-hidden="true"></span>
+          <h3><span class="rail-no">No. 4</span><span class="script">Answer</span></h3>
+          <svg class="icon rail-icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg>
           <p>He replies with your system’s built-in voice, Hebrew included, and shows the answer, worksheet, graph or globe in his window.</p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- ============ Privacy / local ============ -->
-  <section class="section privacy" id="privacy" aria-labelledby="privacyTitle">
+  <!-- ============ Privacy ============ -->
+  <section class="section privacy ground-teal" id="privacy" aria-labelledby="privacyTitle">
     <div class="container">
       <div class="section-head">
-        <h2 id="privacyTitle">What stays on your computer, and what goes online</h2>
+        <h2 id="privacyTitle"><span class="script">House rules</span><span class="slab">What stays on your computer, and what goes online</span></h2>
         <p>Out of the box, the listening and the thinking happen on your computer. Here is exactly where each thing is handled.</p>
       </div>
 
       <div class="ledger">
         <div class="ledger-col ledger-local">
-          <h3><svg class="icon" aria-hidden="true"><use href="#i-lock-simple"/></svg>On your computer</h3>
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-lock-simple"/></svg>Stays on your computer</h3>
           <ul>
             <li><strong>Your speech.</strong> Turned into text by a speech model on your computer. Only in the first minutes after installing, while that model downloads, does he use Google’s free recognizer.</li>
             <li><strong>Your requests.</strong> Answered by the AI on your computer (llama3.2, run by Ollama).</li>
@@ -334,7 +1094,7 @@
           </ul>
         </div>
         <div class="ledger-col ledger-online">
-          <h3><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg>Sent to online services</h3>
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg>Goes out to online services</h3>
           <ul>
             <li><strong>Only if you add a Groq key:</strong> your speech and requests go to Groq, which answers faster. When he uses your computer, the list of buttons and fields in that window goes too, never the contents of password fields.</li>
             <li><strong>Pictures you ask about</strong> go to Groq’s vision model if you added a key. Without one, his local vision model reads them, on computers with 16 GB of memory.</li>
@@ -349,7 +1109,7 @@
       <div class="controls">
         <h3>You can change this in Settings</h3>
         <dl>
-          <div><dt>AI · Which AI answers</dt><dd>The AI on your computer (the default), or Groq first, with your own free key.</dd></div>
+          <div><dt>Which AI answers</dt><dd>The AI on your computer (the default), or Groq first, with your own free key.</dd></div>
           <div><dt>Computer control</dt><dd>Ask before each task (the default), allowed, or off. Risky steps always need your OK.</dd></div>
           <div><dt>Privacy</dt><dd>Keep conversation logs or not, and turn WhatsApp reading off completely.</dd></div>
         </dl>
@@ -358,11 +1118,11 @@
   </section>
 
   <!-- ============ Requirements ============ -->
-  <section class="section requirements" id="requirements" aria-labelledby="reqTitle">
+  <section class="section requirements ground-night" id="requirements" aria-labelledby="reqTitle">
     <div class="container">
       <div class="section-head">
-        <h2 id="reqTitle">What you need</h2>
-        <p>No Python, no terminal and no account. Just the computer.</p>
+        <h2 id="reqTitle"><span class="script">What you need</span><span class="slab">No Python, no terminal, no account</span></h2>
+        <p>Just the computer. Here is everything, so nothing surprises you.</p>
       </div>
       <div class="req-grid">
         <div class="req-group req-common">
@@ -404,30 +1164,31 @@
   </section>
 
   <!-- ============ Download ============ -->
-  <section class="section download" id="download" aria-labelledby="downloadTitle">
+  <section class="section download ground-coral" id="download" aria-labelledby="downloadTitle">
     <div class="container">
       <div class="download-panel">
         <div class="download-main">
-          <h2 id="downloadTitle">Get Jervis <span data-release="version">1.0.5</span></h2>
+          <h2 id="downloadTitle"><span class="script">Get Jervis</span><span class="slab">Version <span data-release="version">1.0.5</span>, free</span></h2>
           <p>A normal installer for each system. The first time he starts, Jervis sets up his own AI and shows the progress. Everything else works while it finishes.</p>
+          <p class="release-note"><span data-release="version">1.0.5</span> includes <strong><span data-fx-count="download">52</span> of the <span data-fx-count="total">76</span></strong> things on the menu. <span data-fx-count="next">22</span> more are built and arrive with the next release. <a href="#features" data-show-status="next">See what’s next</a></p>
           <p class="mobile-note" hidden>Jervis runs on a Windows PC or a Mac. Send yourself this page and download it there.</p>
           <div class="download-actions">
             <div class="dl-option" data-platform="win">
-              <a class="btn btn-primary btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.5/Jervis.Setup.exe" data-release-href="win_url" data-download>
+              <a class="btn btn-teal btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.5/Jervis.Setup.exe" data-release-href="win_url" data-download>
                 <svg class="icon" aria-hidden="true"><use href="#i-windows-logo"/></svg><span class="btn-label">Download for Windows</span>
               </a>
-              <p class="file-meta"><span class="file-free">Windows 10 and 11</span><span data-release="win_file">Jervis.Setup.exe</span><span data-release="win_size">177 MB</span></p>
+              <p class="file-meta"><span>Windows 10 and 11</span><span data-release="win_file">Jervis.Setup.exe</span><span data-release="win_size">177 MB</span></p>
             </div>
             <div class="dl-option" data-platform="mac">
-              <a class="btn btn-ghost btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.5/Jervis-Mac-arm64.dmg" data-release-href="mac_url" data-download>
+              <a class="btn btn-outline btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.5/Jervis-Mac-arm64.dmg" data-release-href="mac_url" data-download>
                 <svg class="icon" aria-hidden="true"><use href="#i-apple-logo"/></svg><span class="btn-label">Download for Mac</span>
               </a>
-              <p class="file-meta"><span class="file-free">Apple silicon</span><span data-release="mac_file">Jervis-Mac-arm64.dmg</span><span data-release="mac_size">196 MB</span></p>
+              <p class="file-meta"><span>Apple silicon</span><span data-release="mac_file">Jervis-Mac-arm64.dmg</span><span data-release="mac_size">196 MB</span></p>
               <p class="dl-alt">Easiest on a Mac: paste this into Terminal. It installs Jervis and opens him, with no security prompt.</p>
               <div class="cmd"><code>curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash</code><button class="copy-btn" type="button" data-copy="curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
             </div>
           </div>
-          <p class="download-note">Jervis isn’t signed with a paid certificate yet, so Windows and macOS warn you once, the first time. The <a href="#install">install steps</a> show what to click. <a href="https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.5" data-release-href="page">Release notes</a></p>
+          <p class="download-note">Jervis isn’t signed with a paid certificate yet, so Windows and macOS warn you once, the first time. The <a href="#install">install steps</a> show what to click. <a href="https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.5" data-release-href="page">Release notes</a> · <a href="https://github.com/ArielZaha/jervis-app" rel="noopener">Source code (MIT)</a></p>
         </div>
         <div class="download-side">
           <h3>Before you start</h3>
@@ -464,10 +1225,10 @@
   </section>
 
   <!-- ============ Install ============ -->
-  <section class="section install" id="install" aria-labelledby="installTitle">
+  <section class="section install ground-night" id="install" aria-labelledby="installTitle">
     <div class="container">
       <div class="section-head">
-        <h2 id="installTitle">Install and start Jervis</h2>
+        <h2 id="installTitle"><span class="script">Doors open</span><span class="slab">Install and start Jervis</span></h2>
         <p>A few clicks, once. After that, start him from the Start menu or Applications, or let him start when you sign in (Settings, This computer).</p>
       </div>
 
@@ -572,7 +1333,7 @@
             <details>
               <summary>Something else<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
               <div class="details-body">
-                <p>In Settings, This computer, <strong>Open log files</strong> shows what he was doing, and <strong>Restart Jervis’s engine</strong> fixes most stuck states. The logs never contain what you said or typed.</p>
+                <p>In Settings, This computer, <strong>Open log files</strong> shows what he was doing, and <strong>Restart Jervis’s engine</strong> fixes most stuck states. The logs never contain what you said or typed. Still stuck? <a href="https://github.com/ArielZaha/jervis-app/issues" rel="noopener">Tell us on GitHub</a>.</p>
               </div>
             </details>
           </div>
@@ -612,7 +1373,7 @@
             <details>
               <summary>Run Jervis from the source code<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
               <div class="details-body">
-                <p>For developers: the code, the build scripts and the tests are on <a href="https://github.com/ArielZaha/jervis-app" rel="noopener">GitHub</a>. Intel Macs, and generating pictures on your own computer, are only supported this way.</p>
+                <p>For developers: the code, the build scripts and the tests are on <a href="https://github.com/ArielZaha/jervis-app" rel="noopener">GitHub</a>. Intel Macs, generating pictures on your own computer, and the features marked “Next release” on the menu are only available this way for now.</p>
               </div>
             </details>
           </div>
@@ -622,9 +1383,9 @@
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section class="section faq" id="faq" aria-labelledby="faqTitle">
+  <section class="section faq ground-cream" id="faq" aria-labelledby="faqTitle">
     <div class="container faq-inner">
-      <h2 id="faqTitle">Questions</h2>
+      <h2 id="faqTitle"><span class="script">Questions</span><span class="slab">Asked at the counter</span></h2>
       <div class="accordion faq-list">
         <details>
           <summary>What is Jervis?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
@@ -639,12 +1400,20 @@
           <div class="details-body"><p>Windows 10 and 11 (64-bit), and Macs with Apple silicon on macOS 11 or later. Intel Macs can run him from the source code. A few features differ: reading WhatsApp and Classroom works on macOS only, and on Windows pause and resume use the media key.</p></div>
         </details>
         <details>
+          <summary>What does “Next release” mean on the menu?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>Those features are built and in Jervis’s source code, including the phone app, but they aren’t in the installer you can download today (<span data-release="version">1.0.5</span>). They arrive when the next version is released. Everything tagged “In the download” works in the current installer.</p></div>
+        </details>
+        <details>
           <summary>Does Jervis need an internet connection?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
           <div class="details-body"><p>For the first start, to download his AI. After that, listening and answering work offline. Music, videos, the web, the weather and Google features still need the internet.</p></div>
         </details>
         <details>
           <summary>Can he really use my computer? Is that safe?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
           <div class="details-body"><p>Yes, when you ask. He works one step at a time and checks each result, and you always see it: a glowing edge and a bar with Pause and Stop stay on screen. Moving the mouse, Ctrl+Alt+Q or “stop” takes control back at once. He asks before sending, buying, deleting or installing anything, and never types passwords. Settings can make him ask before every task, or turn it off. With his small local AI he manages short, simple tasks; for longer ones, add a free Groq key in Settings.</p></div>
+        </details>
+        <details>
+          <summary>Why does my computer warn me about the installer?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>Jervis isn’t signed with a paid certificate or notarized by Apple yet, so Windows SmartScreen and macOS show a warning the first time. That warning is not a scan result. The source code is public, and you can check that your file is the published one with its SHA-256 checksum under <a href="#download">Verify the download</a>.</p></div>
         </details>
         <details>
           <summary>Which AI models does it use?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
@@ -662,12 +1431,13 @@
     </div>
   </section>
 
-  <!-- ============ Close ============ -->
+  <!-- ============ Close: the sign at closing time ============ -->
   <section class="closing" aria-labelledby="closingTitle">
     <div class="container closing-inner">
-      <h2 id="closingTitle">Say “Hey Jervis”.</h2>
-      <p>Free for Windows and macOS.</p>
-      <a class="btn btn-primary btn-lg" href="#download" data-download data-os-link>
+      <svg class="closing-burst" aria-hidden="true"><use href="#i-sparkle"/></svg>
+      <h2 id="closingTitle"><span class="script">Say “Hey Jervis”.</span></h2>
+      <p class="slab closing-sub">Free for Windows and Mac</p>
+      <a class="btn btn-coral btn-lg" href="#download" data-to-download data-os-link>
         <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jervis</span>
       </a>
     </div>
@@ -678,11 +1448,7 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <a class="brand" href="#top" aria-label="Jervis, back to top">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <circle cx="16" cy="16" r="6" fill="url(#brandGrad)"/>
-          <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(-25 16 16)" opacity=".85"/>
-          <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(35 16 16)" opacity=".45"/>
-        </svg>
+        <span class="brand-plate" aria-hidden="true"><svg class="brand-spark"><use href="#i-sparkle"/></svg></span>
         <span class="wordmark">Jervis</span>
       </a>
       <p>A voice assistant for macOS and Windows.</p>
@@ -690,13 +1456,16 @@
     </div>
     <nav aria-label="Footer">
       <ul class="footer-links">
-        <li><a href="#features">Features</a></li>
+        <li><a href="#showcase">Demo</a></li>
+        <li><a href="#features">The menu</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#privacy">Privacy</a></li>
         <li><a href="#requirements">Requirements</a></li>
         <li><a href="#download">Download</a></li>
         <li><a href="#install">Install</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://github.com/ArielZaha/jervis-app" rel="noopener">Source code</a></li>
+        <li><a href="https://github.com/ArielZaha/jervis-app/releases" rel="noopener">All releases</a></li>
       </ul>
     </nav>
   </div>
@@ -708,7 +1477,7 @@
   <button class="toast-close" type="button" aria-label="Dismiss"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
 </div>
 
-<script src="assets/js/orb.js" defer></script>
-<script src="assets/js/site.js" defer></script>
+<script src="assets/js/orb.js?v=20261013" defer></script>
+<script src="assets/js/site.js?v=20261013g" defer></script>
 </body>
 </html>
