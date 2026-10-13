@@ -2,7 +2,7 @@
 
     python3 tools/build_features.py
 
-features.json is the one list of everything Jervis does, each entry checked against the app's source. This turns it
+features.json is the one list of everything Jarvis does, each entry checked against the app's source. This turns it
 into plain HTML between the `features:start` and `features:end` markers in index.html, so the whole list is in the page
 itself: readable without JavaScript and by search engines. site.js only adds the search and the filters on top.
 Run it after editing features.json, then commit both files.
@@ -83,11 +83,13 @@ def build() -> str:
         )
     counts = {k: sum(1 for f in features if f["status"] == k) for k in STATUS}
     chips = [f'<button class="chip" type="button" data-filter-cat="all" aria-pressed="true">Everything <span>{len(features)}</span></button>']
+    # The page opens on the highlights (the features marked "major"); the rest are one press away.
+    chips.append(f'<button class="chip" type="button" data-filter-cat="top" aria-pressed="false">Highlights <span>{sum(1 for f in features if f.get("major"))}</span></button>')
     for cid, cname in cats.items():
         n = sum(1 for f in features if f["cat"] == cid)
         chips.append(f'<button class="chip" type="button" data-filter-cat="{cid}" aria-pressed="false">{esc(cname)} <span>{n}</span></button>')
     summary = (
-        f'<p class="fx-total" data-total="{len(features)}"><strong>{len(features)}</strong> things Jervis can do: '
+        f'<p class="fx-total" data-total="{len(features)}"><strong>{len(features)}</strong> things Jarvis can do: '
         f'<span class="tally tally-now">{counts["download"]} in the download</span>, '
         f'<span class="tally tally-next">{counts["next"]} in the next release</span>, '
         f'<span class="tally tally-source">{counts["source"]} from the source code</span>.</p>'

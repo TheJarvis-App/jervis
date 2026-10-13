@@ -1,4 +1,4 @@
-"""Point the website at the current Jervis installers.
+"""Point the website at the current Jarvis installers.
 
     python3 website/tools/sync_release.py            # the latest release of ArielZaha/jervis-app
     python3 website/tools/sync_release.py --tag v1.0.0
@@ -106,7 +106,7 @@ def update_page(release: dict) -> None:
     html, links = re.subn(r'href="[^"]*"(\s+data-release-href="(\w+)")',
                           lambda m: f'href="{release[m.group(2)]}"{m.group(1)}', html)
     data = {
-        "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Jervis",
+        "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Jarvis", "alternateName": "Jervis",
         "description": "A voice assistant for Windows and macOS that plays media, opens apps, writes documents, "
                        "sets timers, solves and graphs math, and can use the mouse and keyboard when asked. "
                        "Its AI runs on your own computer.",
@@ -142,7 +142,7 @@ def main() -> None:
     release = read_release(tag)
     update_page(release)
     write_files(release)
-    say(f"The site now offers Jervis {release['version']}: {release['win_file']} ({release['win_size']}) and "
+    say(f"The site now offers Jarvis {release['version']}: {release['win_file']} ({release['win_size']}) and "
         f"{release['mac_file']} ({release['mac_size']}).")
 
 

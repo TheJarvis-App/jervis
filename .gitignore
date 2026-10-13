@@ -8,3 +8,5 @@ __pycache__/
 PRODUCT.md
 DESIGN.md
 *.webp.json
+*.png.json
+*.jpg.json

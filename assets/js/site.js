@@ -1,17 +1,21 @@
-// Jervis website: navigation, the live voice core on the sign, the night sky, the "Order up" counter, the menu's search
-// and filters, the drive-in video, copy buttons and download help. No libraries. Everything is progressive: without
-// JavaScript the page is complete, every feature and every demo step is listed, and every link still works.
+// Jarvis website: navigation, the scroll story, the trailer, the request explorer, the feature search and filters,
+// the screenshot viewer, copy buttons and download help. The 3D core is loaded from core3d.js once the page is up.
+// Everything is progressive: without JavaScript the page is complete, every feature and every demo step is listed,
+// the trailer plays with the browser's own controls, and every link still works.
 (function () {
   'use strict';
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const root = document.documentElement;
+  const scriptUrl = document.currentScript && document.currentScript.src;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const store = {
     get(key) { try { return window.sessionStorage.getItem(key); } catch (_) { return null; } },
     set(key, value) { try { window.sessionStorage.setItem(key, value); } catch (_) { /* private mode: fine */ } },
   };
   const later = (fn, ms) => window.setTimeout(fn, ms);
+  const clamp = (v, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, v));
 
   // Controls that only work with JavaScript are in the page but hidden until now.
   $$('[data-js-only]').forEach((el) => { el.hidden = false; });
@@ -23,7 +27,7 @@
     || (/Mac/i.test(platform) && navigator.maxTouchPoints > 1);   // iPadOS reports itself as a Mac
   const os = /Win/i.test(platform) || /Windows/i.test(ua) ? 'win' : 'mac';
 
-  // ---------- Header: a shadow once the page has scrolled; the scroll cue leaves ----------
+  // ---------- Header: a backing once the page has scrolled; the scroll cue leaves ----------
   const header = $('.site-header');
   const scrollCue = $('.scroll-cue');
   const sentinel = document.createElement('div');
@@ -96,191 +100,150 @@
   const osTab = $(`.os-tabs [data-os="${os}"]`);
   if (osTab) selectTab(osTab, false);
 
-  // ---------- The two orbs share orb.js's state; draw only while one of them is on screen ----------
-  let heroVisible = true;
-  let counterVisible = false;
-  let counterBusy = false;   // the sign waits while an order runs at the counter
-  const updatePaused = () => document.body.classList.toggle('scene-paused', !(heroVisible || counterVisible));
-  const orbReady = typeof window.initOrb === 'function';
-  if (orbReady) {
-    if ($('#heroOrb')) window.initOrb('heroOrb');
-    if ($('#counterOrb')) window.initOrb('counterOrb');
+  // ---------- The scroll story: five chapters on one pinned screen, the core changing shape between them ----------
+  // The core reads data-pose / data-pose2 / data-mix off its slot (see core3d.js), so this only writes attributes.
+  const story = $('[data-story]');
+  let updateStory = () => {};
+  if (story) {
+    const chapters = $$('.chapter', story);
+    const names = chapters.map((c) => c.dataset.chapter);
+    const slot = $('.story-slot', story);
+    const rail = $$('.story-rail button', story);
+    const pinMQ = window.matchMedia('(min-width: 900px) and (min-height: 640px)');
+    let pinned = false;
+    let shown = -1;
+    const show = (i) => {
+      if (i === shown) return;
+      shown = i;
+      chapters.forEach((c, n) => c.classList.toggle('is-active', n === i));
+      rail.forEach((b, n) => { if (n === i) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+    };
+    const span = () => story.offsetHeight - window.innerHeight;
+    updateStory = () => {
+      if (!pinned) return;
+      const f = clamp(-story.getBoundingClientRect().top / span()) * chapters.length;
+      const i = Math.min(chapters.length - 1, Math.floor(f));
+      const frac = f - i;
+      show(i);
+      // The last third of a chapter already leans into the next one's shape.
+      const lean = i < chapters.length - 1 ? clamp((frac - 0.66) / 0.34) : 0;
+      slot.dataset.pose = names[i];
+      slot.dataset.pose2 = names[Math.min(chapters.length - 1, i + 1)];
+      slot.dataset.mix = lean.toFixed(3);
+    };
+    const setPinned = () => {
+      pinned = pinMQ.matches && !reducedMotion;
+      story.classList.toggle('is-pinned', pinned);
+      shown = -1;
+      if (pinned) updateStory(); else chapters.forEach((c) => c.classList.remove('is-active'));
+    };
+    pinMQ.addEventListener('change', setPinned);
+    setPinned();
+    rail.forEach((b, i) => b.addEventListener('click', () => {
+      const top = story.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: top + ((i + 0.4) / chapters.length) * span(), behavior: 'smooth' });
+    }));
   }
 
-  // ---------- The sign: the app's own core, replaying real exchanges; tap it for the next one ----------
-  // State titles and colours are the app's (renderer.js and orb.js). Each reply is the opening sentence of what
-  // Jervis's own code answers to that request (equations.py, planets.py, earth.py); see tools/screenshot_feed.py.
-  const COLORS = { idle: '79 216 255', listening: '61 242 192', thinking: '165 139 255', speaking: '90 169 255' };
-  const TITLES = { idle: 'Ready', listening: 'Listening', thinking: 'Thinking', speaking: 'Served' };
-  const EXCHANGES = [
-    ['Solve x squared minus 5x plus 6 equals 0', 'The solutions are x equals 2 and x equals 3.'],
-    ['Tell me about Saturn', 'Saturn is a planet, about 1,434 million kilometers from the Sun.'],
-    ['How far is New York from Tel Aviv?', 'About 9,115 kilometers, or 5,664 miles, in a straight line.'],
-  ];
-  const SCRIPT = EXCHANGES.flatMap(([ask, reply]) => [
-    { state: 'idle', text: 'Say “Hey Jervis”.', ms: 2000 },
-    { state: 'listening', text: `“${ask}”`, ms: 2800 },
-    { state: 'thinking', text: 'Working on it…', ms: 1300 },
-    { state: 'speaking', text: `“${reply}”`, ms: 2600 + reply.length * 28 },
-  ]);
-  const sign = $('.sign');
-  const coreButton = $('#coreButton');
-  const coreState = $('#coreState');
-  const coreSub = $('#coreSub');
-  const orbits = $('.sign-orbits');
-  let heroIndex = 0;
-  let heroTimer = null;
-  function showCoreStep(step) {
-    if (window.setOrbState && !counterBusy) window.setOrbState(step.state);
-    coreState.textContent = TITLES[step.state];
-    sign.style.setProperty('--core-rgb', COLORS[step.state]);
-    coreSub.classList.add('is-swapping');
-    later(() => { coreSub.textContent = step.text; coreSub.classList.remove('is-swapping'); }, reducedMotion ? 0 : 180);
-  }
-  const heroStop = () => { clearTimeout(heroTimer); heroTimer = null; };
-  const heroSchedule = () => {
-    if (reducedMotion || heroTimer || !heroVisible || document.hidden) return;
-    heroTimer = later(() => {
-      heroTimer = null;
-      heroIndex = (heroIndex + 1) % SCRIPT.length;
-      showCoreStep(SCRIPT[heroIndex]);
-      heroSchedule();
-    }, SCRIPT[heroIndex].ms);
-  };
-  if (sign && coreButton) {
-    if (reducedMotion) {
-      // One still frame with one real exchange written out; nothing plays by itself.
-      if (window.setOrbState) window.setOrbState('speaking');
-      coreState.textContent = TITLES.speaking;
-      sign.style.setProperty('--core-rgb', COLORS.speaking);
-      coreSub.textContent = `“${EXCHANGES[0][0]}” … “${EXCHANGES[0][1]}”`;
-      if (orbits && orbits.pauseAnimations) orbits.pauseAnimations();
-    } else {
-      showCoreStep(SCRIPT[0]);
-      document.addEventListener('visibilitychange', () => (document.hidden ? heroStop() : heroSchedule()));
+  // ---------- Things that follow the scroll: the hero copy leaves, frames rise into place ----------
+  const heroCopy = $('[data-scroll-out]');
+  const rising = $$('[data-scroll]');
+  let ticking = false;
+  function onScrollFrame() {
+    ticking = false;
+    const vh = window.innerHeight;
+    if (!reducedMotion) {
+      if (heroCopy) {
+        const y = window.scrollY;
+        heroCopy.style.opacity = clamp(1 - y / (vh * 0.5)).toFixed(3);
+        heroCopy.style.transform = `translate3d(0, ${(-y * 0.22).toFixed(1)}px, 0)`;
+        heroCopy.style.pointerEvents = y > vh * 0.45 ? 'none' : '';
+      }
+      rising.forEach((el) => {
+        const p = clamp((vh - el.getBoundingClientRect().top) / (vh * 0.8));
+        el.style.setProperty('--sp', (1 - Math.pow(1 - p, 3)).toFixed(3));
+      });
     }
-    new IntersectionObserver(([entry]) => {
-      heroVisible = entry.isIntersecting;
-      if (!reducedMotion) updatePaused();
-      if (orbits && orbits.pauseAnimations && !reducedMotion) (heroVisible ? orbits.unpauseAnimations() : orbits.pauseAnimations());
-      if (heroVisible) heroSchedule(); else heroStop();
-    }, { threshold: 0.05 }).observe(coreButton);
-    if (reducedMotion) later(() => document.body.classList.add('scene-paused'), 400);
-    // Tapping the core jumps to the next example: he starts listening to the next request.
-    coreButton.addEventListener('click', () => {
-      heroStop();
-      const nextAsk = SCRIPT.findIndex((s, i) => i > heroIndex && s.state === 'listening');
-      heroIndex = nextAsk >= 0 ? nextAsk : SCRIPT.findIndex((s) => s.state === 'listening');
-      showCoreStep(SCRIPT[heroIndex]);
-      if (reducedMotion) {
-        const pair = EXCHANGES[Math.floor(heroIndex / 4)];
-        coreState.textContent = TITLES.speaking;
-        coreSub.textContent = `“${pair[0]}” … “${pair[1]}”`;
-      } else heroSchedule();
+    updateStory();
+  }
+  const requestScrollFrame = () => { if (!ticking) { ticking = true; requestAnimationFrame(onScrollFrame); } };
+  window.addEventListener('scroll', requestScrollFrame, { passive: true });
+  window.addEventListener('resize', requestScrollFrame);
+  onScrollFrame();
+
+  // ---------- The trailer: one play button; lights go down while it plays ----------
+  const cinema = $('[data-cinema]');
+  const trailer = $('#trailer');
+  if (cinema && trailer) {
+    const playBtn = $('.cinema-play', cinema);
+    const errorEl = $('.cinema-error', cinema);
+    const lights = (down) => document.body.classList.toggle('lights-down', down);
+    const failed = () => {
+      cinema.classList.remove('is-loading');
+      lights(false);
+      playBtn.hidden = true;
+      errorEl.hidden = false;
+    };
+    trailer.controls = false;   // the browser's controls take over once it is playing
+    playBtn.addEventListener('click', () => {
+      cinema.classList.add('is-loading');
+      trailer.controls = true;
+      const started = trailer.play();
+      if (started && started.catch) started.catch((err) => { if (err && err.name !== 'AbortError') failed(); });
+      trailer.focus({ preventScroll: true });
     });
+    trailer.addEventListener('playing', () => {
+      cinema.classList.remove('is-loading');
+      cinema.classList.add('is-started');
+      lights(true);
+    });
+    trailer.addEventListener('pause', () => lights(false));
+    trailer.addEventListener('ended', () => {
+      lights(false);
+      trailer.controls = false;
+      cinema.classList.remove('is-started');
+      $('.cinema-label', playBtn).textContent = 'Play it again';
+    });
+    $('source', trailer).addEventListener('error', failed);
+    // Scrolling away brings the lights back up; the trailer keeps playing until it is paused.
+    new IntersectionObserver(([entry]) => { if (!entry.isIntersecting) lights(false); else if (!trailer.paused) lights(true); }, { threshold: 0.2 }).observe(cinema);
   }
 
-  // ---------- The night sky: twinkling stars and the odd shooting star (like the app's own window) ----------
-  const sky = $('#sky');
-  if (sky && sky.getContext) {
-    const ctx = sky.getContext('2d');
-    let w = 0, h = 0, dpr = 1, stars = [], meteors = [], raf = 0, running = false, last = 0, nextMeteor = 900;
-    const resize = () => {
-      const nw = sky.clientWidth, nh = sky.clientHeight;
-      dpr = Math.min(2, window.devicePixelRatio || 1);
-      sky.width = Math.round(nw * dpr); sky.height = Math.round(nh * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      if (nw !== w || !stars.length) {   // a phone's toolbar changing the height keeps the same stars
-        const count = Math.round(Math.min(220, (nw * nh) / 5200));
-        stars = Array.from({ length: count }, () => ({
-          x: Math.random() * nw, y: Math.random() * nh * 0.92, r: Math.random() * 1.3 + 0.3,
-          p: Math.random() * Math.PI * 2, s: 0.6 + Math.random() * 1.6,
-          c: Math.random() < 0.12 ? '255,145,135' : Math.random() < 0.2 ? '79,216,211' : '255,246,226',
-        }));
-      }
-      w = nw; h = nh;
-    };
-    const draw = (t) => {
-      ctx.clearRect(0, 0, w, h);
-      for (const s of stars) {
-        const a = reducedMotion ? 0.7 : 0.45 + 0.4 * Math.sin(s.p + t * 0.001 * s.s);
-        ctx.fillStyle = `rgba(${s.c},${a.toFixed(3)})`;
-        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
-      }
-      for (const m of meteors) {
-        const tail = 140;
-        const g = ctx.createLinearGradient(m.x, m.y, m.x - m.vx * tail, m.y - m.vy * tail);
-        g.addColorStop(0, `rgba(255,255,255,${m.life.toFixed(3)})`);
-        g.addColorStop(1, 'rgba(79,216,211,0)');
-        ctx.strokeStyle = g; ctx.lineWidth = 2.4; ctx.lineCap = 'round';
-        ctx.beginPath(); ctx.moveTo(m.x, m.y); ctx.lineTo(m.x - m.vx * tail, m.y - m.vy * tail); ctx.stroke();
-      }
-    };
-    const tick = (t) => {
-      const dt = Math.min(50, t - (last || t)); last = t;
-      nextMeteor -= dt;
-      if (nextMeteor <= 0) {
-        // A shooting star crosses the whole sky, from the upper left or right edge.
-        const fromLeft = Math.random() < 0.5;
-        const speed = 0.9 + Math.random() * 0.5;
-        const angle = (18 + Math.random() * 16) * Math.PI / 180;
-        meteors.push({ x: fromLeft ? -40 : w + 40, y: Math.random() * h * 0.45, vx: (fromLeft ? 1 : -1) * Math.cos(angle) * speed, vy: Math.sin(angle) * speed, life: 1 });
-        nextMeteor = 2200 + Math.random() * 3600;
-      }
-      meteors = meteors.filter((m) => { m.x += m.vx * dt; m.y += m.vy * dt; m.life -= dt / 2600; return m.life > 0 && m.x > -300 && m.x < w + 300 && m.y < h + 100; });
-      draw(t);
-      raf = requestAnimationFrame(tick);
-    };
-    const start = () => { if (!running && !reducedMotion && !document.hidden) { running = true; last = 0; raf = requestAnimationFrame(tick); } };
-    const stopSky = () => { running = false; cancelAnimationFrame(raf); };
-    resize();
-    draw(0);
-    let resizeTimer = null;
-    window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = later(() => { resize(); draw(performance.now()); }, 150); });
-    new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stopSky())).observe(sky);
-    document.addEventListener('visibilitychange', () => (document.hidden ? stopSky() : start()));
-  }
-
-  // ---------- Order up: Heard → Decided → Did → Served, with Play, Replay, Next and a stepper ----------
-  const counter = $('[data-counter]');
+  // ---------- The explorer: a request goes through Understand, Plan and Act, then its result appears ----------
+  const consoleEl = $('[data-console]');
   const demo = { play: () => {}, pick: () => {} };
-  if (counter) {
-    const orderList = $('.orders', counter);
-    const tabs = $$('.order', counter);
-    const STAGES = ['hear', 'decide', 'act', 'serve'];
-    const LABELS = { hear: 'Heard', decide: 'Decided', act: 'Did', serve: 'Served' };
-    const PASS = {
-      hear: ['listening', 'Listening', '61 242 192'],
-      decide: ['thinking', 'Thinking', '165 139 255'],
-      act: ['generating', 'Working', '165 139 255'],
-      serve: ['speaking', 'Served', '90 169 255'],
-    };
-    const DURATION = { hear: 2100, decide: 2300, act: 2700 };   // Served stays until the visitor moves on
-    const steps = $$('.step', counter);
+  if (consoleEl) {
+    const askList = $('.asks', consoleEl);
+    const tabs = $$('.ask', consoleEl);
+    const runsEl = $('.runs', consoleEl);
+    const coreSlot = $('.console-slot', consoleEl);
+    const STAGES = ['understand', 'plan', 'act'];
+    const AT = [   // what the bar says, and the shape the core takes (core3d.js)
+      { label: 'Listening', pose: 'hear' },
+      { label: 'Planning', pose: 'decide' },
+      { label: 'Working', pose: 'act' },
+      { label: 'Done', pose: 'answer' },
+    ];
+    const DURATION = [2300, 2300, 2900];
+    const steps = $$('.step', consoleEl);
     const playBtn = $('#demoPlay');
     const nextBtn = $('#demoNext');
-    const passState = $('#passState');
-    const passBox = $('.plates', counter);
+    const stateEl = $('#conState');
     const live = $('#demoLive');
-    let plate = null;
+    let run = null;
     let timers = [];
     let played = false;
 
     const clearTimers = () => { timers.forEach(clearTimeout); timers = []; };
-    const plateOf = (tab) => document.getElementById(tab.getAttribute('aria-controls'));
-    const kindOf = (tab) => $('.order-kind', tab).textContent;
+    const runOf = (tab) => document.getElementById(tab.getAttribute('aria-controls'));
+    const kindOf = (tab) => $('.ask-kind', tab).textContent;
+    const current = () => $('.ask[aria-selected="true"]', consoleEl);
 
-    function setPass(stage) {
-      const [state, label, rgb] = PASS[stage];
-      if (window.setOrbState) window.setOrbState(state);
-      passState.textContent = label;
-      passBox.style.setProperty('--pass-rgb', rgb);
-    }
     function typeOut(el, animate) {
       const full = el.dataset.full || el.textContent;
       el.dataset.full = full;
       if (!animate) { el.textContent = full; el.classList.remove('is-typing'); return; }
-      // The untyped rest stays in place, transparent, so the line never reflows the page while it types.
+      // The untyped rest stays in place, transparent, so the line never reflows while it types.
       const typed = document.createElement('span');
       const rest = document.createElement('span');
       typed.className = 'bubble-typed';
@@ -294,98 +257,115 @@
       }
       timers.push(later(() => { el.textContent = full; el.classList.remove('is-typing'); }, full.length * per + 400));
     }
-    function tickChecks(stageEl, animate) {
-      const items = $$('.checks li', stageEl);
+    function tickChecks(animate) {
+      const items = $$('.checks li', run);
       items.forEach((li) => li.classList.toggle('is-done', !animate));
-      if (animate) items.forEach((li, i) => timers.push(later(() => li.classList.add('is-done'), 350 + i * 700)));
+      if (animate) items.forEach((li, i) => timers.push(later(() => li.classList.add('is-done'), 400 + i * 750)));
     }
-    // Shows stage `index` of the current plate. `animate` plays its inner motion and fills its progress segment.
+    // Shows the current run at stage `index` (3 = done, with the result). `animate` plays the stage's own motion.
     function showStage(index, animate) {
-      const stage = STAGES[index];
-      // The ticket writes itself: earlier stages stay on the slip until the plate is served over it.
-      $$('.stage', plate).forEach((el) => {
-        el.classList.toggle('is-active', el.dataset.stage === stage);
-        el.classList.toggle('is-past', STAGES.indexOf(el.dataset.stage) < index);
+      const done = index >= STAGES.length;
+      const active = Math.min(index, STAGES.length - 1);
+      $$('.stage', run).forEach((el) => {
+        const n = STAGES.indexOf(el.dataset.stage);
+        el.classList.toggle('is-active', n === active);
+        el.classList.toggle('is-past', n < active);
       });
-      plate.dataset.at = stage;
-      if (index > 0) typeOut($('.stage-hear [data-type]', plate), false);
+      const at = done ? 'done' : STAGES[index];
+      run.dataset.at = at;
+      runsEl.dataset.at = at;
+      stateEl.textContent = AT[index].label;
+      if (coreSlot) coreSlot.dataset.pose = AT[index].pose;
       steps.forEach((btn, i) => {
-        btn.classList.toggle('is-done', i < index);
-        if (i === index) btn.setAttribute('aria-current', 'step'); else btn.removeAttribute('aria-current');
-        const dur = animate && i === index && DURATION[stage] ? DURATION[stage] : 0;
+        btn.classList.toggle('is-done', i < active || done);
+        if (i === active) btn.setAttribute('aria-current', 'step'); else btn.removeAttribute('aria-current');
+        const dur = animate && !done && i === index ? DURATION[i] : 0;
         btn.style.setProperty('--dur', `${dur}ms`);
         btn.style.setProperty('--p', i < index || (i === index && !dur) ? 1 : 0);
         if (dur) requestAnimationFrame(() => requestAnimationFrame(() => btn.style.setProperty('--p', 1)));
       });
-      setPass(stage);
-      live.textContent = `${kindOf($('.order[aria-selected="true"]', counter))}, step ${index + 1} of 4: ${LABELS[stage]}.`;
-      const stageEl = $(`.stage[data-stage="${stage}"]`, plate);
-      if (stage === 'hear') typeOut($('[data-type]', stageEl), animate && !reducedMotion);
-      if (stage === 'act') tickChecks(stageEl, animate && !reducedMotion);
+      live.textContent = done ? `${kindOf(current())}: done. The result is shown.`
+        : `${kindOf(current())}, stage ${index + 1} of 3: ${STAGES[index]}.`;
+      typeOut($('[data-type]', run), animate && index === 0);
+      if (index >= 2) tickChecks(animate && !done);
     }
     function finish() {
-      playBtn.querySelector('span').textContent = 'Replay';
+      showStage(3, true);
       nextBtn.classList.add('is-nudge');
-      timers.push(later(() => { counterBusy = false; nextBtn.classList.remove('is-nudge'); }, 3400));
+      timers.push(later(() => nextBtn.classList.remove('is-nudge'), 3400));
     }
     function play() {
       clearTimers();
       played = true;
-      counterBusy = true;
       nextBtn.classList.remove('is-nudge');
-      playBtn.querySelector('span').textContent = 'Replay';
-      showStage(0, true);   // the first stage shows at once, so a switched plate is never blank
-      let at = DURATION.hear;
-      STAGES.slice(1).forEach((stage, i) => {
-        timers.push(later(() => { showStage(i + 1, true); if (stage === 'serve') finish(); }, at));
-        at += DURATION[stage] || 0;
-      });
+      $('span', playBtn).textContent = 'Replay';
+      if (reducedMotion) { showStage(3, false); return; }
+      showStage(0, true);
+      timers.push(later(() => showStage(1, true), DURATION[0]));
+      timers.push(later(() => showStage(2, true), DURATION[0] + DURATION[1]));
+      timers.push(later(finish, DURATION[0] + DURATION[1] + DURATION[2]));
     }
     function pick(tab, { focus = false, autoplay = true } = {}) {
       clearTimers();
       selectTab(tab, focus);
-      plate = plateOf(tab);
-      store.set('jervis-order', tab.dataset.order);
-      if (window.matchMedia('(max-width: 980px)').matches && tab.scrollIntoView) {
+      run = runOf(tab);
+      store.set('jarvis-ask', tab.dataset.ask);
+      if (window.matchMedia('(max-width: 980px)').matches && tab.scrollIntoView && played) {
         tab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reducedMotion ? 'auto' : 'smooth' });
       }
-      if (autoplay) play(); else { showStage(0, false); playBtn.querySelector('span').textContent = 'Play'; }
+      if (autoplay) play(); else { showStage(reducedMotion ? 3 : 0, false); $('span', playBtn).textContent = 'Play'; }
     }
-    demo.play = () => play();
-    demo.pick = (id) => { const tab = $(`.order[data-order="${id}"]`, counter); if (tab) pick(tab); };
+    demo.play = () => { if (!played) play(); };   // it also starts by itself on arrival; don't restart it
+    demo.pick = (id) => { const tab = $(`.ask[data-ask="${id}"]`, consoleEl); if (tab) pick(tab); };
 
-    // Without JavaScript every plate and every stage is shown in full; with it, one plate and one stage at a time.
-    const remembered = store.get('jervis-order');
-    const first = (remembered && $(`.order[data-order="${remembered}"]`, counter)) || tabs[0];
-    tabs.forEach((t) => { plateOf(t).hidden = t !== first; });
+    // Without JavaScript every run and every stage is shown in full; with it, one run and one stage at a time.
+    const remembered = store.get('jarvis-ask');
+    const first = (remembered && $(`.ask[data-ask="${remembered}"]`, consoleEl)) || tabs[0];
+    tabs.forEach((t) => { runOf(t).hidden = t !== first; });
     pick(first, { autoplay: false });
-    if (reducedMotion) showStage(3, false);
+    if (coreSlot && !reducedMotion) coreSlot.dataset.pose = 'idle';
+    stateEl.textContent = reducedMotion ? 'Done' : 'Ready';
 
-    orderList.addEventListener('click', (e) => { const t = e.target.closest('[role="tab"]'); if (t) pick(t); });
-    tabKeys(orderList, (t) => pick(t, { focus: true }));
+    askList.addEventListener('click', (e) => { const t = e.target.closest('[role="tab"]'); if (t) pick(t); });
+    tabKeys(askList, (t) => pick(t, { focus: true }));
     playBtn.addEventListener('click', () => play());
-    nextBtn.addEventListener('click', () => {
-      const i = tabs.indexOf($('.order[aria-selected="true"]', counter));
-      pick(tabs[(i + 1) % tabs.length]);
-    });
-    steps.forEach((btn, i) => btn.addEventListener('click', () => {   // jump to a step: the run stops there
+    nextBtn.addEventListener('click', () => pick(tabs[(tabs.indexOf(current()) + 1) % tabs.length]));
+    steps.forEach((btn, i) => btn.addEventListener('click', () => {   // jump to a stage: the run stops there
       clearTimers();
-      counterBusy = true;
-      showStage(i, false);
-      playBtn.querySelector('span').textContent = played ? 'Replay' : 'Play';
-      timers.push(later(() => { counterBusy = false; }, 4000));
+      showStage(i === 2 ? 3 : i, false);
+      $('span', playBtn).textContent = played ? 'Replay' : 'Play';
     }));
-    // The first order plays by itself once, when the counter first comes into view.
+    // The first request plays by itself once, when the console first comes into view.
     const io = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !played && !reducedMotion) { play(); io.disconnect(); }
-    }, { threshold: 0.35 });
-    io.observe(passBox);
-    new IntersectionObserver(([entry]) => { counterVisible = entry.isIntersecting; if (!reducedMotion) updatePaused(); }, { threshold: 0.05 }).observe($('.pass', counter));
+    }, { threshold: 0.45 });
+    io.observe(runsEl);
+
+    // A typed request runs the closest of the eight; the page says so instead of pretending to understand anything.
+    const WORDS = {
+      saturn: /saturn|planet|jupiter|mars|venus/, solve: /solve|equation|squared|x²|quadratic/,
+      graph: /graph|plot|sine|sin\b|function|curve/, globe: /how far|distance|new york|tel aviv|globe|miles|\bkm\b/,
+      spotify: /spotify|playlist|music|song|workout/, netflix: /netflix|episode|season|breaking bad|show\b|series/,
+      docs: /poem|write|word\b|document|essay/, computer: /dark mode|chrome|mouse|my computer|click|keyboard/,
+    };
+    const form = $('.ask-own', consoleEl);
+    const input = $('#askOwn');
+    const msg = $('#askOwnMsg');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = input.value.trim().toLowerCase();
+      if (!text) return;
+      const id = Object.keys(WORDS).find((k) => WORDS[k].test(text));
+      if (!id) { msg.textContent = 'This page can only replay the eight requests above. The real Jarvis takes anything you say.'; return; }
+      const tab = $(`.ask[data-ask="${id}"]`, consoleEl);
+      msg.textContent = `Closest request on this page: “${$('q', tab).textContent}”.`;
+      pick(tab);
+    });
   }
 
-  // ---------- The menu: search, kinds, where you get it, which computer; reset; copy a link ----------
+  // ---------- The feature list: search, kinds, where you get it, which computer; reset; copy a link ----------
   const groupsEl = $('#fxGroups');
-  const explorer = { show: () => {} };
+  const features = { show: () => {} };
   if (groupsEl) {
     const items = $$('.fx', groupsEl);
     const groups = $$('.fx-group', groupsEl);
@@ -393,7 +373,9 @@
     const statusEl = $('#fxStatus');
     const emptyEl = $('#fxEmpty');
     const clearBtn = $('#fxClear');
-    const DEFAULT = { q: '', cat: 'all', status: 'all', os: 'all' };
+    const moreRow = $('#fxMoreRow');
+    // With JavaScript the list opens on the highlights; searching or filtering looks through everything.
+    const DEFAULT = { q: '', cat: $('[data-filter-cat="top"]') ? 'top' : 'all', status: 'all', os: 'all' };
     const filter = { ...DEFAULT };
     const total = items.length;
     let statusTimer = null;
@@ -402,7 +384,7 @@
       const words = filter.q.toLowerCase().split(/\s+/).filter(Boolean);
       let shown = 0;
       items.forEach((li) => {
-        const ok = (filter.cat === 'all' || li.dataset.cat === filter.cat)
+        const ok = (filter.cat === 'all' || (filter.cat === 'top' ? li.classList.contains('fx-major') : li.dataset.cat === filter.cat))
           && (filter.status === 'all' || li.dataset.status === filter.status)
           && (filter.os === 'all' || li.dataset.os === 'both' || li.dataset.os === filter.os)
           && words.every((w) => li.dataset.words.includes(w));
@@ -412,33 +394,37 @@
       });
       groups.forEach((g) => { g.hidden = !$$('.fx', g).some((li) => !li.hidden); });
       emptyEl.hidden = shown > 0;
+      moreRow.hidden = filter.cat !== 'top';
       const dirty = Object.keys(DEFAULT).some((k) => filter[k] !== DEFAULT[k]);
       clearBtn.disabled = !dirty;
-      const text = shown === total ? `Showing all ${total}.` : shown === 0 ? `Nothing matches. 0 of ${total}.` : `Showing ${shown} of ${total}.`;
+      const text = filter.cat === 'top' && shown ? `Showing ${shown} highlights of ${total}.` : shown === total ? `Showing all ${total}.` : shown === 0 ? `Nothing matches. 0 of ${total}.` : `Showing ${shown} of ${total}.`;
       clearTimeout(statusTimer);
       if (announce) statusTimer = later(() => { statusEl.textContent = text; }, 300);
       else statusEl.textContent = text;
     }
     function set(key, value, announce = true) {
       filter[key] = value;
+      if (key !== 'cat' && value !== DEFAULT[key] && filter.cat === 'top') { filter.cat = 'all'; press('data-filter-cat', 'all'); }
       if (key === 'cat') press('data-filter-cat', value);
       if (key === 'status') press('data-filter-status', value);
       if (key === 'os') press('data-filter-os', value);
-      if (key === 'q') search.value = value;
+      if (key === 'q') { if (search.value !== value) search.value = value; filter.q = value.trim(); }
       apply(announce);
     }
     function reset() { Object.entries(DEFAULT).forEach(([k, v]) => set(k, v, false)); apply(true); }
-    search.addEventListener('input', () => { filter.q = search.value.trim(); apply(true); });
+    search.addEventListener('input', () => set('q', search.value.trim() ? search.value : ''));
     search.addEventListener('keydown', (e) => { if (e.key === 'Escape' && search.value) { e.preventDefault(); set('q', ''); } });
     $$('[data-filter-cat]').forEach((b) => b.addEventListener('click', () => set('cat', b.dataset.filterCat)));
     $$('[data-filter-status]').forEach((b) => b.addEventListener('click', () => set('status', b.dataset.filterStatus)));
     $$('[data-filter-os]').forEach((b) => b.addEventListener('click', () => set('os', b.dataset.filterOs)));
     clearBtn.addEventListener('click', () => { reset(); search.focus(); });
     $('#fxReset').addEventListener('click', () => { reset(); search.focus(); });
+    press('data-filter-cat', filter.cat);
     apply(false);
-    explorer.show = (status) => { reset(); set('status', status); };
+    $('#fxMore').addEventListener('click', () => set('cat', 'all'));
+    features.show = (status) => { reset(); set('status', status); };
 
-    // "Play it in the demo": pick that order on the counter and run it.
+    // "Play it in the demo": pick that request in the explorer and run it.
     const SCENES = { spotify: 'spotify', netflix: 'netflix', solve: 'solve', graph: 'graph', globe: 'globe', planets: 'saturn', docs: 'docs', computer: 'computer' };
     groupsEl.addEventListener('click', async (e) => {
       const scene = e.target.closest('[data-scene-link]');
@@ -463,6 +449,7 @@
       const li = document.getElementById(id);
       if (!li || !li.classList.contains('fx')) return;
       if (li.hidden) reset();
+      if (li.hidden) set('cat', 'all');
       $('details', li).open = true;
       li.classList.remove('is-flash'); void li.offsetWidth; li.classList.add('is-flash');
       li.scrollIntoView({ block: 'center', behavior: reducedMotion ? 'auto' : 'smooth' });
@@ -470,26 +457,18 @@
     window.addEventListener('hashchange', openFromHash);
     if (location.hash.startsWith('#f-')) later(openFromHash, 60);
   }
-  // "See what's next" in the download panel opens the menu on the next-release items.
-  $$('[data-show-status]').forEach((a) => a.addEventListener('click', () => explorer.show(a.dataset.showStatus)));
+  // "See what's next" opens the feature list on the next-release items.
+  $$('[data-show-status]').forEach((a) => a.addEventListener('click', () => features.show(a.dataset.showStatus)));
 
-  // ---------- The drive-in: plays the video once its file is named in data-video ----------
-  const frame = $('[data-video]');
-  if (frame && frame.dataset.video) {
-    const slot = $('.video-slot', frame);
-    const placeholder = slot.innerHTML;
-    const video = document.createElement('video');
-    video.controls = true;
-    video.playsInline = true;
-    video.preload = 'metadata';
-    video.poster = frame.dataset.videoPoster || '';
-    video.setAttribute('aria-label', 'Jervis at work, a short film');
-    const source = document.createElement('source');
-    source.src = frame.dataset.video;
-    source.type = /\.webm$/i.test(frame.dataset.video) ? 'video/webm' : 'video/mp4';
-    source.addEventListener('error', () => { slot.innerHTML = placeholder; });   // missing or unplayable file: keep the card
-    video.append(source);
-    slot.replaceChildren(video);
+  // ---------- The screenshot viewer leans a little toward the pointer ----------
+  const shots = $('[data-tilt]');
+  if (shots && !reducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    shots.addEventListener('pointermove', (e) => {
+      const r = shots.getBoundingClientRect();
+      shots.style.setProperty('--ry', `${(((e.clientX - r.left) / r.width - 0.5) * 3).toFixed(2)}deg`);
+      shots.style.setProperty('--rx', `${(-((e.clientY - r.top) / r.height - 0.5) * 2.4).toFixed(2)}deg`);
+    });
+    shots.addEventListener('pointerleave', () => { shots.style.setProperty('--ry', '0deg'); shots.style.setProperty('--rx', '0deg'); });
   }
 
   // ---------- Copy buttons ----------
@@ -533,8 +512,8 @@
 
   // ---------- Download ----------
   // The download section has a button per installer; on a computer, the one for that computer comes first and stands
-  // out. The buttons in the hero, header and closing lead to that section and point at the right installer, so the
-  // warnings and the other system are always in view. On a phone, where Jervis can't run, they send the page on.
+  // out. The buttons in the hero and header lead to that section and point at the right installer, so the warnings
+  // and the other system are always in view. On a phone, where Jarvis can't run, they send the page on.
   const toast = $('#toast');
   const toastText = $('#toastText');
   const toastLink = $('#toastLink');
@@ -555,18 +534,18 @@
   const mine = installers[os];
   if (!isMobile && mine) {
     const other = installers[os === 'win' ? 'mac' : 'win'];
-    mine.classList.remove('btn-outline'); mine.classList.add('btn-teal');
-    other.classList.remove('btn-teal'); other.classList.add('btn-outline');
+    mine.classList.remove('btn-ghost'); mine.classList.add('btn-primary');
+    other.classList.remove('btn-primary'); other.classList.add('btn-ghost');
     const option = mine.closest('.dl-option');
     option.parentElement.prepend(option);
     $$('[data-os-link]').forEach((link) => {
       const label = $('.btn-label', link);
-      if (label && label.textContent === 'Download Jervis') label.textContent = `Download for ${os === 'win' ? 'Windows' : 'Mac'}`;
+      if (label && label.textContent === 'Download Jarvis') label.textContent = `Download for ${os === 'win' ? 'Windows' : 'Mac'}`;
     });
   }
   if (isMobile) {
     $$('[data-os-link]').forEach((link) => {
-      link.setAttribute('aria-label', 'Send Jervis to my computer');
+      link.setAttribute('aria-label', 'Send Jarvis to my computer');
       const label = $('.btn-label', link);
       if (label) label.textContent = 'Send to my computer';
       const use = $('use', link);
@@ -580,13 +559,13 @@
     const url = new URL('#download', location.href).href;
     let shared = false;
     if (navigator.share) {
-      try { await navigator.share({ title: 'Jervis', text: 'Jervis, a voice assistant for Windows and macOS', url }); shared = true; }
+      try { await navigator.share({ title: 'Jarvis', text: 'Jarvis, a voice assistant for Windows and macOS', url }); shared = true; }
       catch (err) { if (err && err.name === 'AbortError') return; }
     }
     const copied = shared ? false : await copyText(url);
-    showToast(shared ? 'Open the link on your PC or Mac to download Jervis.'
-      : copied ? 'Link copied. Open it on your PC or Mac to download Jervis.'
-        : 'Open this page on your PC or Mac to download Jervis.', 'See the downloads', '#download');
+    showToast(shared ? 'Open the link on your PC or Mac to download Jarvis.'
+      : copied ? 'Link copied. Open it on your PC or Mac to download Jarvis.'
+        : 'Open this page on your PC or Mac to download Jarvis.', 'See the downloads', '#download');
   }
   $$('[data-to-download]').forEach((link) => link.addEventListener('click', (e) => {
     if (isMobile && link.hasAttribute('data-os-link')) { e.preventDefault(); sendToComputer(); return; }
@@ -596,40 +575,55 @@
     later(() => {
       option.classList.remove('is-picked'); void option.offsetWidth; option.classList.add('is-picked');
       mine.focus({ preventScroll: true });
-    }, reducedMotion ? 50 : 650);
+    }, reducedMotion ? 50 : 900);
   }));
   $$('[data-download]').forEach((link) => link.addEventListener('click', () => {
     const where = (link.closest('[data-platform]') || {}).dataset?.platform || os;
     // The page can't see the download itself, so it says what should happen and where to go next.
     showToast(where === 'win' ? 'Your browser should now download the Windows installer. Next, run it.'
-      : 'Your browser should now download Jervis for Mac. Next, open it and drag Jervis to Applications.', 'See the install steps', '#install');
+      : 'Your browser should now download the Mac installer. Next, open it and drag the app to Applications.', 'See the install steps', '#install');
     const tab = $(`.os-tabs [data-os="${where}"]`);
     if (tab) selectTab(tab, false);
   }));
   $('.toast-close').addEventListener('click', hideToast);
   toastLink.addEventListener('click', hideToast);
 
-  // "Try the demo" lands on the counter and plays the order that is up.
-  $$('[data-play-demo]').forEach((a) => a.addEventListener('click', () => later(() => demo.play(), reducedMotion ? 0 : 600)));
+  // "Explore the demo" lands on the explorer and plays the request that is up.
+  $$('[data-play-demo]').forEach((a) => a.addEventListener('click', () => later(() => demo.play(), reducedMotion ? 0 : 900)));
 
-  // ---------- Lights that come on once, and sections that settle in as they arrive ----------
-  const lightOnce = (el, threshold) => {
-    if (!el) return;
-    if (reducedMotion) { el.classList.add('is-lit'); return; }
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { el.classList.add('is-lit'); io.disconnect(); }
-    }, { threshold });
-    io.observe(el);
-  };
-  lightOnce($('[data-flow]'), 0.4);
-  lightOnce($('.closing'), 0.5);
+  // ---------- Blocks that start below the fold settle in once, as they arrive ----------
   if (!reducedMotion && 'IntersectionObserver' in window) {
     // Only what starts below the fold is held back, so nothing on screen ever waits; it all shows if this fails.
     const revealIO = new IntersectionObserver((entries) => entries.forEach((entry) => {
       if (entry.isIntersecting) { entry.target.classList.add('is-in'); revealIO.unobserve(entry.target); }
     }), { rootMargin: '0px 0px -8% 0px' });
-    $$('.section-head, .marquee, .screen-frame, .board, .rail, .ledger, .controls, .req-grid, .download-panel, .install-panels, .install-extra, .faq-list')
+    $$('.section-head, .console, .specs, .board, .ledger, .controls, .req-grid, .install-panels, .install-extra, .faq-list, .download-head, .download-actions, .download-more')
       .filter((el) => el.getBoundingClientRect().top > window.innerHeight)
       .forEach((el) => { el.classList.add('reveal'); revealIO.observe(el); });
+  }
+
+  // ---------- The 3D core: loaded after the page is up; the app's own 2D core stands in where WebGL can't run ----------
+  const sceneCanvas = $('#scene');
+  function standIn() {
+    root.classList.add('no-webgl');
+    const s = document.createElement('script');
+    s.src = new URL('orb.js', scriptUrl).href;
+    s.onload = () => { if (window.initOrb) { window.initOrb('heroOrb'); window.setOrbState('speaking'); } };   // 'speaking' is its blue state
+    document.head.append(s);
+  }
+  function hasWebGL() {
+    try {
+      const c = document.createElement('canvas');
+      return Boolean(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl')));
+    } catch (_) { return false; }
+  }
+  if (sceneCanvas && scriptUrl) {
+    if (!hasWebGL()) standIn();
+    else {
+      const start = () => import(new URL('core3d.js', scriptUrl).href)
+        .then((m) => { m.initCore({ canvas: sceneCanvas, reducedMotion }); root.classList.add('core-on'); })
+        .catch(standIn);
+      if ('requestIdleCallback' in window) window.requestIdleCallback(start, { timeout: 900 }); else later(start, 120);
+    }
   }
 })();

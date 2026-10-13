@@ -1,5 +1,5 @@
 {
-  "_about": "Every user-facing Jervis capability, checked against the app's source (ArielZaha/jervis-app). status: download = in the current installer (v1.0.5); next = in the source code, not yet in an installer; source = only when running Jervis from the source code. os: both | mac | win. tools/build_features.py renders this into index.html.",
+  "_about": "Every user-facing Jarvis capability, checked against the app's source (ArielZaha/jervis-app). status: download = in the current installer (v1.0.5); next = in the source code, not yet in an installer; source = only when running Jarvis from the source code. os: both | mac | win. tools/build_features.py renders this into index.html.",
   "categories": [
     {"id": "talk", "name": "Talking to him"},
     {"id": "music", "name": "Music"},
@@ -19,9 +19,9 @@
   "features": [
     {"id": "wake", "cat": "talk", "status": "download", "os": "both", "major": true,
      "name": "Wake him by voice",
-     "summary": "Say “Hey Jervis” (or “Wake up Jervis”, “Hello Jervis”). His window opens full screen and he listens.",
+     "summary": "Say “Hey Jarvis” (or “Wake up Jarvis”, “Hello Jarvis”). His window opens full screen and he listens.",
      "benefit": "Hands-free from across the room.",
-     "say": "Hey Jervis"},
+     "say": "Hey Jarvis"},
     {"id": "stt", "cat": "talk", "status": "download", "os": "both",
      "name": "Speech recognition on your computer",
      "summary": "Your speech becomes text with Whisper, running locally. Only in the first minutes after installing, while it downloads, is Google’s free recognizer used.",
@@ -326,7 +326,7 @@
      "needs": "WhatsApp Desktop and Full Disk Access. Can be turned off in Settings."},
 
     {"id": "phoneapp", "cat": "phone", "status": "next", "os": "both", "major": true,
-     "name": "Jervis on your phone",
+     "name": "Jarvis on your phone",
      "summary": "A chat app for iPhone and Android, added to your Home Screen, with the same orb. Hold the mic button and talk, or type.",
      "benefit": "Your assistant in your pocket."},
     {"id": "pair", "cat": "phone", "status": "next", "os": "both",
@@ -336,7 +336,7 @@
      "say": "Connect my phone"},
     {"id": "remote", "cat": "phone", "status": "next", "os": "both",
      "name": "Run your computer from your phone",
-     "summary": "“On my computer” sends everything to the Jervis at home: music, apps, documents, computer control. Graphs, planets and the globe open on the phone too.",
+     "summary": "“On my computer” sends everything to the Jarvis at home: music, apps, documents, computer control. Graphs, planets and the globe open on the phone too.",
      "benefit": "Start the music from the couch."},
     {"id": "phonebrain", "cat": "phone", "status": "next", "os": "both",
      "name": "Works with the computer off",
@@ -350,7 +350,7 @@
      "say": "Forget my paired phones"},
     {"id": "sms", "cat": "phone", "status": "next", "os": "both",
      "name": "Text-message pairing",
-     "summary": "Optionally, Jervis texts you the first pairing question instead.",
+     "summary": "Optionally, Jarvis texts you the first pairing question instead.",
      "benefit": "Pair without opening a page first.",
      "needs": "A free Twilio account."},
 
@@ -375,8 +375,8 @@
      "summary": "His window gets a starfield with shooting stars crossing the whole sky.",
      "benefit": "A window you’ll like leaving open."},
     {"id": "wakehelper", "cat": "window", "status": "source", "os": "both",
-     "name": "Jervis Wake",
-     "summary": "A tiny background listener that opens Jervis when it hears the wake phrase, even when he is closed.",
+     "name": "Jarvis Wake",
+     "summary": "A tiny background listener that opens Jarvis when it hears the wake phrase, even when he is closed.",
      "benefit": "Wake him even after quitting.",
      "needs": "Installed separately with the script in the source code."},
 
