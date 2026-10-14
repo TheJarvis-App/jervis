@@ -49,12 +49,13 @@ controls.
 
 ## The trailer
 
-The page plays `assets/video/jarvis-trailer-preview.mp4`, a 960x540 preview export. To switch to the full-quality one:
+The page plays `assets/video/jarvis-trailer-final.mp4` (1920x1080, H.264 and AAC, fast start, 1:40, 56 MB). To swap in
+a different cut:
 
-1. Export it as MP4 (H.264 video, AAC audio, 1920x1080, about 6 to 8 Mbps, "fast start" / "web optimised" on) and save
-   it as `assets/video/jarvis-trailer.mp4`. Keep it under about 60 MB; GitHub refuses files over 100 MB.
-2. In `index.html`, change the three `jarvis-trailer-preview.mp4` paths in the trailer section to `jarvis-trailer.mp4`,
-   and the `width` and `height` on the `<video>` to the new size.
+1. Export it as MP4 (H.264 video, AAC audio, 1920x1080, about 4 to 8 Mbps, "fast start" / "web optimised" on) and save
+   it in `assets/video/`. Keep it under about 60 MB; GitHub refuses files over 100 MB.
+2. In `index.html`, change the three video paths in the trailer section, and the `width` and `height` on the `<video>`
+   if the size changed.
 3. Replace `assets/img/trailer-poster.webp` with a still from the new file, and fix the length shown on the play button
    (`cinema-len`) and in the line under the heading if it changed.
 
