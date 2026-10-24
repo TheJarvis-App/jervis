@@ -3,7 +3,11 @@ __pycache__/
 *.pyc
 .playwright-cli/
 
-# design notes (not part of the site)
+# Design working files (design brief, design system, contracts, review captures, audit and QA reports)
+# and image provenance notes; GitHub Pages would publish them
+.impeccable/
 PRODUCT.md
 DESIGN.md
-.impeccable/
+*.webp.json
+*.png.json
+*.jpg.json

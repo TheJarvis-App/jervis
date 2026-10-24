@@ -15,7 +15,7 @@
   <meta property="og:site_name" content="Jarvis" />
   <meta property="og:title" content="Jarvis: a voice assistant for macOS and Windows" />
   <meta property="og:description" content="Say “Hey Jarvis” to play music and shows, open apps, write documents, set timers, and solve or graph math." />
-  <meta property="og:image" content="https://thejarvis-app.github.io/jervis/assets/img/og-jervis.jpg" />
+  <meta property="og:image" content="https://thejarvis-app.github.io/jervis/assets/img/og-jarvis.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="The Jarvis window: the voice core in the middle, system and weather panels on the left, the conversation on the right." />
@@ -118,6 +118,7 @@
     <nav class="site-nav" id="siteNav" aria-label="Main">
       <ul>
         <li><a href="#showcase">See him work</a></li>
+        <li><a href="#watch">Trailer</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#privacy">Privacy</a></li>
@@ -258,6 +259,30 @@
 
   <!-- ============ Features ============ -->
   <!-- ============ Worlds: the planets Jarvis shows, in real 3D you can turn ============ -->
+  <!-- ============ Trailer ============ -->
+  <section class="section trailer" id="watch" aria-labelledby="watchTitle">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <h2 id="watchTitle">See him at work.</h2>
+        <p>The trailer: one minute and forty seconds, with sound.</p>
+      </div>
+      <div class="cinema" data-reveal>
+        <div class="cinema-frame">
+          <video id="trailer" controls playsinline preload="none" poster="assets/img/trailer-poster.webp" width="1920" height="1080" aria-label="The Jarvis trailer">
+            <source src="assets/video/jarvis-trailer-final.mp4" type="video/mp4" />
+            <a href="assets/video/jarvis-trailer-final.mp4">Download the trailer (MP4)</a>
+          </video>
+          <button class="cinema-play" type="button" data-cinema-play hidden>
+            <span class="cinema-ring" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="cinema-label">Play the trailer</span>
+            <span class="cinema-len">1:40</span>
+          </button>
+        </div>
+        <p class="cinema-note">The trailer also shows the phone app, calendar events, two functions on one graph and Jarvis building a house in Blender. Those are built and arrive with the next release. <a href="#next">See what’s next</a></p>
+      </div>
+    </div>
+  </section>
+
   <section class="section worlds" id="worlds" aria-labelledby="worldsTitle" data-worlds data-start="saturn">
     <div class="container">
       <div class="section-head" data-reveal>
@@ -749,6 +774,7 @@
     <nav aria-label="Footer">
       <ul class="footer-links">
         <li><a href="#showcase">See him work</a></li>
+        <li><a href="#watch">Trailer</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#privacy">Privacy</a></li>

@@ -265,3 +265,18 @@
     }
   }
 })();
+
+// ---------- the trailer: a big play button over its poster; the film only downloads once it's asked for ----------
+(function () {
+  const video = document.getElementById('trailer');
+  const play = document.querySelector('[data-cinema-play]');
+  if (!video || !play) return;
+  video.controls = false;
+  play.hidden = false;
+  play.addEventListener('click', () => {
+    play.hidden = true;
+    video.controls = true;
+    video.play().catch(() => { video.controls = true; });
+  });
+  video.addEventListener('play', () => { play.hidden = true; video.controls = true; });
+})();

@@ -555,3 +555,20 @@ html:not(.gl) .build-skip, .build.is-failed .build-skip, .build.is-still .build-
 .worlds.is-loading .worlds-facts { color: var(--faint); }
 .sky #dust { position: absolute; left: 0; top: 0; display: block; width: 100%; height: 130%; }   /* the near layer: room to drift up a quarter as fast as the page */
 @media (max-width: 760px) { .worlds-pick { border-radius: 22px; } .worlds-pick button { padding: 0 12px; font-size: 14px; } }
+
+/* ---------- the trailer: a framed film, its poster until it's asked for (nothing downloads before that) ---------- */
+.cinema { max-width: 1080px; }
+.cinema-frame { position: relative; border-radius: var(--r-l); overflow: hidden; background: #000; border: 1px solid var(--line-2);
+  box-shadow: 0 40px 90px -40px rgb(var(--acc) / .35), 0 0 0 1px rgb(var(--acc) / .06); aspect-ratio: 16 / 9; }
+.cinema-frame video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.cinema-play { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 10px; border: 0; cursor: pointer;
+  background: radial-gradient(60% 60% at 50% 50%, rgb(3 5 11 / .15), rgb(3 5 11 / .55)); color: #fff; font: 600 15px/1.2 var(--sans); }
+.cinema-play[hidden] { display: none; }
+.cinema-ring { width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; background: rgb(var(--acc)); color: var(--ink);
+  box-shadow: 0 0 0 10px rgb(var(--acc) / .16), 0 18px 40px -10px rgb(var(--acc) / .7); transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
+.cinema-ring svg { width: 34px; height: 34px; fill: currentColor; margin-left: 4px; }
+.cinema-play:hover .cinema-ring { transform: scale(1.06); box-shadow: 0 0 0 14px rgb(var(--acc) / .2), 0 22px 50px -10px rgb(var(--acc) / .8); }
+.cinema-len { font: 500 12px/1 var(--mono); letter-spacing: .12em; color: var(--muted); }
+.cinema-note { margin-top: 18px; max-width: 46em; color: var(--faint); font-size: 14.5px; }
+.cinema-note a { color: rgb(var(--acc)); }
+@media (prefers-reduced-motion: reduce) { .cinema-ring { transition: none; } }
