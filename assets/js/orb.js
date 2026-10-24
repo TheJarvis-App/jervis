@@ -125,7 +125,7 @@
     }
 
     function frame(now) {
-      if (document.hidden || document.body.classList.contains('scene-paused')) {   // nothing to see: do no work
+      if (document.hidden || canvas.hidden || document.body.classList.contains('scene-paused')) {   // nothing to see (or the 3D core took over): do no work
         last = now;
         requestAnimationFrame(frame);
         return;

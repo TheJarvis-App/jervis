@@ -2,35 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jervis: a voice assistant for macOS and Windows</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Jarvis: a voice assistant for macOS and Windows</title>
   <meta name="author" content="Ariel &amp; Shalev" />
-  <meta name="description" content="Jervis is a free voice assistant for Windows and macOS whose AI runs on your own computer. Say “Hey Jervis” to play music and shows, open apps, write documents, set timers, solve or graph math, or have him use the mouse and keyboard." />
+  <meta name="description" content="Jarvis is a free voice assistant for Windows and macOS whose AI runs on your own computer. Say “Hey Jarvis” to play music and shows, open apps, write documents, set timers, solve or graph math, or have him use the mouse and keyboard." />
   <meta name="google-site-verification" content="6aKkwq83vbJKzHDl6cs3eDOjJfXJ3KBH9H88roffeGo" />
-  <link rel="canonical" href="https://arielzaha.github.io/jervis/" />
-  <meta property="og:url" content="https://arielzaha.github.io/jervis/" />
-  <meta name="theme-color" content="#03060d" />
+  <link rel="canonical" href="https://thejarvis-app.github.io/jervis/" />
+  <meta property="og:url" content="https://thejarvis-app.github.io/jervis/" />
+  <meta name="theme-color" content="#03050b" />
   <meta name="color-scheme" content="dark" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Jervis" />
-  <meta property="og:title" content="Jervis: a voice assistant for macOS and Windows" />
-  <meta property="og:description" content="Say “Hey Jervis” to play music and shows, open apps, write documents, set timers, and solve or graph math." />
-  <meta property="og:image" content="https://arielzaha.github.io/jervis/assets/img/og-jervis.jpg" />
+  <meta property="og:site_name" content="Jarvis" />
+  <meta property="og:title" content="Jarvis: a voice assistant for macOS and Windows" />
+  <meta property="og:description" content="Say “Hey Jarvis” to play music and shows, open apps, write documents, set timers, and solve or graph math." />
+  <meta property="og:image" content="https://thejarvis-app.github.io/jervis/assets/img/og-jervis.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="The Jervis window: the voice core in the middle, system and weather panels on the left, the conversation on the right." />
+  <meta property="og:image:alt" content="The Jarvis window: the voice core in the middle, system and weather panels on the left, the conversation on the right." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
-  <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="modulepreload" href="assets/js/vendor/anime.esm.min.js" />
+  <link rel="modulepreload" href="assets/js/journey.js" />
+  <link rel="modulepreload" href="assets/js/vendor/three.module.min.js" />
+  <link rel="modulepreload" href="assets/js/three/kit.js" />
+  <link rel="modulepreload" href="assets/js/three/core3d.js" />
   <link rel="stylesheet" href="assets/css/site.css" />
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    // Motion runs only when it can: modules supported and no reduced-motion preference. Until motion.js says it has
+    // started (html.motion-live), nothing is hidden for long: if it never starts, the page shows as it is.
+    (function (d) {
+      var h = d.documentElement; h.classList.add('js');
+      if ('WebGL2RenderingContext' in window) h.classList.add('gl');   // the 3D core will draw; motion.js takes this off if it can't
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if ('noModule' in HTMLScriptElement.prototype && !reduce) {
+        h.classList.add('motion-ready');
+        setTimeout(function () { if (!h.classList.contains('motion-live')) h.classList.remove('motion-ready'); }, 2500);
+      }
+    })(document);
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Jervis",
-    "description": "A voice assistant for Windows and macOS that plays media, opens apps, writes documents, sets timers, solves and graphs math, and can use the mouse and keyboard when asked. Its AI runs on your own computer.",
+    "name": "Jarvis",
+    "description": "A voice assistant for Windows and macOS that plays media, opens apps, writes documents, sets timers, solves and graphs math, and can use the mouse and keyboard when asked. Its AI can run on your own computer.",
     "operatingSystem": "Windows 10, Windows 11, macOS 11 or later (Apple silicon)",
     "applicationCategory": "UtilitiesApplication",
     "softwareVersion": "1.0.5",
@@ -49,9 +67,9 @@
         "name": "Shalev"
       }
     ],
-    "url": "https://arielzaha.github.io/jervis/",
-    "downloadUrl": "https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.5",
-    "screenshot": "https://arielzaha.github.io/jervis/assets/img/jervis-chat-1600.webp"
+    "url": "https://thejarvis-app.github.io/jervis/",
+    "downloadUrl": "https://github.com/TheJarvis-App/jarvis-app/releases/tag/v1.0.5",
+    "screenshot": "https://thejarvis-app.github.io/jervis/assets/img/jervis-chat-1600.webp"
   }
   </script>
 </head>
@@ -81,22 +99,25 @@
 <symbol id="i-chat-circle-text" viewBox="0 0 256 256"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-8A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"/></symbol>
 <symbol id="i-paper-plane-tilt" viewBox="0 0 256 256"><path d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-82.3,48-48a8,8,0,0,0-11.31-11.31l-48,48L24.08,98.25l-.07,0,.14,0L216,40Z"/></symbol>
 <symbol id="i-arrows-out" viewBox="0 0 256 256"><path d="M216,48V96a8,8,0,0,1-16,0V67.31l-42.34,42.35a8,8,0,0,1-11.32-11.32L188.69,56H160a8,8,0,0,1,0-16h48A8,8,0,0,1,216,48ZM98.34,146.34,56,188.69V160a8,8,0,0,0-16,0v48a8,8,0,0,0,8,8H96a8,8,0,0,0,0-16H67.31l42.35-42.34a8,8,0,0,0-11.32-11.32ZM208,152a8,8,0,0,0-8,8v28.69l-42.34-42.35a8,8,0,0,0-11.32,11.32L188.69,200H160a8,8,0,0,0,0,16h48a8,8,0,0,0,8-8V160A8,8,0,0,0,208,152ZM67.31,56H96a8,8,0,0,0,0-16H48a8,8,0,0,0-8,8V96a8,8,0,0,0,16,0V67.31l42.34,42.35a8,8,0,0,0,11.32-11.32Z"/></symbol>
+<symbol id="i-code" viewBox="0 0 256 256"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></symbol>
 </svg>
 <a class="skip-link" href="#main">Skip to content</a>
+<div class="sky" aria-hidden="true"><canvas id="starfield"></canvas></div>
 
 <header class="site-header" id="top">
   <div class="container header-inner">
-    <a class="brand" href="#top" aria-label="Jervis, back to top">
+    <a class="brand" href="#top" aria-label="Jarvis, back to top">
       <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
         <defs><linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fd8ff"/><stop offset="1" stop-color="#a58bff"/></linearGradient></defs>
         <circle cx="16" cy="16" r="6" fill="url(#brandGrad)"/>
         <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(-25 16 16)" opacity=".85"/>
         <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(35 16 16)" opacity=".45"/>
       </svg>
-      <span class="wordmark">Jervis</span>
+      <span class="wordmark">Jarvis</span>
     </a>
     <nav class="site-nav" id="siteNav" aria-label="Main">
       <ul>
+        <li><a href="#showcase">See him work</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#privacy">Privacy</a></li>
@@ -104,8 +125,8 @@
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary btn-sm header-cta" href="#download" data-download data-os-link aria-label="Download Jervis">
-      <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jervis</span>
+    <a class="btn btn-primary btn-sm header-cta" href="#download" data-download data-os-link aria-label="Download Jarvis">
+      <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download</span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
       <svg class="icon icon-open" aria-hidden="true"><use href="#i-list"/></svg>
@@ -116,97 +137,166 @@
 </header>
 
 <main id="main">
-  <!-- ============ Hero ============ -->
+  <!-- ============ Hero: Jarvis's own core, holding a real conversation ============ -->
   <section class="hero" id="intro" aria-labelledby="heroTitle">
-    <div class="hero-backdrop" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1 id="heroTitle">Run your computer by&nbsp;voice.</h1>
-        <p class="lede">Say “Hey Jervis” and ask for music, shows, timers, documents or graphs. He opens the right app and does it.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#download" data-download data-os-link>
-            <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jervis</span>
+        <h1 id="heroTitle" data-hero="title"><span class="hero-name">Jarvis<span class="sr-only">:</span></span> <span class="hero-line">Run your computer by&nbsp;voice.</span></h1>
+        <p class="lede" data-hero="lede">Say “Hey Jarvis” and ask for music, shows, timers, documents or graphs. He opens the right app and does it, and tells you only what really happened.</p>
+        <div class="cta-row" data-hero="cta">
+          <a class="btn btn-primary btn-lg" href="#download" data-download data-os-link>
+            <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jarvis</span>
           </a>
-          <a class="btn btn-ghost" href="#showcase"><span>See what he can do</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a class="btn btn-ghost btn-lg" href="#showcase"><span>See him work</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         </div>
-        <p class="hero-meta" id="heroMeta">Free for Windows 10 and 11, and Macs with Apple silicon. No account and no API key: his AI runs on your computer.</p>
+        <p class="hero-meta" id="heroMeta" data-hero="meta">Free for Windows 10 and 11, and Macs with Apple silicon. No account and no API key: his AI runs on your computer.</p>
       </div>
-      <figure class="hero-core">
+
+      <figure class="hero-core" data-hero="core">
         <div class="core-stage">
-          <canvas id="heroOrb" role="img" aria-label="The Jervis voice core, the animated sphere from the Jervis window."></canvas>
-          <i class="reticle tl" aria-hidden="true"></i><i class="reticle tr" aria-hidden="true"></i><i class="reticle bl" aria-hidden="true"></i><i class="reticle br" aria-hidden="true"></i>
+          <svg class="core-dial" viewBox="0 0 600 600" aria-hidden="true">
+            <defs>
+              <linearGradient id="dialGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fd8ff"/><stop offset="1" stop-color="#a58bff"/></linearGradient>
+            </defs>
+            <circle class="dial-ring" cx="300" cy="300" r="276" />
+            <circle class="dial-ring dial-ring-2" cx="300" cy="300" r="246" />
+            <path class="dial-arc" d="M 300 24 A 276 276 0 0 1 576 300" />
+            <path class="dial-arc dial-arc-2" d="M 300 576 A 276 276 0 0 1 24 300" />
+            <g class="dial-ticks"></g>
+            <path id="orbitPath" class="dial-orbit" d="M 64 352 C 120 200 470 150 538 248 C 600 340 160 470 64 352 Z" />
+            <g class="comet"><circle r="5" /><circle class="comet-glow" r="12" /></g>
+          </svg>
+          <canvas id="heroOrb" role="img" aria-label="The Jarvis voice core, the animated sphere from the Jarvis window."></canvas>
         </div>
-        <figcaption class="core-caption">
+        <figcaption class="core-caption" aria-live="off">
           <span class="core-state" id="coreState">Ready</span>
-          <span class="core-sub" id="coreSub">Say “Hey Jervis”.</span>
+          <span class="core-sub" id="coreSub">Say “Hey Jarvis”.</span>
         </figcaption>
       </figure>
     </div>
+    <a class="scroll-cue" href="#showcase" aria-label="Scroll to see him work"><span></span></a>
   </section>
 
-  <!-- ============ Product showcase ============ -->
+  <!-- ============ Showcase: real screens, told in order ============ -->
   <section class="section showcase" id="showcase" aria-labelledby="showcaseTitle">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2 id="showcaseTitle">He answers out loud, and shows his work.</h2>
-        <p>Replies appear in the Jervis window as he speaks: the conversation, worked math, graphs and a 3D globe.</p>
+        <p>Replies appear in his window as he speaks: the conversation, worked math, graphs, a 3D globe and the planets. These are real screenshots of Jarvis 1.0.5, the version you download today.</p>
       </div>
 
-      <div class="tabs showcase-tabs" role="tablist" aria-label="Jervis window screens" data-tabs>
-        <button class="tab" role="tab" type="button" id="tab-chat" aria-selected="true" aria-controls="panel-chat">Conversation</button>
-        <button class="tab" role="tab" type="button" id="tab-graph" aria-selected="false" aria-controls="panel-graph" tabindex="-1">Graphs</button>
-        <button class="tab" role="tab" type="button" id="tab-globe" aria-selected="false" aria-controls="panel-globe" tabindex="-1">Globe</button>
+      <div class="story" data-story>
+        <div class="story-stage" aria-hidden="true"><div class="stage-frame"><div class="stage-shots"></div><div class="stage-progress"><i></i></div></div></div>
+        <ol class="story-steps">
+          <li class="story-step" id="step-chat">
+            <div class="step-text">
+              <span class="step-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Tell me about Saturn</q></span>
+              <h3>A conversation, out loud and on screen</h3>
+              <p>Replies land in the conversation as he speaks, with facts and worked math laid out to read. Everything you can say, you can also type.</p>
+            </div>
+            <figure class="step-shot">
+              <img src="assets/img/jervis-chat-1600.webp" srcset="assets/img/jervis-chat-960.webp 960w, assets/img/jervis-chat-1600.webp 1600w, assets/img/jervis-chat-2400.webp 2400w"
+                   sizes="(min-width: 1000px) 58vw, 94vw" width="1600" height="1000" fetchpriority="high"
+                   alt="The Jarvis window. System, weather and suggested commands on the left; the voice core in the middle, set to Listening; on the right, a quadratic equation solved step by step and facts about Saturn." />
+              <a class="shot-full" href="assets/img/jervis-chat-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
+            </figure>
+          </li>
+          <li class="story-step" id="step-math">
+            <div class="step-text">
+              <span class="step-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Solve x squared minus 5x plus 6 equals 0</q></span>
+              <h3>Math with every step shown</h3>
+              <p>Linear and quadratic equations are solved by his own code, not guessed by an AI: the exact answer, and each step on the way to it.</p>
+            </div>
+            <figure class="step-shot">
+              <img src="assets/img/jervis-worksheet-1000.webp" srcset="assets/img/jervis-worksheet-560.webp 560w, assets/img/jervis-worksheet-1000.webp 1000w"
+                   sizes="(min-width: 1000px) 40vw, 94vw" width="1000" height="889" loading="lazy"
+                   alt="Jarvis’s worked answer: the discriminant, the quadratic formula, then the answer, x equals 2 or x equals 3." />
+            </figure>
+          </li>
+          <li class="story-step" id="step-graph">
+            <div class="step-text">
+              <span class="step-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Graph sine of x over x</q></span>
+              <h3>Any function, drawn and explained</h3>
+              <p>Its intercepts, highs and lows and asymptotes marked. In the app, point at the curve to read any value, and press G to see the last graph again.</p>
+            </div>
+            <figure class="step-shot">
+              <img src="assets/img/jervis-graph-1600.webp" srcset="assets/img/jervis-graph-960.webp 960w, assets/img/jervis-graph-1600.webp 1600w, assets/img/jervis-graph-2400.webp 2400w"
+                   sizes="(min-width: 1000px) 58vw, 94vw" width="1600" height="1000" loading="lazy"
+                   alt="A graph of y equals sine of x over x in the Jarvis window, with its x-intercepts, local maxima and minima and the horizontal asymptote y equals 0 labelled." />
+              <a class="shot-full" href="assets/img/jervis-graph-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
+            </figure>
+          </li>
+          <li class="story-step" id="step-globe">
+            <div class="step-text">
+              <span class="step-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>What is the distance between New York and Tel Aviv</q></span>
+              <h3>The world, to scale</h3>
+              <p>The straight-line route on a 3D Earth with clouds and a day and night line. In the app you can turn it and zoom in.</p>
+            </div>
+            <figure class="step-shot">
+              <img src="assets/img/jervis-globe-1600.webp" srcset="assets/img/jervis-globe-960.webp 960w, assets/img/jervis-globe-1600.webp 1600w, assets/img/jervis-globe-2400.webp 2400w"
+                   sizes="(min-width: 1000px) 58vw, 94vw" width="1600" height="1000" loading="lazy"
+                   alt="A 3D Earth in the Jarvis window with a glowing arc from New York to Tel Aviv, labelled 9,115 km, 5,664 miles, heading 54.1 degrees." />
+              <a class="shot-full" href="assets/img/jervis-globe-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
+            </figure>
+          </li>
+          <li class="story-step" id="step-planet">
+            <div class="step-text">
+              <span class="step-say"><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Tell me about Saturn</q></span>
+              <h3>Planets you can hold</h3>
+              <p>Ask about a planet for its facts and a lit 3D model you can turn.</p>
+            </div>
+            <figure class="step-shot">
+              <img src="assets/img/jervis-planet-1280.webp" srcset="assets/img/jervis-planet-800.webp 800w, assets/img/jervis-planet-1280.webp 1280w"
+                   sizes="(min-width: 1000px) 58vw, 94vw" width="1280" height="760" loading="lazy"
+                   alt="Jarvis’s lit 3D model of Saturn and its rings." />
+            </figure>
+          </li>
+        </ol>
       </div>
-
-      <div class="shot-frame">
-        <figure class="shot" role="tabpanel" id="panel-chat" aria-labelledby="tab-chat">
-          <img src="assets/img/jervis-chat-1600.webp"
-               srcset="assets/img/jervis-chat-960.webp 960w, assets/img/jervis-chat-1600.webp 1600w, assets/img/jervis-chat-2400.webp 2400w"
-               sizes="(min-width: 1280px) 1200px, 94vw" width="1600" height="1000" fetchpriority="high"
-               alt="The Jervis window. System, weather and suggested commands on the left; the voice core in the middle, set to Listening; on the right, a quadratic equation solved step by step and facts about Saturn." />
-          <figcaption>
-            <q>Tell me about Saturn</q>
-            <span>Replies land in the conversation as he speaks, with facts and worked math laid out to read.</span>
-            <a class="shot-full" href="assets/img/jervis-chat-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
-          </figcaption>
-        </figure>
-        <figure class="shot" role="tabpanel" id="panel-graph" aria-labelledby="tab-graph" hidden>
-          <img src="assets/img/jervis-graph-1600.webp"
-               srcset="assets/img/jervis-graph-960.webp 960w, assets/img/jervis-graph-1600.webp 1600w, assets/img/jervis-graph-2400.webp 2400w"
-               sizes="(min-width: 1280px) 1200px, 94vw" width="1600" height="1000" loading="lazy"
-               alt="A graph of y equals sine of x over x in the Jervis window, with its x-intercepts, local maxima and minima and the horizontal asymptote y equals 0 labelled." />
-          <figcaption>
-            <q>Graph sine of x over x</q>
-            <span>Any function of x, with its intercepts, highs and lows and asymptotes marked. In the app, point at the curve to read any value.</span>
-            <a class="shot-full" href="assets/img/jervis-graph-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
-          </figcaption>
-        </figure>
-        <figure class="shot" role="tabpanel" id="panel-globe" aria-labelledby="tab-globe" hidden>
-          <img src="assets/img/jervis-globe-1600.webp"
-               srcset="assets/img/jervis-globe-960.webp 960w, assets/img/jervis-globe-1600.webp 1600w, assets/img/jervis-globe-2400.webp 2400w"
-               sizes="(min-width: 1280px) 1200px, 94vw" width="1600" height="1000" loading="lazy"
-               alt="A 3D Earth in the Jervis window with a glowing arc from New York to Tel Aviv, labelled 9,115 km, 5,664 miles, heading 54.1 degrees." />
-          <figcaption>
-            <q>What is the distance between New York and Tel Aviv</q>
-            <span>The straight-line route on a 3D Earth with clouds and a day and night line. In the app you can turn it and zoom in.</span>
-            <a class="shot-full" href="assets/img/jervis-globe-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
-          </figcaption>
-        </figure>
-      </div>
-      <p class="fineprint">Real screenshots of the Jervis window.</p>
     </div>
   </section>
 
   <!-- ============ Features ============ -->
+  <!-- ============ Worlds: the planets Jarvis shows, in real 3D you can turn ============ -->
+  <section class="section worlds" id="worlds" aria-labelledby="worldsTitle" data-worlds data-start="saturn">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <h2 id="worldsTitle">Now hold them yourself.</h2>
+        <p>Ask Jarvis &ldquo;Tell me about Saturn&rdquo; or &ldquo;How far is Tokyo from Paris?&rdquo; and he shows a real, lit 3D world. Here you can turn them yourself.</p>
+      </div>
+    </div>
+    <div class="worlds-view" tabindex="0" role="img" aria-label="Saturn, in 3D. Drag or use the arrow keys to turn it.">
+      <img class="worlds-still" src="assets/img/jervis-planet-1280.webp" width="1280" height="760" loading="lazy" alt="Jarvis&rsquo;s lit 3D model of Saturn and its rings." />
+    </div>
+    <div class="container worlds-ui">
+      <div class="worlds-pick" role="group" aria-label="Choose a world">
+        <button type="button" data-world="sun" aria-pressed="false">The Sun</button>
+        <button type="button" data-world="mercury" aria-pressed="false">Mercury</button>
+        <button type="button" data-world="venus" aria-pressed="false">Venus</button>
+        <button type="button" data-world="earth" aria-pressed="false">Earth</button>
+        <button type="button" data-world="moon" aria-pressed="false">The Moon</button>
+        <button type="button" data-world="mars" aria-pressed="false">Mars</button>
+        <button type="button" data-world="jupiter" aria-pressed="false">Jupiter</button>
+        <button type="button" data-world="saturn" aria-pressed="true">Saturn</button>
+        <button type="button" data-world="uranus" aria-pressed="false">Uranus</button>
+        <button type="button" data-world="neptune" aria-pressed="false">Neptune</button>
+        <button type="button" data-world="pluto" aria-pressed="false">Pluto</button>
+      </div>
+      <p class="worlds-facts" aria-live="polite">Saturn &middot; radius 58,232 km &middot; a day of about 10.7 hours &middot; rings of ice and rock</p>
+      <p class="worlds-hint">Drag to turn it.</p>
+    </div>
+    <p class="container fineprint">An interactive preview made for this page, with the imagery that comes with Jarvis: Earth from NASA&rsquo;s Blue Marble and Black Marble; planet maps by Solar System Scope (CC BY 4.0); Pluto from NASA&rsquo;s New Horizons.</p>
+  </section>
+
   <section class="section features" id="features" aria-labelledby="featuresTitle">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2 id="featuresTitle">What you can ask for</h2>
         <p>Everything below works by voice, or typed into the box under the core.</p>
       </div>
 
-      <div class="bento">
-        <article class="cell cell-media">
+      <div class="ask-grid" data-stagger>
+        <article class="ask ask-wide">
           <h3>Music, shows and videos</h3>
           <p>Play a song or video on YouTube, start an exact Netflix episode, open a show in Stremio, or control Spotify. Pause, skip and jump to a minute.</p>
           <ul class="says" aria-label="Things to say">
@@ -215,51 +305,33 @@
           </ul>
           <p class="note">Spotify works with the Spotify app installed and signed in, free or Premium. No keys needed.</p>
         </article>
-
-        <article class="cell cell-math cell-has-media">
-          <div class="cell-body">
-            <h3>Math with the working shown</h3>
-            <p>Linear and quadratic equations are solved by Jervis’s own code, with exact answers and every step. Any function of x becomes a graph.</p>
-            <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Solve x squared minus 5x plus 6 equals 0</q></li></ul>
-          </div>
-          <img class="cell-media-img" src="assets/img/jervis-worksheet-560.webp" srcset="assets/img/jervis-worksheet-560.webp 560w, assets/img/jervis-worksheet-1000.webp 1000w" sizes="(min-width: 961px) 480px, 94vw" width="560" height="498" loading="lazy"
-               alt="Jervis’s worked answer: the discriminant, the quadratic formula, then the answer, x equals 2 or x equals 3." />
-        </article>
-
-        <article class="cell cell-space cell-has-media">
-          <div class="cell-body">
-            <h3>A globe and the planets</h3>
-            <p>Ask how far apart two places are and see the route on a 3D Earth. Ask about a planet for its facts and a 3D model.</p>
-            <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Tell me about Saturn</q></li></ul>
-          </div>
-          <img class="cell-media-img" src="assets/img/jervis-planet-detail-800.webp" srcset="assets/img/jervis-planet-detail-800.webp 800w, assets/img/jervis-planet-detail-1280.webp 1280w" sizes="(min-width: 961px) 480px, 94vw" width="800" height="533" loading="lazy"
-               alt="Jervis’s lit 3D model of Saturn and its rings." />
-        </article>
-
-        <article class="cell cell-docs">
+        <article class="ask">
           <h3>Documents, written for you</h3>
-          <p>Describe what you want and Jervis writes it in Word, Pages, TextEdit, Notes or Google Docs on a Mac, or Word, Notepad or Google Docs on Windows. Then edit it by voice.</p>
+          <p>Describe what you want and he writes it in Word, Pages, TextEdit, Notes or Google Docs on a Mac, or Word, Notepad or Google Docs on Windows. Then edit it by voice.</p>
           <ul class="says" aria-label="Things to say">
             <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Write a story in Word</q></li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Make it shorter</q></li>
           </ul>
         </article>
-
-        <article class="cell cell-apps">
+        <article class="ask">
           <h3>Apps, tabs and volume</h3>
           <p>Open any app or site, close tabs by name, and set the volume. Opening an app asks what you want next: “Open Netflix” asks what to watch.</p>
           <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Close the Gmail tab</q></li></ul>
         </article>
-
-        <article class="cell cell-images">
+        <article class="ask">
           <h3>Pictures in, pictures out</h3>
           <p>Attach, drop or paste an image, then ask about it: describe it, read its text, explain an error, compare two. Ask him to draw something and he creates it.</p>
           <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>What does this error mean?</q></li></ul>
           <p class="note">Drawing is free through Pollinations.ai. Editing a picture needs an OpenAI key.</p>
         </article>
+        <article class="ask">
+          <h3>He can use your computer</h3>
+          <p>Ask for something on screen, like “click Save” or “use my computer to turn on dark mode in Chrome”. He asks first, works one checked step at a time, and stops the moment you move the mouse.</p>
+          <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Take control and turn on dark mode in Chrome</q></li></ul>
+        </article>
       </div>
 
-      <div class="also">
+      <div class="also" data-stagger>
         <div class="also-group">
           <h3>Around the day</h3>
           <ul>
@@ -280,47 +352,107 @@
     </div>
   </section>
 
+  <!-- ============ Coming next: real, built, not released yet ============ -->
+  <section class="section next" id="next" aria-labelledby="nextTitle">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <h2 id="nextTitle">Already built. Coming in the next version.</h2>
+        <p>These work in Jarvis today and are being prepared for release. They are <strong>not in the 1.0.5 download yet</strong>; when the next version is out, the download buttons get it.</p>
+      </div>
+
+      <div class="next-grid" data-stagger>
+        <figure class="next-card next-window">
+          <img src="assets/img/jarvis-next-window-1600.webp" srcset="assets/img/jarvis-next-window-960.webp 960w, assets/img/jarvis-next-window-1600.webp 1600w"
+               sizes="(min-width: 1000px) 1200px, 94vw" width="1600" height="900" loading="lazy"
+               alt="The new Jarvis window: weather, timers and suggestions on the left, the dotted voice core with Ready under it in the middle, and the conversation on the right." />
+          <figcaption><h3>A calmer, clearer window <span class="next-tag">Next release</span></h3><p>A new look for everything he shows, and a lighter setup that uses less than 2 GB of memory with the free online AI.</p></figcaption>
+        </figure>
+        <figure class="next-card next-coding">
+          <img src="assets/img/jarvis-next-coding-1600.webp" srcset="assets/img/jarvis-next-coding-960.webp 960w, assets/img/jarvis-next-coding-1600.webp 1600w"
+               sizes="(min-width: 1000px) 760px, 94vw" width="1600" height="608" loading="lazy"
+               alt="Coding Mode: a request to build a racing website, the finished build with its five files and checks, and the How to run panel." />
+          <figcaption><h3>Coding Mode <span class="next-tag">Next release</span></h3><p>Describe an app, a website or a script in one chat. He picks the language, writes every file, checks them, and explains exactly how to run it. Then keep talking to change it.</p></figcaption>
+        </figure>
+        <figure class="next-card next-clock">
+          <img src="assets/img/jarvis-next-clock-1600.webp" srcset="assets/img/jarvis-next-clock-960.webp 960w, assets/img/jarvis-next-clock-1600.webp 1600w"
+               sizes="(min-width: 1000px) 600px, 94vw" width="1600" height="900" loading="lazy"
+               alt="The world clock: the time in Israel in large figures, a daylight curve, and a timeline comparing Israel and Los Angeles." />
+          <figcaption><h3>A world clock <span class="next-tag">Next release</span></h3><p>“What time is it in Tokyo?” opens a clock with daylight, the time difference and a timeline to compare cities.</p></figcaption>
+        </figure>
+        <figure class="next-card next-phone">
+          <img src="assets/img/jarvis-next-phone-700.webp" srcset="assets/img/jarvis-next-phone-400.webp 400w, assets/img/jarvis-next-phone-700.webp 700w"
+               sizes="(min-width: 1000px) 300px, 60vw" width="700" height="1514" loading="lazy"
+               alt="The Jarvis phone app, paired: Play Radiohead on Spotify, Playing No Surprises by Radiohead on Spotify, Open Spotify, Opened Spotify." />
+          <figcaption><h3>Jarvis on your phone <span class="next-tag">Next release</span></h3><p>Pair an iPhone or Android phone with a QR code and talk to Jarvis on your computer from anywhere.</p></figcaption>
+        </figure>
+      </div>
+      <p class="fineprint" data-reveal>Real captures of the development version of Jarvis.</p>
+    </div>
+    <!-- building in Blender: a villa assembled as you scroll (three/villa.js), next to the requests that build it -->
+    <div class="build" data-build>
+      <div class="build-stage">
+        <div class="build-view" role="img" aria-label="A modern two-storey villa with a swimming pool, two sun loungers and an oak on each side, built step by step."></div>
+        <div class="build-panel">
+          <h3>Building in Blender <span class="next-tag">Next release</span></h3>
+          <p>Say what you want and Jarvis builds it in Blender himself, piece by piece, then checks his work before he says it&rsquo;s done.</p>
+          <ol class="build-steps">
+            <li class="build-step">&ldquo;Open Blender and build a modern two-storey villa&rdquo;</li>
+            <li class="build-step">&ldquo;Add a swimming pool in front of it&rdquo;</li>
+            <li class="build-step">&ldquo;Put two sun loungers by the pool&rdquo;</li>
+            <li class="build-step">&ldquo;Plant a tree on each side&rdquo;</li>
+            <li class="build-step build-check">He tells you only what he checked: &ldquo;I checked it in Blender: 9 of 9 checks passed.&rdquo;</li>
+          </ol>
+          <p class="build-note">Recreated for this page from Jarvis&rsquo;s Blender building kit: the same modern house, tiled pool, loungers and oaks, at their real sizes.</p>
+          <a class="build-skip" href="#how">Skip the build</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ How it works ============ -->
   <section class="section how" id="how" aria-labelledby="howTitle">
     <div class="container">
-      <div class="section-head">
-        <h2 id="howTitle">How Jervis works</h2>
-        <p>Everything runs on your computer: an engine that listens, thinks and acts, and a window that shows what he is doing.</p>
+      <div class="section-head" data-reveal>
+        <h2 id="howTitle">How Jarvis works</h2>
+        <p>An engine that listens, thinks and acts, and a window that shows what he is doing.</p>
       </div>
-      <ol class="flow" data-flow>
-        <li class="flow-step">
-          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-ear"/></svg></span>
-          <h3>Hear</h3>
-          <p>The wake phrase gets his attention. Your speech becomes text on your computer with Whisper, a speech model he downloads the first time he starts.</p>
-        </li>
-        <li class="flow-step">
-          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-brain"/></svg></span>
-          <h3>Decide</h3>
-          <p>Commands he knows, like media, apps, timers and math, run in his own code. Anything else goes to his AI: llama3.2, running on your computer. A Groq key makes it faster.</p>
-        </li>
-        <li class="flow-step">
-          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-hand-pointing"/></svg></span>
-          <h3>Act</h3>
-          <p>He drives apps through Apple Events and their shortcuts. When you ask, he uses the mouse and keyboard himself, one checked step at a time, with a Stop button on screen.</p>
-        </li>
-        <li class="flow-step">
-          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg></span>
-          <h3>Answer</h3>
-          <p>He replies with your system’s built-in voice, Hebrew included, and shows the answer, worksheet, graph or globe in his window.</p>
-        </li>
-      </ol>
+      <div class="flow-wrap">
+        <svg class="flow-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path d="M 0 20 L 1000 20" /></svg>
+        <ol class="flow" data-flow>
+          <li class="flow-step">
+            <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-ear"/></svg></span>
+            <h3>Hear</h3>
+            <p>The wake phrase gets his attention. Your speech becomes text on your computer with Whisper, a speech model he downloads the first time he starts.</p>
+          </li>
+          <li class="flow-step">
+            <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-brain"/></svg></span>
+            <h3>Decide</h3>
+            <p>Commands he knows, like media, apps, timers and math, run in his own code. Anything else goes to his AI: llama3.2, running on your computer. A Groq key makes it faster.</p>
+          </li>
+          <li class="flow-step">
+            <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-hand-pointing"/></svg></span>
+            <h3>Act</h3>
+            <p>He drives apps through Apple Events and their shortcuts. When you ask, he uses the mouse and keyboard himself, one checked step at a time, with a Stop button on screen.</p>
+          </li>
+          <li class="flow-step">
+            <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg></span>
+            <h3>Answer</h3>
+            <p>He replies with your system’s built-in voice, Hebrew included, and shows the answer, worksheet, graph or globe in his window.</p>
+          </li>
+        </ol>
+      </div>
     </div>
   </section>
 
   <!-- ============ Privacy / local ============ -->
   <section class="section privacy" id="privacy" aria-labelledby="privacyTitle">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2 id="privacyTitle">What stays on your computer, and what goes online</h2>
         <p>Out of the box, the listening and the thinking happen on your computer. Here is exactly where each thing is handled.</p>
       </div>
 
-      <div class="ledger">
+      <div class="ledger" data-stagger>
         <div class="ledger-col ledger-local">
           <h3><svg class="icon" aria-hidden="true"><use href="#i-lock-simple"/></svg>On your computer</h3>
           <ul>
@@ -346,7 +478,7 @@
         </div>
       </div>
 
-      <div class="controls">
+      <div class="controls" data-reveal>
         <h3>You can change this in Settings</h3>
         <dl>
           <div><dt>AI · Which AI answers</dt><dd>The AI on your computer (the default), or Groq first, with your own free key.</dd></div>
@@ -360,11 +492,11 @@
   <!-- ============ Requirements ============ -->
   <section class="section requirements" id="requirements" aria-labelledby="reqTitle">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <h2 id="reqTitle">What you need</h2>
         <p>No Python, no terminal and no account. Just the computer.</p>
       </div>
-      <div class="req-grid">
+      <div class="req-grid" data-stagger>
         <div class="req-group req-common">
           <h3>On every computer</h3>
           <ul>
@@ -406,35 +538,36 @@
   <!-- ============ Download ============ -->
   <section class="section download" id="download" aria-labelledby="downloadTitle">
     <div class="container">
-      <div class="download-panel">
+      <div class="download-panel" data-reveal>
         <div class="download-main">
-          <h2 id="downloadTitle">Get Jervis <span data-release="version">1.0.5</span></h2>
-          <p>A normal installer for each system. The first time he starts, Jervis sets up his own AI and shows the progress. Everything else works while it finishes.</p>
-          <p class="mobile-note" hidden>Jervis runs on a Windows PC or a Mac. Send yourself this page and download it there.</p>
+          <h2 id="downloadTitle">Get Jarvis <span data-release="version">1.0.5</span></h2>
+          <p>A normal installer for each system. The first time he starts, he sets up his own AI and shows the progress. Everything else works while it finishes.</p>
+          <p class="name-note">This version still calls itself by his old name, <strong>Jervis</strong>, on your computer. The next version uses the new name.</p>
+          <p class="mobile-note" hidden>Jarvis runs on a Windows PC or a Mac. Send yourself this page and download it there.</p>
           <div class="download-actions">
             <div class="dl-option" data-platform="win">
-              <a class="btn btn-primary btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.5/Jervis.Setup.exe" data-release-href="win_url" data-download>
+              <a class="btn btn-primary btn-lg" href="https://github.com/TheJarvis-App/jarvis-app/releases/download/v1.0.5/Jervis.Setup.exe" data-release-href="win_url" data-download>
                 <svg class="icon" aria-hidden="true"><use href="#i-windows-logo"/></svg><span class="btn-label">Download for Windows</span>
               </a>
               <p class="file-meta"><span class="file-free">Windows 10 and 11</span><span data-release="win_file">Jervis.Setup.exe</span><span data-release="win_size">177 MB</span></p>
             </div>
             <div class="dl-option" data-platform="mac">
-              <a class="btn btn-ghost btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.5/Jervis-Mac-arm64.dmg" data-release-href="mac_url" data-download>
+              <a class="btn btn-ghost btn-lg" href="https://github.com/TheJarvis-App/jarvis-app/releases/download/v1.0.5/Jervis-Mac-arm64.dmg" data-release-href="mac_url" data-download>
                 <svg class="icon" aria-hidden="true"><use href="#i-apple-logo"/></svg><span class="btn-label">Download for Mac</span>
               </a>
               <p class="file-meta"><span class="file-free">Apple silicon</span><span data-release="mac_file">Jervis-Mac-arm64.dmg</span><span data-release="mac_size">196 MB</span></p>
-              <p class="dl-alt">Easiest on a Mac: paste this into Terminal. It installs Jervis and opens him, with no security prompt.</p>
-              <div class="cmd"><code>curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash</code><button class="copy-btn" type="button" data-copy="curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
+              <p class="dl-alt">Easiest on a Mac: paste this into Terminal. It installs him and opens him, with no security prompt.</p>
+              <div class="cmd"><code>curl -fsSL https://thejarvis-app.github.io/jervis/install-mac.sh | bash</code><button class="copy-btn" type="button" data-copy="curl -fsSL https://thejarvis-app.github.io/jervis/install-mac.sh | bash"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
             </div>
           </div>
-          <p class="download-note">Jervis isn’t signed with a paid certificate yet, so Windows and macOS warn you once, the first time. The <a href="#install">install steps</a> show what to click. <a href="https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.5" data-release-href="page">Release notes</a></p>
+          <p class="download-note">He isn’t signed with a paid certificate yet, so Windows and macOS warn you once, the first time. The <a href="#install">install steps</a> show what to click. <a href="https://github.com/TheJarvis-App/jarvis-app/releases/tag/v1.0.5" data-release-href="page">Release notes</a></p>
         </div>
         <div class="download-side">
           <h3>Before you start</h3>
           <ul class="checklist">
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Windows 10 or 11, or a Mac with Apple silicon</li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>A microphone</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>About 5 GB free for his AI</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>About 4 GB free for his AI (3 GB more if he’ll look at pictures on a 16 GB computer)</li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Internet for the first start</li>
           </ul>
           <a class="text-link" href="#requirements">Everything you need, in detail</a>
@@ -466,8 +599,8 @@
   <!-- ============ Install ============ -->
   <section class="section install" id="install" aria-labelledby="installTitle">
     <div class="container">
-      <div class="section-head">
-        <h2 id="installTitle">Install and start Jervis</h2>
+      <div class="section-head" data-reveal>
+        <h2 id="installTitle">Install and start Jarvis</h2>
         <p>A few clicks, once. After that, start him from the Start menu or Applications, or let him start when you sign in (Settings, This computer).</p>
       </div>
 
@@ -484,22 +617,10 @@
         <div class="install-panel" role="tabpanel" id="panel-win" aria-labelledby="tab-win" tabindex="0">
           <h3 class="sr-only">Install on Windows</h3>
           <ol class="steps">
-            <li>
-              <h4>Run the installer</h4>
-              <p>If Windows says “Windows protected your PC”, click <strong>More info</strong>, then <strong>Run anyway</strong>. It appears because the installer isn’t signed with a paid certificate.</p>
-            </li>
-            <li>
-              <h4>Jervis installs and opens</h4>
-              <p>It takes a few seconds and needs no administrator rights. He is added to the Start menu and the desktop.</p>
-            </li>
-            <li>
-              <h4>Let him set up his AI</h4>
-              <p>The first start downloads his AI and speech models, about 3.5 GB, with the progress on screen. Timers, music and apps already work meanwhile.</p>
-            </li>
-            <li>
-              <h4>Say “Hey Jervis”</h4>
-              <p>Closing the window keeps him listening in the notification area. Quit him from his icon there.</p>
-            </li>
+            <li><h4>Run the installer</h4><p>If Windows says “Windows protected your PC”, click <strong>More info</strong>, then <strong>Run anyway</strong>. It appears because the installer isn’t signed with a paid certificate.</p></li>
+            <li><h4>He installs and opens</h4><p>It takes a few seconds and needs no administrator rights. He is added to the Start menu and the desktop (as Jervis, in this version).</p></li>
+            <li><h4>Let him set up his AI</h4><p>The first start downloads his AI and speech model, about 3.6 GB, and keeps about 2.3 GB of it (NVIDIA graphics cards keep 1.8 GB more, to use the card). The progress is on screen, and timers, music and apps already work meanwhile. On a 16 GB computer, the first time he looks at a picture or the screen he downloads a 3 GB vision model.</p></li>
+            <li><h4>Say “Hey Jarvis”</h4><p>Closing the window keeps him listening in the notification area. Quit him from his icon there.</p></li>
           </ol>
         </div>
 
@@ -508,21 +629,12 @@
           <ol class="steps">
             <li>
               <h4>Open Terminal and paste this</h4>
-              <p>Terminal is in Applications, Utilities. The command downloads Jervis, checks it against the published checksum, puts him in Applications and opens him.</p>
-              <div class="cmd"><code>curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash</code><button class="copy-btn" type="button" data-copy="curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
+              <p>Terminal is in Applications, Utilities. The command downloads him, checks the download against the published checksum, puts him in Applications and opens him.</p>
+              <div class="cmd"><code>curl -fsSL https://thejarvis-app.github.io/jervis/install-mac.sh | bash</code><button class="copy-btn" type="button" data-copy="curl -fsSL https://thejarvis-app.github.io/jervis/install-mac.sh | bash"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
             </li>
-            <li>
-              <h4>Allow the microphone</h4>
-              <p>macOS asks the first time he listens.</p>
-            </li>
-            <li>
-              <h4>Let him set up his AI</h4>
-              <p>The first start downloads his AI and speech models, about 2.5 GB, with the progress on screen. Timers, music and apps already work meanwhile.</p>
-            </li>
-            <li>
-              <h4>Say “Hey Jervis”</h4>
-              <p>Closing the window keeps him listening in the menu bar. Quit him from his icon there.</p>
-            </li>
+            <li><h4>Allow the microphone</h4><p>macOS asks the first time he listens.</p></li>
+            <li><h4>Let him set up his AI</h4><p>The first start downloads his AI and speech model, about 2.3 GB, with the progress on screen. Timers, music and apps already work meanwhile. On a 16 GB Mac, the first time he looks at a picture or the screen he downloads a 3 GB vision model.</p></li>
+            <li><h4>Say “Hey Jarvis”</h4><p>Closing the window keeps him listening in the menu bar. Quit him from his icon there.</p></li>
           </ol>
           <p class="panel-note"><strong>Installed from the .dmg instead?</strong> Drag Jervis to Applications and open him. macOS says “Apple could not verify Jervis”, because he isn’t notarized by Apple yet: click Done, open System Settings, Privacy &amp; Security, scroll down to “Jervis was blocked”, click <strong>Open Anyway</strong> and enter your password. You only do this once.</p>
           <p class="panel-note">To let him use the mouse and keyboard, turn on Jervis in System Settings, Privacy &amp; Security, Accessibility. macOS asks the first time you want him to. For pause, resume and jump in Chrome, turn on View, Developer, Allow JavaScript from Apple Events.</p>
@@ -530,59 +642,30 @@
       </div>
 
       <div class="install-extra">
-        <div class="advanced">
+        <div class="advanced" data-reveal>
           <h3>If something goes wrong</h3>
           <div class="accordion">
-            <details>
-              <summary>Windows or macOS won’t open Jervis<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-              <div class="details-body">
-                <p>The warning is about the missing paid signature. On Windows: More info, then Run anyway. On a Mac, install with the Terminal command above, which avoids the prompt; or, for the .dmg, click Open Anyway in System Settings, Privacy &amp; Security. To be sure you have the real file, compare its checksum with the one under <a href="#download">Verify the download</a>.</p>
-              </div>
-            </details>
-            <details>
-              <summary>My antivirus says the file is suspicious<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-              <div class="details-body">
-                <p>Antivirus programs are careful with new programs that aren’t signed with a paid certificate yet, and Jervis is one. Avast and AVG may say they are checking a file; that takes a few hours, and then it’s let through. To be sure your copy is the real one, compare its checksum with the one under <a href="#download">Verify the download</a>. Version 1.0.2 and later no longer run the old version’s uninstaller when updating, which is what Avast stopped in 1.0.1.</p>
-              </div>
-            </details>
-            <details>
-              <summary>The installer says “Jervis cannot be closed”<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-              <div class="details-body">
-                <p>An older copy of Jervis was still running. Version 1.0.1 and later close him by themselves. With an older installer, right-click his icon in the notification area and choose <strong>Quit Jervis</strong>, or end <strong>Jervis</strong> and <strong>jervis-backend</strong> in Task Manager, then click <strong>Retry</strong>.</p>
-              </div>
-            </details>
-            <details>
-              <summary>Setting up the AI failed or stopped<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-              <div class="details-body">
-                <p>The chip at the top of his window says what went wrong and has a <strong>Try again</strong> button. The usual causes are too little disk space, or a firewall or VPN blocking the download. The download picks up where it stopped. If you already use Ollama, he uses yours instead of downloading his own.</p>
-              </div>
-            </details>
-            <details>
-              <summary>He doesn’t hear me<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-              <div class="details-body">
-                <p>Choose your microphone in Settings, Voice. On a Mac, check that Jervis is on in System Settings, Privacy &amp; Security, Microphone. Check that he isn’t muted: the window shows Muted, and <kbd>M</kbd> turns the microphone back on.</p>
-              </div>
-            </details>
-            <details>
-              <summary>Answers are slow<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-              <div class="details-body">
-                <p>His AI runs on your computer, so a busy or older computer answers more slowly. Closing heavy apps helps. For fast answers, paste a free key from <a href="https://console.groq.com" rel="noopener">console.groq.com</a> into Settings, AI.</p>
-              </div>
-            </details>
-            <details>
-              <summary>Something else<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-              <div class="details-body">
-                <p>In Settings, This computer, <strong>Open log files</strong> shows what he was doing, and <strong>Restart Jervis’s engine</strong> fixes most stuck states. The logs never contain what you said or typed.</p>
-              </div>
-            </details>
+            <details><summary>Windows or macOS won’t open him<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body"><p>The warning is about the missing paid signature. On Windows: More info, then Run anyway. On a Mac, install with the Terminal command above, which avoids the prompt; or, for the .dmg, click Open Anyway in System Settings, Privacy &amp; Security. To be sure you have the real file, compare its checksum with the one under <a href="#download">Verify the download</a>.</p></div></details>
+            <details><summary>My antivirus says the file is suspicious<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body"><p>Antivirus programs are careful with new programs that aren’t signed with a paid certificate yet, and Jarvis is one. Avast and AVG may say they are checking a file; that takes a few hours, and then it’s let through. To be sure your copy is the real one, compare its checksum with the one under <a href="#download">Verify the download</a>. Version 1.0.2 and later no longer run the old version’s uninstaller when updating, which is what Avast stopped in 1.0.1.</p></div></details>
+            <details><summary>The installer says “Jervis cannot be closed”<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body"><p>An older copy was still running. Version 1.0.1 and later close him by themselves. With an older installer, right-click his icon in the notification area and choose <strong>Quit Jervis</strong>, or end <strong>Jervis</strong> and <strong>jervis-backend</strong> in Task Manager, then click <strong>Retry</strong>.</p></div></details>
+            <details><summary>Setting up the AI failed or stopped<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body"><p>The chip at the top of his window says what went wrong and has a <strong>Try again</strong> button. The usual causes are too little disk space, or a firewall or VPN blocking the download. The download picks up where it stopped. If you already use Ollama, he uses yours instead of downloading his own.</p></div></details>
+            <details><summary>He doesn’t hear me<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body"><p>Choose your microphone in Settings, Voice. On a Mac, check that he is on in System Settings, Privacy &amp; Security, Microphone. Check that he isn’t muted: the window shows Muted, and <kbd>M</kbd> turns the microphone back on.</p></div></details>
+            <details><summary>Answers are slow<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body"><p>His AI runs on your computer, so a busy or older computer answers more slowly. Closing heavy apps helps. For fast answers, paste a free key from <a href="https://console.groq.com" rel="noopener">console.groq.com</a> into Settings, AI.</p></div></details>
+            <details><summary>Something else<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body"><p>In Settings, This computer, <strong>Open log files</strong> shows what he was doing, and <strong>Restart Jervis’s engine</strong> fixes most stuck states. The logs never contain what you said or typed.</p></div></details>
           </div>
         </div>
 
-        <div class="advanced">
+        <div class="advanced" data-reveal>
           <h3>More to set up</h3>
           <div class="accordion">
-            <details>
-              <summary>Let him use the mouse and keyboard<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+            <details><summary>Let him use the mouse and keyboard<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
               <div class="details-body">
                 <p>Ask for something on screen, like “click Save” or “use my computer to turn on dark mode in Chrome”. He asks first, then works step by step: he reads the window, does one thing and checks the result. His small local AI manages short, simple tasks; with a free Groq key in Settings he handles longer ones.</p>
                 <ul class="kv">
@@ -590,31 +673,20 @@
                   <li><code>Instant stop</code><span>Move the mouse, press Ctrl+Alt+Q (Control-Option-Q on a Mac), or say “stop”.</span></li>
                   <li><code>Asks first</code><span>Before sending, buying, deleting or installing anything. He never types into password fields.</span></li>
                 </ul>
-              </div>
-            </details>
-            <details>
-              <summary>OpenAI, Google Calendar and Spotify keys<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              </div></details>
+            <details><summary>OpenAI, Google Calendar and Spotify keys<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
               <div class="details-body">
                 <p>All optional, in Settings, Optional services. Turn on <strong>Show advanced settings</strong> to see the Spotify and Google fields.</p>
                 <ul class="kv">
-                  <li><code>Spotify</code><span>Not needed: Jervis uses the Spotify app. Keys (developer.spotify.com, redirect URI http://localhost:8888/callback, Premium) only add jumping to a minute on Windows.</span></li>
+                  <li><code>Spotify</code><span>Not needed: he uses the Spotify app. Keys (developer.spotify.com, redirect URI http://localhost:8888/callback, Premium) only add jumping to a minute on Windows.</span></li>
                   <li><code>OpenAI</code><span>Better image generation, and editing existing pictures.</span></li>
                   <li><code>Google Calendar</code><span>A free Desktop app OAuth client from Google Cloud Console, with the Calendar API turned on.</span></li>
                 </ul>
-              </div>
-            </details>
-            <details>
-              <summary>School and personal Google accounts<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-              <div class="details-body">
-                <p>If each account has its own Chrome profile, enter the profile names in Settings, Optional services, and Jervis opens things in the right one. Say “for school” or “personal” to settle it, or “wrong account” to fix one.</p>
-              </div>
-            </details>
-            <details>
-              <summary>Run Jervis from the source code<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-              <div class="details-body">
-                <p>For developers: the code, the build scripts and the tests are on <a href="https://github.com/ArielZaha/jervis-app" rel="noopener">GitHub</a>. Intel Macs, and generating pictures on your own computer, are only supported this way.</p>
-              </div>
-            </details>
+              </div></details>
+            <details><summary>School and personal Google accounts<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body"><p>If each account has its own Chrome profile, enter the profile names in Settings, Optional services, and he opens things in the right one. Say “for school” or “personal” to settle it, or “wrong account” to fix one.</p></div></details>
+            <details><summary>Run Jarvis from the source code<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body"><p>For developers: the code, the build scripts and the tests are on <a href="https://github.com/TheJarvis-App/jarvis-app" rel="noopener">GitHub</a>. Intel Macs, and generating pictures on your own computer, are only supported this way.</p></div></details>
           </div>
         </div>
       </div>
@@ -624,51 +696,37 @@
   <!-- ============ FAQ ============ -->
   <section class="section faq" id="faq" aria-labelledby="faqTitle">
     <div class="container faq-inner">
-      <h2 id="faqTitle">Questions</h2>
-      <div class="accordion faq-list">
-        <details>
-          <summary>What is Jervis?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-          <div class="details-body"><p>A voice assistant for Windows and macOS. You talk to him, or type, and he plays music and shows, opens apps and sites, writes documents, sets timers, solves and graphs math, answers questions, and uses the mouse and keyboard when you ask.</p></div>
-        </details>
-        <details>
-          <summary>Does Jervis cost anything?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-          <div class="details-body"><p>No. There is no account and no key to buy: his AI runs on your computer. One optional extra costs money: OpenAI image generation needs billing credit. Spotify works with a free account, and a Groq key for faster answers is free.</p></div>
-        </details>
-        <details>
-          <summary>Which computers does it run on?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-          <div class="details-body"><p>Windows 10 and 11 (64-bit), and Macs with Apple silicon on macOS 11 or later. Intel Macs can run him from the source code. A few features differ: reading WhatsApp and Classroom works on macOS only, and on Windows pause and resume use the media key.</p></div>
-        </details>
-        <details>
-          <summary>Does Jervis need an internet connection?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-          <div class="details-body"><p>For the first start, to download his AI. After that, listening and answering work offline. Music, videos, the web, the weather and Google features still need the internet.</p></div>
-        </details>
-        <details>
-          <summary>Can he really use my computer? Is that safe?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-          <div class="details-body"><p>Yes, when you ask. He works one step at a time and checks each result, and you always see it: a glowing edge and a bar with Pause and Stop stay on screen. Moving the mouse, Ctrl+Alt+Q or “stop” takes control back at once. He asks before sending, buying, deleting or installing anything, and never types passwords. Settings can make him ask before every task, or turn it off. With his small local AI he manages short, simple tasks; for longer ones, add a free Groq key in Settings.</p></div>
-        </details>
-        <details>
-          <summary>Which AI models does it use?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-          <div class="details-body"><p>On your computer: <code>llama3.2</code> for answers, Whisper for speech, and <code>qwen2.5-vl</code> for pictures and the screen on computers with 16 GB of memory. With a Groq key: <code>gpt-oss-20b</code> and Whisper on Groq, which are faster.</p></div>
-        </details>
-        <details>
-          <summary>Where are my settings and conversations stored?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-          <div class="details-body"><p>In his data folder: <code>%APPDATA%\Jervis</code> on Windows, and <code>~/Library/Application Support/Jervis</code> on a Mac. Settings, This computer, <strong>Open data folder</strong> opens it. WhatsApp messages are never written there.</p></div>
-        </details>
-        <details>
-          <summary>How do I update or uninstall Jervis?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-          <div class="details-body"><p>To update, install the new version over the old one: your settings and history stay. To uninstall on Windows, use Settings, Apps, Jervis, Uninstall. On a Mac, quit Jervis and drag him from Applications to the Trash. His data folder stays until you delete it.</p></div>
-        </details>
+      <h2 id="faqTitle" data-reveal>Questions</h2>
+      <div class="accordion faq-list" data-reveal>
+        <details><summary>What is Jarvis?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>A voice assistant for Windows and macOS. You talk to him, or type, and he plays music and shows, opens apps and sites, writes documents, sets timers, solves and graphs math, answers questions, and uses the mouse and keyboard when you ask.</p></div></details>
+        <details><summary>Is it Jarvis or Jervis?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>The same assistant: he used to be called Jervis and is now Jarvis. Version 1.0.5, today’s download, still shows the old name on your computer and answers to both “Hey Jarvis” and “Hey Jervis”. The web address keeps the old name too.</p></div></details>
+        <details><summary>Does Jarvis cost anything?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>No. There is no account and no key to buy: his AI runs on your computer. One optional extra costs money: OpenAI image generation needs billing credit. Spotify works with a free account, and a Groq key for faster answers is free.</p></div></details>
+        <details><summary>Which computers does it run on?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>Windows 10 and 11 (64-bit), and Macs with Apple silicon on macOS 11 or later. Intel Macs can run him from the source code. A few features differ: reading WhatsApp and Classroom works on macOS only, and on Windows pause and resume use the media key.</p></div></details>
+        <details><summary>Does Jarvis need an internet connection?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>For the first start, to download his AI. After that, listening and answering work offline. Music, videos, the web, the weather and Google features still need the internet.</p></div></details>
+        <details><summary>Can he really use my computer? Is that safe?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>Yes, when you ask. He works one step at a time and checks each result, and you always see it: a glowing edge and a bar with Pause and Stop stay on screen. Moving the mouse, Ctrl+Alt+Q or “stop” takes control back at once. He asks before sending, buying, deleting or installing anything, and never types passwords. Settings can make him ask before every task, or turn it off. With his small local AI he manages short, simple tasks; for longer ones, add a free Groq key in Settings.</p></div></details>
+        <details><summary>Which AI models does it use?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>On your computer: <code>llama3.2</code> for answers, Whisper for speech, and <code>qwen2.5-vl</code> for pictures and the screen on computers with 16 GB of memory. With a Groq key: <code>gpt-oss-20b</code> and Whisper on Groq, which are faster.</p></div></details>
+        <details><summary>Where are my settings and conversations stored?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>In his data folder: <code>%APPDATA%\Jervis</code> on Windows, and <code>~/Library/Application Support/Jervis</code> on a Mac (the next version moves it to “Jarvis” by itself). Settings, This computer, <strong>Open data folder</strong> opens it. WhatsApp messages are never written there.</p></div></details>
+        <details><summary>How do I update or uninstall him?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>To update, install the new version over the old one: your settings and history stay. To uninstall on Windows, use Settings, Apps, Jervis, Uninstall. On a Mac, quit him and drag Jervis from Applications to the Trash. His data folder stays until you delete it.</p></div></details>
       </div>
     </div>
   </section>
 
   <!-- ============ Close ============ -->
   <section class="closing" aria-labelledby="closingTitle">
-    <div class="container closing-inner">
-      <h2 id="closingTitle">Say “Hey Jervis”.</h2>
+    <div class="container closing-inner" data-reveal>
+      <h2 id="closingTitle">Say “Hey Jarvis”.</h2>
       <p>Free for Windows and macOS.</p>
       <a class="btn btn-primary btn-lg" href="#download" data-download data-os-link>
-        <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jervis</span>
+        <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jarvis</span>
       </a>
     </div>
   </section>
@@ -677,19 +735,20 @@
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-brand">
-      <a class="brand" href="#top" aria-label="Jervis, back to top">
+      <a class="brand" href="#top" aria-label="Jarvis, back to top">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
           <circle cx="16" cy="16" r="6" fill="url(#brandGrad)"/>
           <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(-25 16 16)" opacity=".85"/>
           <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(35 16 16)" opacity=".45"/>
         </svg>
-        <span class="wordmark">Jervis</span>
+        <span class="wordmark">Jarvis</span>
       </a>
       <p>A voice assistant for macOS and Windows.</p>
       <p class="credits">Created by <strong>Ariel</strong> &amp; <strong>Shalev</strong></p>
     </div>
     <nav aria-label="Footer">
       <ul class="footer-links">
+        <li><a href="#showcase">See him work</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#privacy">Privacy</a></li>
@@ -704,11 +763,12 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden>
   <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
-  <p><span id="toastText">Downloading Jervis.</span> <a href="#install" id="toastLink">See the install steps</a></p>
+  <p><span id="toastText">Downloading Jarvis.</span> <a href="#install" id="toastLink">See the install steps</a></p>
   <button class="toast-close" type="button" aria-label="Dismiss"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
 </div>
 
 <script src="assets/js/orb.js" defer></script>
 <script src="assets/js/site.js" defer></script>
+<script type="module" src="assets/js/motion.js"></script>
 </body>
 </html>

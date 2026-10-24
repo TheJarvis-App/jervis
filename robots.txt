@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://arielzaha.github.io/jervis/sitemap.xml
+Sitemap: https://thejarvis-app.github.io/jervis/sitemap.xml

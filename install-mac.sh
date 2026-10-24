@@ -1,5 +1,5 @@
 #!/bin/bash
-# Installs Jervis on a Mac:  curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash
+# Installs Jervis on a Mac:  curl -fsSL https://thejarvis-app.github.io/jervis/install-mac.sh | bash
 #
 # Downloads the current Jervis for Mac, checks it against the SHA-256 published on the website, copies Jervis to
 # Applications and opens him. Jervis isn't notarized by Apple yet (that needs a paid developer account), so a copy
@@ -7,7 +7,7 @@
 # as coming from a browser, so Jervis opens normally. Nothing else on the Mac is changed.
 set -euo pipefail
 
-SITE="https://arielzaha.github.io/jervis"
+SITE="https://thejarvis-app.github.io/jervis"
 DEST="${JERVIS_INSTALL_DIR:-/Applications}"
 
 say() { printf '\033[1m%s\033[0m\n' "$*"; }

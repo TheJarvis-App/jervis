@@ -2,3 +2,8 @@
 __pycache__/
 *.pyc
 .playwright-cli/
+
+# design notes (not part of the site)
+PRODUCT.md
+DESIGN.md
+.impeccable/

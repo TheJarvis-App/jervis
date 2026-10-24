@@ -19,8 +19,8 @@ import sys
 import tempfile
 import urllib.request
 
-REPO = "ArielZaha/jervis-app"
-SITE_URL = "https://arielzaha.github.io/jervis/"
+REPO = "TheJarvis-App/jarvis-app"
+SITE_URL = "https://thejarvis-app.github.io/jervis/"
 WEBSITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGE = os.path.join(WEBSITE, "index.html")
 DOWNLOADS = os.path.join(WEBSITE, "downloads")
@@ -106,10 +106,10 @@ def update_page(release: dict) -> None:
     html, links = re.subn(r'href="[^"]*"(\s+data-release-href="(\w+)")',
                           lambda m: f'href="{release[m.group(2)]}"{m.group(1)}', html)
     data = {
-        "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Jervis",
+        "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Jarvis",
         "description": "A voice assistant for Windows and macOS that plays media, opens apps, writes documents, "
                        "sets timers, solves and graphs math, and can use the mouse and keyboard when asked. "
-                       "Its AI runs on your own computer.",
+                       "Its AI can run on your own computer.",
         "operatingSystem": "Windows 10, Windows 11, macOS 11 or later (Apple silicon)",
         "applicationCategory": "UtilitiesApplication",
         "softwareVersion": release["version"],

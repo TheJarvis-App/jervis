@@ -1,4 +1,4 @@
-// Jervis website: navigation, tabs, the live voice core, copy buttons, download help and the pipeline moment.
+// Jarvis website: navigation, tabs, the live voice core, copy buttons, download help and the pipeline moment.
 // No libraries. Everything here is progressive: without JavaScript the page is complete and every link still works.
 (function () {
   'use strict';
@@ -87,7 +87,7 @@
     ['How far is New York from Tel Aviv?', 'The distance between New York, United States and Tel Aviv, Israel is about 9,115 kilometers, or 5,664 miles, in a straight line.'],
   ];
   const SCRIPT = EXCHANGES.flatMap(([ask, reply]) => [
-    { state: 'idle', text: 'Say “Hey Jervis”.', ms: 2200 },
+    { state: 'idle', text: 'Say “Hey Jarvis”.', ms: 2200 },
     { state: 'listening', text: `“${ask}”`, ms: 3000 },
     { state: 'thinking', text: 'Working on it.', ms: 1400 },
     { state: 'speaking', text: `“${reply}”`, ms: 2600 + reply.length * 30 },   // time to read the whole reply
@@ -98,6 +98,10 @@
   const coreSub = $('#coreSub');
   function showCoreStep(step) {
     window.setOrbState && window.setOrbState(step.state);
+    if (typeof window.jarvisCoreAnimate === 'function') {   // motion.js (Anime.js) animates the words when it runs
+      window.jarvisCoreAnimate(step, TITLES[step.state], COLORS[step.state]);
+      return;
+    }
     coreState.textContent = TITLES[step.state];
     coreFigure.style.setProperty('--core-rgb', COLORS[step.state]);
     coreSub.classList.add('is-swapping');
@@ -203,17 +207,23 @@
     other.classList.replace('btn-primary', 'btn-ghost');
     const option = mine.closest('.dl-option');
     option.parentElement.prepend(option);
-    $$('[data-os-link]').forEach((link) => { link.setAttribute('href', mine.getAttribute('href')); });
+    const system = os === 'mac' ? 'Mac' : 'Windows';
+    $$('[data-os-link]').forEach((link) => {
+      link.setAttribute('href', mine.getAttribute('href'));
+      const label = link.querySelector('.btn-label');   // the compact header button keeps its short label: changing it would shift the header
+      if (label && !link.classList.contains('header-cta')) label.textContent = `Download for ${system}`;
+      if (link.hasAttribute('aria-label')) link.setAttribute('aria-label', `Download Jarvis for ${system}`);
+    });
   }
   if (isMobile) {
     $$('[data-os-link]').forEach((link) => {
-      link.setAttribute('aria-label', 'Send Jervis to my computer');
+      link.setAttribute('aria-label', 'Send Jarvis to my computer');
       const label = $('.btn-label', link);
       if (label) label.textContent = 'Send to my computer';
       const use = $('use', link);
       if (use) use.setAttribute('href', '#i-paper-plane-tilt');
     });
-    $('#heroMeta').textContent = 'Jervis runs on a Windows PC or a Mac. Send yourself the link and download it there.';
+    $('#heroMeta').textContent = 'Jarvis runs on a Windows PC or a Mac. Send yourself the link and download it there.';
     $$('.mobile-note').forEach((n) => { n.hidden = false; });
   }
   $$('[data-download]').forEach((link) => {
@@ -223,19 +233,19 @@
         const url = new URL('#download', location.href).href;
         let shared = false;
         if (navigator.share) {
-          try { await navigator.share({ title: 'Jervis', text: 'Jervis, a voice assistant for Windows and macOS', url }); shared = true; }
+          try { await navigator.share({ title: 'Jarvis', text: 'Jarvis, a voice assistant for Windows and macOS', url }); shared = true; }
           catch (err) { if (err && err.name === 'AbortError') return; }
         }
         const copied = shared ? false : await copyText(url);
-        showToast(shared ? 'Open the link on your PC or Mac to download Jervis.'
-          : copied ? 'Link copied. Open it on your PC or Mac to download Jervis.'
-            : 'Open this page on your PC or Mac to download Jervis.', 'See the downloads', '#download');
+        showToast(shared ? 'Open the link on your PC or Mac to download Jarvis.'
+          : copied ? 'Link copied. Open it on your PC or Mac to download Jarvis.'
+            : 'Open this page on your PC or Mac to download Jarvis.', 'See the downloads', '#download');
         return;
       }
       if (link.getAttribute('href').startsWith('#')) return;   // no JavaScript facts yet: just go to the section
       const platform = (link.closest('[data-platform]') || {}).dataset?.platform || os;
       showToast(platform === 'win' ? 'Downloading the Windows installer. Next, run it.'
-        : 'Downloading Jervis for Mac. Next, open it and drag Jervis to Applications.', 'See the install steps', '#install');
+        : 'Downloading Jarvis for Mac. Next, open it and drag Jervis to Applications.', 'See the install steps', '#install');
       const tab = $(`.os-tabs [data-os="${platform}"]`);
       if (tab) selectTab(tab, false);
     });
